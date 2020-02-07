@@ -416,8 +416,6 @@
     train_id: 1622
     station_id: N00079
     
-    
-    
   - platform: history_stats
     name: livingroom open today
     entity_id: binary_sensor.w_livingroom
@@ -425,33 +423,12 @@
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
     end: '{{ now() }}'
-    
-  - platform: history_stats
-    name: livingroom open lasttime
-    entity_id: binary_sensor.w_livingroom
-    state: 'on'
-    type: time
-    start: '{{ var.last_open_livingroom_window_hide }}'
-    end: '{{ now() }}'
-
-       
-
-    
 
   - platform: template
     sensors:
       value_livingroom_today:
         friendly_name: 'Window livingroom open today'
         value_template: '{{ states.sensor.livingroom_open_today.attributes.value }}'
-
-
-
-  - platform: template
-    sensors:
-      value_livingroom_lasttime:
-        friendly_name: 'Window livingroom open lasttime'
-        value_template: '{{ states.sensor.livingroom_open_lasttime.attributes.value }}'
-    
 
   - platform: mqtt
     name: "YICAM"

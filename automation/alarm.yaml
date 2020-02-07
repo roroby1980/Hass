@@ -8,6 +8,7 @@
     - binary_sensor.ma_one
     - binary_sensor.ma_2
     - binary_sensor.ma_3
+    - binary_sensor.w_livingroom
     - sensor.yicam
     to: 'on'
   condition:

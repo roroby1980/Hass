@@ -38,7 +38,7 @@ climate:
 
 group: !include groups.yaml
 #automation: !include automations.yaml
-automation: !include_dir_merge_named automation
+automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 sensor: !include sensors.yaml
 zone: !include zone.yaml
