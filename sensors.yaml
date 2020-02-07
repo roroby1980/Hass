@@ -1,0 +1,459 @@
+  #Cesano 6:30 --> 612
+  #Cesano 7:00 --> 1614 --> N00074
+  #Cesano 7:30 --> 618
+  #Cesano 7:35 --> 2718 --> N00085
+  #cesano 8:00 --> 1622
+  
+  - platform: template
+    sensors:
+      time_last_motion:
+        friendly_name: Ultimo Movimento
+        icon_template: mdi:map-marker
+        value_template:  "{{states.variable.ultimo_movimento.state}} {{as_timestamp(states.variable.ultimo_movimento.last_changed) | timestamp_custom('%H:%M')}}"
+
+  - platform: rest
+    name: tr630
+    json_attributes:
+      - ritardo
+      - stazioneUltimoRilevamento
+      - compOraUltimoRilevamento
+    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/612"
+    value_template: 'Treno 6:30'
+    scan_interval: 30
+    
+  - platform: rest
+    name: tr700
+    json_attributes:
+      - ritardo
+      - stazioneUltimoRilevamento
+      - compOraUltimoRilevamento
+      #- fermate[fermate.lenght-1].stazione
+    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00074/1614"
+    value_template: 'Treno 7:00'
+    scan_interval: 30
+
+  - platform: rest
+    name: tr730
+    json_attributes:
+      - ritardo
+      - stazioneUltimoRilevamento
+      - compOraUltimoRilevamento
+    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/618"
+    value_template: 'Treno 7:30'
+    scan_interval: 30
+
+  - platform: rest
+    name: tr735
+    json_attributes:
+      - ritardo
+      - stazioneUltimoRilevamento
+      - compOraUltimoRilevamento
+    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00085/2718"
+    value_template: 'Treno 7:35'
+    scan_interval: 30  
+
+  - platform: rest
+    name: tr800
+    json_attributes:
+      - ritardo
+      - stazioneUltimoRilevamento
+      - compOraUltimoRilevamento
+    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/1622"
+    value_template: 'Treno 8:00'
+    scan_interval: 30
+
+  - platform: template
+    sensors:
+      est_pow_l_cucina_2:
+        friendly_name: "Power light cucina"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.l_cucina_2', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
+      est_pow_l_bagno:
+        friendly_name: "Power light bagno"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.l_bagno', 'brightness') |int +1) * (8.5 /255))  |round(2) }} "
+      est_pow_l_bedroom:
+        friendly_name: "Power light bedroom"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.l_bedroom', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
+      est_pow_l_dressingroom:
+        friendly_name: "Power light dressingroom"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.l_dressingroom', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
+      est_pow_bagno_lamp:
+        friendly_name: "Power light bagno lamp"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.bagno', 'brightness') |int +1) * (10 /255)) |round(2) }} "
+      est_pow_entrance:
+        friendly_name: "Power light entrance"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.entrance', 'brightness') |int +1) * (10 /255)) |round(2) }} "
+      est_pow_livingroom_l:
+        friendly_name: "Power light livingroom yeelight"
+        unit_of_measurement: 'W'
+        value_template: "{{ ((state_attr('light.livingroom', 'brightness') |int +1) * (10 /255)) |round(2) }} "
+      est_pow_livingroom_lights:
+        friendly_name: "Power light livingroom lights"
+        unit_of_measurement: 'W'
+        value_template: '{% if states("switch.sonoff") == "on" %} 15 {% elif  states("switch.sonoff") == "off" %} 0 {% endif %}'
+      est_pow_livingroom_led_lights:
+        friendly_name: "Power light livingroom LED"
+        unit_of_measurement: 'W'
+        value_template: '{% if states("switch.tasmota") == "on" %} 15 {% elif  states("switch.tasmota") == "off" %} 0 {% endif %}'
+      current_power:
+        friendly_name: "Power light total"
+        unit_of_measurement: 'W'
+        value_template: ' {{ states("est_pow_l_cucina_2") |int
+                         + states("est_pow_l_bagno") |int
+                         + states("est_pow_l_bedroom") |int
+                         + states("est_pow_l_dressingroom") |int
+                         + states("est_pow_bagno_lamp") |int
+                         + states("est_pow_entrance") |int
+                         + states("est_pow_livingroom_l") |int
+                         + states("est_pow_livingroom_lights") |int
+                         + states("est_pow_livingroom_led_lights") |int }}'
+
+  - platform: integration
+    source: sensor.current_power
+    name: energy_spent
+    unit_prefix: k
+    round: 2        
+
+    
+  - platform: template
+    sensors:
+      ritardo_800:
+        friendly_name: 'Ritardo 8:00'
+        value_template: '{{ states.sensor.tr800.attributes["ritardo"] }}'
+      where_800:
+        friendly_name: 'Stazione 8:00'
+        value_template: '{{ states.sensor.tr800.attributes["stazioneUltimoRilevamento"] }}'
+      when_800:
+        friendly_name: 'Last update Time 8:00'
+        value_template: '{{ states.sensor.tr800.attributes["compOraUltimoRilevamento"] }}'
+      ritardo_730:
+        friendly_name: 'Ritardo 7:30'
+        value_template: '{{ states.sensor.tr730.attributes["ritardo"] }}'
+      where_730:
+        friendly_name: 'Stazione 7:30'
+        value_template: '{{ states.sensor.tr730.attributes["stazioneUltimoRilevamento"] }}'
+      when_730:
+        friendly_name: 'Last update Time 7:30'
+        value_template: '{{ states.sensor.tr730.attributes["compOraUltimoRilevamento"] }}'
+      ritardo_700:
+        friendly_name: 'Ritardo 7:00'
+        value_template: '{{ states.sensor.tr700.attributes["ritardo"] }}'
+      where_700:
+        friendly_name: 'Stazione 7:00'
+        value_template: '{{ states.sensor.tr700.attributes["stazioneUltimoRilevamento"] }}'
+      when_700:
+        friendly_name: 'Last update Time 7:00'
+        value_template: '{{ states.sensor.tr700.attributes["compOraUltimoRilevamento"] }}'
+      ritardo_630:
+        friendly_name: 'Ritardo 6:30'
+        value_template: '{{ states.sensor.tr630.attributes["ritardo"] }}'
+      where_630:
+        friendly_name: 'Stazione 6:30'
+        value_template: '{{ states.sensor.tr630.attributes["stazioneUltimoRilevamento"] }}'
+      when_630:
+        friendly_name: 'Last update Time 6:30'
+        value_template: '{{ states.sensor.tr630.attributes["compOraUltimoRilevamento"] }}'
+      ritardo_735:
+        friendly_name: 'Ritardo 7:35'
+        value_template: '{{ states.sensor.tr735.attributes["ritardo"] }}'
+      where_735:
+        friendly_name: 'Stazione 7:35'
+        value_template: '{{ states.sensor.tr735.attributes["stazioneUltimoRilevamento"] }}'
+      when_735:
+        friendly_name: 'Last update Time 7:35'
+        value_template: '{{ states.sensor.tr735.attributes["compOraUltimoRilevamento"] }}'
+        
+        
+ # Termometro Processore Raspberry
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    scan_interval: 120
+    value_template: '{{ value | multiply(0.001) }}'
+
+#STats
+  - platform: history_stats
+    name: Led ON today
+    entity_id: switch.sonoff
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+    
+  - platform: history_stats
+    name: Led ON yesterday
+    entity_id: switch.sonoff
+    state: 'on'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: Led ON this week
+    entity_id: switch.sonoff
+    state: 'on'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+    
+
+  - platform: template
+    sensors:
+      value_leds_on_today:
+        friendly_name: 'Livingroom LED on today'
+        value_template: '{{ states.sensor.led_on_today.attributes.value }}'
+
+  - platform: template
+    sensors:
+      value_leds_on_yesterday:
+        friendly_name: 'Livingroom LED on yesterday'
+        value_template: '{{ states.sensor.sensor.led_on_yesterday.attributes.value }}'
+
+  - platform: template
+    sensors:
+      value_leds_on_this_week:
+        friendly_name: 'Livingroom LED on this week'
+        value_template: '{{ states.sensor.led_on_this_week.attributes.value }}'
+    
+    #####
+    
+  - platform: history_stats
+    name: Entrance ON today
+    entity_id: light.entrance
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+    
+  - platform: history_stats
+    name: Entrance ON yesterday
+    entity_id: light.entrance
+    state: 'on'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: Entrance ON this week
+    entity_id: light.entrance
+    state: 'on'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+    
+    #####
+    
+  - platform: history_stats
+    name: Work today
+    entity_id: person.roby
+    state: 'Work'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: work yesterday
+    entity_id: person.roby
+    state: 'Work'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: work this week
+    entity_id: person.roby
+    state: 'Work'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+    
+        #####
+    
+  - platform: history_stats
+    name: roby home today
+    entity_id: person.roby
+    state: 'home'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: roby home yesterday
+    entity_id: person.roby
+    state: 'home'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: roby home  this week
+    entity_id: person.roby
+    state: 'home'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+    
+        #####
+    
+  - platform: history_stats
+    name: tami home today
+    entity_id: person.tami
+    state: 'home'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: tami home yesterday
+    entity_id: person.tami
+    state: 'home'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: tami home  this week
+    entity_id: person.tami
+    state: 'home'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+
+    #####
+
+  - platform: history_stats
+    name: lights ON today
+    entity_id: switch.tasmota
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+    
+  - platform: history_stats
+    name: lights ON yesterday
+    entity_id: switch.tasmota
+    state: 'on'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: lights ON this week
+    entity_id: switch.tasmota
+    state: 'on'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+    
+    
+  - platform: min_max
+    name: house temperature
+    type: mean
+    entity_ids:
+       -  sensor.temperature_24
+       -  sensor.multi_sensor_2_4
+       -  sensor.multi_sensor_3_2
+       
+  - platform: history_stats
+    name: Riscaldamento today
+    entity_id: switch.sonoff_2
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+    
+  - platform: history_stats
+    name: Riscaldamento yesterday
+    entity_id: switch.sonoff_2
+    state: 'on'
+    type: time 
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+       hours: 24
+       
+  - platform: history_stats
+    name: Riscaldamento this week
+    entity_id: switch.sonoff_2
+    state: 'on'
+    type: time 
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  
+  - platform: viaggiatreno
+    train_name: Cesano train 6:30
+    train_id: 612
+    station_id: N00079
+
+  - platform: viaggiatreno
+    train_name: Cesano train 7:00
+    train_id: 1614
+    station_id: N00074
+
+  - platform: viaggiatreno
+    train_name: Cesano train 7:30
+    train_id: 618
+    station_id: N00079
+    
+  - platform: viaggiatreno
+    train_name: Cesano train 7:35
+    train_id: 2718
+    station_id: N00085
+    
+  - platform: viaggiatreno
+    train_name: Cesano train 8:00
+    train_id: 1622
+    station_id: N00079
+    
+    
+    
+  - platform: history_stats
+    name: livingroom open today
+    entity_id: binary_sensor.w_livingroom
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+    
+  - platform: history_stats
+    name: livingroom open lasttime
+    entity_id: binary_sensor.w_livingroom
+    state: 'on'
+    type: time
+    start: '{{ var.last_open_livingroom_window_hide }}'
+    end: '{{ now() }}'
+
+       
+
+    
+
+  - platform: template
+    sensors:
+      value_livingroom_today:
+        friendly_name: 'Window livingroom open today'
+        value_template: '{{ states.sensor.livingroom_open_today.attributes.value }}'
+
+
+
+  - platform: template
+    sensors:
+      value_livingroom_lasttime:
+        friendly_name: 'Window livingroom open lasttime'
+        value_template: '{{ states.sensor.livingroom_open_lasttime.attributes.value }}'
+    
+
+  - platform: mqtt
+    name: "YICAM"
+    state_topic: "yicam/motion"
+    

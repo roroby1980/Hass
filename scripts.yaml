@@ -1,0 +1,9 @@
+alexa_announce_example:
+  sequence:
+    - service: notify.alexa_media
+      data:
+        target: media_player.echo_dot_di_roberto
+        message: "hi, baby , just want to tell you That i love you"
+        data:
+          type: announce
+          method: all # or speak or show

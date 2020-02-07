@@ -1,0 +1,142 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+discovery:
+  ignore:
+    - homekit
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  base_url: !secret url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+# Text to speech
+tts:
+  - platform: google_translate
+  
+system_health:
+
+shelly:
+
+webhook:
+
+climate:
+  - platform: generic_thermostat
+    name: Riscaldamento
+    heater: switch.sonoff_2
+    target_sensor: sensor.house_temperature
+    min_temp: 10
+    max_temp: 25
+    ac_mode: false
+    target_temp: 19.5
+    min_cycle_duration:
+      seconds: 30
+    initial_hvac_mode: "off"
+    away_temp: 18
+
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+zone: !include zone.yaml
+var: !include variables.yaml
+
+light:
+  - platform: mqtt
+    name: "vintage led"
+    state_topic: 'sonoff/status'
+    command_topic: 'sonoff/switch'
+    availability_topic: "sonoff/available"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "online"
+    payload_not_available: "offline"
+
+
+yeelight:
+  devices:
+    192.168.1.64:
+      name: entrance
+    192.168.1.68:
+      name: bagno
+    192.168.1.66:
+      name: Livingroom
+  
+camera:
+  - platform: yi
+    name: CameraLiving
+    host: '192.168.1.67'
+    password: !secret camera_pwd    
+    path: /tmp/sd/record/
+    ffmpeg_arguments: '-vf scale=800:450'
+    
+api:
+
+hacs:
+  token: !secret token_hacs
+  theme: true
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+input_datetime:
+  livingroom_open:
+    has_date: true
+    has_time: true
+  livingroom_close:
+    has_date: true
+    has_time: true
+  livingroom_lasttime:
+    has_time: true
+    has_date: false
+
+
+recorder:
+  exclude:
+    entities:
+     - sensor.tr800
+     - sensor.ritardo_800
+     - sensor.where_800
+     - sensor.when_800
+     - sensor.tr735
+     - sensor.ritardo_735
+     - sensor.where_735
+     - sensor.when_735
+     - sensor.tr730
+     - sensor.ritardo_730
+     - sensor.where_730
+     - sensor.when_730
+     - sensor.tr700
+     - sensor.ritardo_700
+     - sensor.where_700
+     - sensor.when_700
+     - sensor.tr630
+     - sensor.ritardo_630
+     - sensor.where_630
+     - sensor.when_630
+
+history:
+  exclude:
+    entities:
+     - sensor.tr800
+     - sensor.ritardo_800
+     - sensor.where_800
+     - sensor.when_800
+     - sensor.tr735
+     - sensor.ritardo_735
+     - sensor.where_735
+     - sensor.when_735
+     - sensor.tr730
+     - sensor.ritardo_730
+     - sensor.where_730
+     - sensor.when_730
+     - sensor.tr700
+     - sensor.ritardo_700
+     - sensor.where_700
+     - sensor.when_700
+     - sensor.tr630
+     - sensor.ritardo_630
+     - sensor.where_630
+     - sensor.when_630

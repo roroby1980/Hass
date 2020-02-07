@@ -1,0 +1,22 @@
+family:
+  name: Family
+  entities:
+    - person.tami
+    - person.roby
+back_home_lights:
+  entities:
+    - light.entrance
+    - light.bagno
+    - light.l_cucina_2
+    - light.livingroom
+all_lights:
+  entities:
+    - light.entrance
+    - light.bagno
+    - light.l_cucina_2
+    - light.livingroom
+    - light.l_dressingroom
+    - light.l_bagno
+    - switch.sonoff
+    - switch.tasmota
+    - light.l_bedroom
