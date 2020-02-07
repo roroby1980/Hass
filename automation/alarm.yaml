@@ -4,7 +4,7 @@
   - platform: state
     entity_id:
     - binary_sensor.m_dressing
-    - binary_sensor.m_bagno
+    - binary_sensor.m_bathroom
     - binary_sensor.ma_one
     - binary_sensor.ma_2
     - binary_sensor.ma_3

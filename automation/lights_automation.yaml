@@ -2,7 +2,7 @@
   alias: raise-up bathroom light at 100% with motion 
   trigger:
     platform: state
-    entity_id: binary_sensor.m_bagno
+    entity_id: binary_sensor.m_bathroom
     to: 'on'
   condition:
     condition: time
@@ -19,7 +19,7 @@
   alias: raise-up bathroom light at 50% with motion 
   trigger:
     platform: state
-    entity_id: binary_sensor.m_bagno
+    entity_id: binary_sensor.m_bathroom
     to: 'on'
   condition:
     condition: time
@@ -35,7 +35,7 @@
   alias: raise-down bathroom light 
   trigger:
     platform: state
-    entity_id: binary_sensor.m_bagno
+    entity_id: binary_sensor.m_bathroom
     to: 'off'
     for:
       minutes: 5
@@ -54,7 +54,7 @@
   alias: raise-down bathroom light at (night)
   trigger:
     platform: state
-    entity_id: binary_sensor.m_bagno
+    entity_id: binary_sensor.m_bathroom
     to: 'off'
     for:
       minutes: 10
