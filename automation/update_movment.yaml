@@ -1,0 +1,193 @@
+- id: '12'
+  alias: update last movment entrance
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.ma_3
+    to: 'on'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_movment_entrance
+      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      
+- id: '12 wind'
+  alias: update last open window livingroom
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.w_livingroom
+    to: 'on'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_open_livingroom_window
+      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      
+- id: "Windows livingroom open"
+  alias: set Windows livingroom open
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.w_livingroom
+    to: 'on'
+  action:
+  - service: input_datetime.set_datetime
+    data_template:
+      entity_id: input_datetime.livingroom_open
+      datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+    
+- id: "Windows livingroom close"
+  alias: set Windows livingroom close
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.w_livingroom
+    to: 'off'
+  action:
+  - service: input_datetime.set_datetime
+    data_template:
+      entity_id: input_datetime.livingroom_close
+      datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+- id: "Windows livingroom last"
+  alias: set time delta
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.w_livingroom
+    to: 'off'
+  action:
+  - delay: '00:00:03'
+  - service: input_datetime.set_datetime
+    data_template:
+      entity_id: input_datetime.livingroom_lasttime
+      time: "{{ (as_timestamp(states.input_datetime.livingroom_close.state) - as_timestamp(states.input_datetime.livingroom_open.state)) | timestamp_custom('%H:%M:%S', false) }}"
+
+- id: 'Update Last open Time'
+  alias: 'Update Last open Time'
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.w_livingroom
+    to: 'off'
+  action:
+  - delay: '00:00:05'
+  - service: var.set
+    data:
+      entity_id: var.time_open_livingroom_window
+      attributes_template: >
+            {
+              "history_1": "{{ var.state }}",
+              "history_2": "{{ var.attributes.history_1 }}",
+              "history_3": "{{ var.attributes.history_2 }}",
+              "history_4": "{{ var.attributes.history_3 }}",
+              "history_5": "{{ var.attributes.history_4 }}",
+              "history_6": "{{ var.attributes.history_5 }}",
+              "history_7": "{{ var.attributes.history_6 }}",
+              "history_8": "{{ var.attributes.history_7 }}",
+              "history_9": "{{ var.attributes.history_8 }}",
+              "history_10": "{{ var.attributes.history_9 }}"
+            }
+    data_template:
+      value: >
+            {{ states.input_datetime.livingroom_lasttime.state }}
+
+- id: '12 mov'
+  alias: update last movment bathroom
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.m_bathroom
+    to: 'on'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_movment_bathroom
+      value_template: '{{ now().strftime("%H:%M") }}'
+      
+- id: '13'
+  alias: Aggiorna Ultima posizione Tami
+  trigger:
+  - platform: state
+    entity_id: sensor.geocoded_location
+  action:
+  - service: var.set
+    data:
+      entity_id: var.ultimo_aggiornamento_tami_phone
+      value_template: '{{ now().strftime("%H:%M") }}'
+      
+- id: '14'
+  alias: Aggiorna Ultima posizione Roby
+  trigger:
+  - platform: state
+    entity_id: sensor.geocoded_location_2
+  action:
+  - service: var.set
+    data:
+      entity_id: var.ultimo_aggiornamento_roby_phone
+      value_template: '{{ now().strftime("%H:%M") }}'
+      
+- id: '15a'
+  alias: update last movment balcony south
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.m_dressing
+    to: 'on'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_movment_balcony_south
+      value_template: '{{ now().strftime("%H:%M") }}'
+      
+- id: '15b'
+  alias: update last movment balcony east
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ma_one
+    to: 'on'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_movment_balcony_east
+      value_template: '{{ now().strftime("%H:%M") }}'
+      
+- id: '15c'
+  alias: update last movment balcony west
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ma_2
+    to: 'on'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_movment_balcony_west
+      value_template: '{{ now().strftime("%H:%M") }}'
+      
+- id: '1'
+  alias: update last movment yicam
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.yicam
+    to: 'motion_start'
+  action:
+  - service: var.set
+    data:
+      entity_id: var.last_movment_yicam
+      value_template: '{{ now().strftime("%H:%M") }}'
+
+
+- id: ' reset Orari'
+  trigger:
+    platform: time
+    at: "00:00:00"
+  action:
+  - service: var.set
+    data:
+      entity_id: 
+      - var.last_movment_balcony_west
+      - var.last_movment_balcony_east
+      - var.last_movment_balcony_south
+      - var.ultimo_movimento
+      value_template: '{{ now().strftime("%H:%M") }}'

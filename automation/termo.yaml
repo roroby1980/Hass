@@ -1,0 +1,77 @@
+     
+- id: ' Termo1'
+  trigger:
+    platform: time
+    at: "06:30:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 20
+        
+- id: ' Termo2'
+  trigger:
+    platform: time
+    at: "08:15:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 19.5
+        
+- id: ' Termo3'
+  trigger:
+    platform: time
+    at: "09:30:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 18.5
+        
+- id: ' Termo4'
+  trigger:
+    platform: time
+    at: "17:00:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 20
+        
+- id: ' Termo5'
+  trigger:
+    platform: time
+    at: "18:00:00"
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'not_home'
+  action:
+    - service: climate.turn_on
+      data:
+        entity_id: climate.riscaldamento
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 20
+        
+- id: ' Termo6'
+  trigger:
+    platform: time
+    at: "20:45:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 19.7
+        
+- id: ' Termo7'
+  trigger:
+    platform: time
+    at: "21:30:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.riscaldamento
+        temperature: 17

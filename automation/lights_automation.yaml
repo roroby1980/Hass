@@ -1,0 +1,69 @@
+- id: 'Light1'
+  alias: raise-up bathroom light at 100% with motion 
+  trigger:
+    platform: state
+    entity_id: binary_sensor.m_bagno
+    to: 'on'
+  condition:
+    condition: time
+    after: 07:00:00
+    before: '19:00:00'
+  action:
+    service: light.turn_on
+    entity_id: light.bagno
+    data_template:
+      transition: 10
+      brightness: 255
+      
+- id: 'Light2'
+  alias: raise-up bathroom light at 50% with motion 
+  trigger:
+    platform: state
+    entity_id: binary_sensor.m_bagno
+    to: 'on'
+  condition:
+    condition: time
+    after: '19:00:00'
+  action:
+    service: light.turn_on
+    entity_id: light.bagno
+    data_template:
+      transition: 10
+      brightness: 70
+      
+- id: 'Light3'
+  alias: raise-down bathroom light 
+  trigger:
+    platform: state
+    entity_id: binary_sensor.m_bagno
+    to: 'off'
+    for:
+      minutes: 5
+  condition:
+    condition: time
+    after: 07:00:00
+    before: '19:00:00'
+  action:
+    service: light.turn_on
+    entity_id: light.bagno
+    data_template:
+      transition: 90
+      brightness: 10
+      
+- id: 'Light4'
+  alias: raise-down bathroom light at (night)
+  trigger:
+    platform: state
+    entity_id: binary_sensor.m_bagno
+    to: 'off'
+    for:
+      minutes: 10
+  condition:
+    condition: time
+    after: '19:00:00'
+  action:
+    service: light.turn_on
+    entity_id: light.bagno
+    data_template:
+      transition: 45
+      brightness: 1

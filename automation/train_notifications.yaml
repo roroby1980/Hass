@@ -1,0 +1,109 @@
+- id: 'train1'
+  alias: Notifica Treno 8:00
+  trigger:
+  - above: '2'
+    entity_id: sensor.ritardo_800
+    platform: numeric_state
+  condition:
+    condition: time
+    after: 07:00:00
+    before: 08:00:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data_template:
+      message: 'h {{states.sensor.when_800.state}} - staz {{states.sensor.where_800.state}} '
+      title: tr 8:00 + {{states.sensor.ritardo_800.state}} min
+    service: notify.mobile_app_iphone_di_roberto
+    
+- id: 'train2'
+  alias: Notifica Treno 7:00
+  trigger:
+  - above: '2'
+    entity_id: sensor.ritardo_700
+    platform: numeric_state
+  condition:
+    condition: time
+    after: 06:00:00
+    before: 07:00:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data_template:
+      message: 'h {{states.sensor.when_700.state}} - staz {{states.sensor.where_700.state}} '
+      title: tr 7:00 + {{states.sensor.ritardo_700.state}} min
+    service: notify.mobile_app_iphone_di_roberto
+    
+- id: 'train3'
+  alias: Notifica Treno 7:30
+  trigger:
+  - above: '2'
+    entity_id: sensor.ritardo_730
+    platform: numeric_state
+  condition:
+    condition: time
+    after: 06:30:00
+    before: 07:30:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data_template:
+      message: 'h {{states.sensor.when_730.state}} - staz {{states.sensor.where_730.state}} '
+      title: tr 7:30 + {{states.sensor.ritardo_730.state}} min
+    service: notify.mobile_app_iphone_di_roberto
+    
+- id: 'train4'
+  alias: Notifica Treno 6:30
+  trigger:
+  - above: '2'
+    entity_id: sensor.ritardo_630
+    platform: numeric_state
+  condition:
+    condition: time
+    after: 06:00:00
+    before: 06:30:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data_template:
+      message: 'h {{states.sensor.when_630.state}} - staz {{states.sensor.where_630.state}} '
+      title: tr 6:30 + {{states.sensor.ritardo_630.state}} min
+    service: notify.mobile_app_iphone_di_roberto
+    
+- id: 'train5'
+  alias: Notifica Treno 7:35
+  trigger:
+  - above: '2'
+    entity_id: sensor.ritardo_735
+    platform: numeric_state
+  condition:
+    condition: time
+    after: 06:00:00
+    before: 07:40:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data_template:
+      message: 'h {{states.sensor.when_735.state}} - staz {{states.sensor.where_735.state}} '
+      title: tr 7:35 + {{states.sensor.ritardo_735.state}} min
+    service: notify.mobile_app_iphone_di_roberto

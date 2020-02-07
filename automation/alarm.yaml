@@ -1,0 +1,21 @@
+- id: 'Alarm'
+  alias: 'Alarm'
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.m_dressing
+    - binary_sensor.m_bagno
+    - binary_sensor.ma_one
+    - binary_sensor.ma_2
+    - binary_sensor.ma_3
+    - sensor.yicam
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'not_home'
+  action:
+  - data_template:
+      message: 'Detected movment/opening of {{ trigger.from_state.attributes.friendly_name }}'
+      title: 'ALARM'
+    service: notify.mobile_app_iphone_di_roberto

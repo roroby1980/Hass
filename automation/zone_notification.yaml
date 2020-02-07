@@ -1,0 +1,39 @@
+- id: 'House notification in/out'
+  alias: House notification in/out
+  trigger:
+    platform: state
+    entity_id: person.roby,person.tami
+  condition:
+   - condition: template
+     value_template: '{{ trigger.to_state.state == ''home'' or  trigger.from_state.state == ''home'' }}'
+   - condition: template
+     value_template: '{{ trigger.to_state.state != trigger.from_state.state }}'
+  action:
+    service: notify.mobile_app_iphone_di_roberto
+    data_template:
+      title: Entrance/Exits
+      message: '{% if trigger.to_state.state == ''home'' %} {{ now().strftime("%H:%M") }} 
+        - Rilevato ingresso in casa da parte di {{ trigger.from_state.attributes.friendly_name }}
+        {% elif  trigger.from_state.state == ''home'' %} {{ now().strftime("%H:%M") }} 
+        - Rilevata uscita da parte di {{ trigger.from_state.attributes.friendly_name }} {% endif %}'
+
+- id: 'Work notification out'
+  alias: Work notification out
+  trigger:
+    platform: state
+    entity_id: person.roby
+    from: Work
+  condition:
+  - condition: time
+    after: '14:00:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+    service: notify.mobile_app_iphone_di_roberto
+    data_template:
+      title: Exit from Work
+      message: '{{ trigger.from_state.attributes.friendly_name }} exit from {{ trigger.from_state.state }} @ {{ now().strftime("%H:%M") }}'

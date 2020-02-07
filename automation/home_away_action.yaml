@@ -1,0 +1,36 @@
+- id: 'Awway Mode'
+  alias: Switch all off if we are away
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: home
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+      data_template:
+        transition: 10
+    - service: switch.turn_off
+      entity_id: 
+        - switch.sonoff
+        - switch.tasmota
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.riscaldamento
+        preset_mode: away
+
+- id: 'Home Mode'
+  alias: all on on come back
+  trigger:
+    platform: state
+    entity_id: group.family
+    to: home
+  action:
+    - service: light.turn_on
+      entity_id: group.back_home_lights
+      data_template:
+        transition: 10
+        brightness: 50
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.riscaldamento
+        preset_mode: none
