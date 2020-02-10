@@ -75,10 +75,6 @@
     platform: sun
     event: sunset
     offset: "-00:45:00"
-  condition:
-    condition: state
-    entity_id: group.rgb_lights
-    state: on
   action:
     service: yeelight.set_color_temp_scene
     entity_id: group.rgb_lights
@@ -92,10 +88,6 @@
     platform: sun
     event: sunrise
     offset: "00:05:00"
-  condition:
-    condition: state
-    entity_id: group.rgb_lights
-    state: on
   action:
     service: yeelight.set_color_temp_scene
     entity_id: group.rgb_lights
