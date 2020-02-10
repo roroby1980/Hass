@@ -157,7 +157,7 @@
       entity_id: var.ultimo_aggiornamento_roby_phone
       value_template: '{{ now().strftime("%H:%M:%S") }}'
       
-
+## CAMERA
       
 - id: 'Mov13'
   alias: update last movment yicam
@@ -165,7 +165,7 @@
   - platform: state
     entity_id:
     - sensor.yicam
-    to: 'motion_start'
+    to: 'on'
   action:
   - service: var.set
     data:

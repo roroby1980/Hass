@@ -48,9 +48,10 @@
     entity_id: group.family
     state: 'not_home'
   action:
-    - service: climate.turn_on
+    - service: climate.set_preset_mode
       data:
         entity_id: climate.riscaldamento
+        preset_mode: none
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
