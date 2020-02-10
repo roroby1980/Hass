@@ -432,5 +432,5 @@
 
   - platform: mqtt
     name: "YICAM"
-    state_topic: "yicam/motion"
+    state_topic: "yicam/motion/"
     
