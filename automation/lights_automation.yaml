@@ -82,9 +82,10 @@
   action:
     service: yeelight.set_color_temp_scene
     entity_id: group.rgb_lights
-    kelvin: 1800
-    brightness: 128
-    transition: 900
+    data_template:
+      kelvin: 1800
+      brightness: 128
+
 
 - id: ' Light6'
   trigger:
@@ -98,6 +99,6 @@
   action:
     service: yeelight.set_color_temp_scene
     entity_id: group.rgb_lights
-    kelvin: 3000
-    brightness: 255
-    transition: 900
+    data_template:
+      kelvin: 3000
+      brightness: 255
