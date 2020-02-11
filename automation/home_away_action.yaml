@@ -46,13 +46,13 @@
       minutes: 45
   condition:
     - condition: template
-        value_template: "{{ ((as_timestamp(now()) - as_timestamp(as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local)) /3600) |round > 12 }}"
+      value_template: "{{ ((as_timestamp(now()) - as_timestamp(as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local)) /3600) |round > 12 }}"
     - condition: time
-        after: '07:00:00'
-        before: '22:00:00'
+      after: '07:00:00'
+      before: '22:00:00'
     - condition: state
-        entity_id: group.family
-        state: home 
+      entity_id: group.family
+      state: home 
   action:
     - service: light.turn_off
       entity_id: group.all_lights
