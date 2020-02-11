@@ -11,6 +11,16 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
+input_select:
+  guests:
+    options:
+      - home
+      - not_home
+  initial: not_home
+  icon: mdi:guy-fawkes-mask
+
+
+
 # Text to speech
 tts:
   - platform: google_translate
