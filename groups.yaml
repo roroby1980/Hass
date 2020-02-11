@@ -32,4 +32,9 @@ dim_lights:
     - light.l_dressingroom
     - light.l_bagno
     - light.l_bedroom
-
+inside_presences:
+    entities:
+    - binary_sensor.m_bathroom
+    - binary_sensor.ma_3
+    - binary_sensor.w_livingroom
+    - sensor.yicam

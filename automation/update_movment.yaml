@@ -10,7 +10,7 @@
   - service: var.set
     data:
       entity_id: var.last_movment_entrance
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
 
 - id: 'Mov7'
   alias: update last movment bathroom
@@ -23,7 +23,7 @@
   - service: var.set
     data:
       entity_id: var.last_movment_bathroom
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
       
 #BALCONY MOVMENT      
 
@@ -37,7 +37,7 @@
   - service: var.set
     data:
       entity_id: var.last_movment_balcony_south
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
       
 - id: 'Mov11'
   alias: update last movment balcony east
@@ -49,7 +49,7 @@
   - service: var.set
     data:
       entity_id: var.last_movment_balcony_east
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
       
 - id: 'Mov12'
   alias: update last movment balcony west
@@ -61,7 +61,7 @@
   - service: var.set
     data:
       entity_id: var.last_movment_balcony_west
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
 
 #WINDOWS LIVINGROOM
 
@@ -76,7 +76,7 @@
   - service: var.set
     data:
       entity_id: var.last_open_livingroom_window
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
       
 - id: 'Mov3'
   alias: update last open window livingroom (datetime)
@@ -144,7 +144,7 @@
   - service: var.set
     data:
       entity_id: var.ultimo_aggiornamento_tami_phone
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
       
 - id: 'Mov9'
   alias: Aggiorna Ultima posizione Roby
@@ -155,7 +155,7 @@
   - service: var.set
     data:
       entity_id: var.ultimo_aggiornamento_roby_phone
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
       
 ## CAMERA
       
@@ -170,7 +170,7 @@
   - service: var.set
     data:
       entity_id: var.last_movment_yicam
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
 
 
 - id: 'Mov14'
@@ -186,4 +186,12 @@
       - var.last_movment_balcony_east
       - var.last_movment_balcony_south
       - var.ultimo_movimento
-      value_template: '{{ now().strftime("%H:%M:%S") }}'
+      value_template: '{{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
+
+
+
+
+#{{ as_timestamp(states.binary_sensor.m_bathroom.last_changed) |timestamp_local }}
+
+
+#{{ as_timestamp(states.binary_sensor.m_bathroom.last_updated) |timestamp_local }}

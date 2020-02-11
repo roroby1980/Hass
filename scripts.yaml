@@ -7,3 +7,40 @@ alexa_announce_example:
         data:
           type: announce
           method: all # or speak or show
+
+
+manual_home_mode:
+  sequence:
+    - service: light.turn_on
+      entity_id: group.back_home_lights
+      data_template:
+        transition: 1
+        brightness: 50
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.riscaldamento
+        preset_mode: none
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+        title: Manual Home Mode
+        message: 'Home mode set manually @ {{ now().strftime("%H:%M:%S") }}'
+
+
+manual_away_mode:
+  sequence:
+    - service: light.turn_off
+      entity_id: group.all_lights
+      data_template:
+        transition: 1
+    - service: switch.turn_off
+      entity_id: 
+        - switch.sonoff
+        - switch.tasmota
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.riscaldamento
+        preset_mode: away
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+        title: Manual Away Mode
+        message: 'Away mode set manually @ {{ now().strftime("%H:%M:%S") }}'
