@@ -44,7 +44,7 @@
     to: 'off'
     for:
       minutes: 45
-  conditions:
+  condition:
     - condition: template
         value_template: "{{ ((as_timestamp(now()) - as_timestamp(as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local)) /3600) |round > 12 }}"
     - condition: time
