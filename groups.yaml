@@ -26,10 +26,8 @@ rgb_lights:
     - light.livingroom
 dim_lights:
   entities:
-    - light.entrance
     - light.bagno
     - light.l_cucina_2
-    - light.livingroom
     - light.l_dressingroom
     - light.l_bagno
     - light.l_bedroom
