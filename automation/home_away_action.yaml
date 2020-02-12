@@ -7,8 +7,6 @@
   action:
     - service: light.turn_off
       entity_id: group.all_lights
-      data_template:
-        transition: 10
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff
@@ -27,9 +25,6 @@
   action:
     - service: light.turn_on
       entity_id: group.back_home_lights
-      data_template:
-        transition: 10
-        brightness: 50
     - service: climate.set_preset_mode
       data:
         entity_id: climate.riscaldamento
@@ -56,8 +51,7 @@
   action:
     - service: light.turn_off
       entity_id: group.all_lights
-      data_template:
-        transition: 10
+
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff
