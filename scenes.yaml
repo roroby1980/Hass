@@ -1,3 +1,0 @@
-- name: Guest mode 
-  entities:
-    input_select.guests: home

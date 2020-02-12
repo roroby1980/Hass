@@ -3,6 +3,7 @@ family:
   entities:
     - person.tami
     - person.roby
+    - input_select.guests
 back_home_lights:
   entities:
     - light.entrance
