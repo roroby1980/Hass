@@ -89,13 +89,14 @@
     entity_id: group.family
     state: 'home'
   action:
+    - service: light.turn_on
+      entity_id: group.back_home_lights
+      data_template:
+        brightness: '{% if now().hour > 20 %}30{% elif now().hour < 8 %}30{% else %}255{% endif %}'
     - service: yeelight.set_color_temp_scene
       entity_id: group.rgb_lights
       data_template:
         kelvin: '{% if now().hour > 19 %}1700{% elif now().hour < 8 %}1700{% else %}3000{% endif %}'
-    - service: light.turn_on
-      entity_id: group.rgb_lights
-      data_template:
-        brightness: '{% if now().hour > 20 %}30{% elif now().hour < 8 %}30{% else %}255{% endif %}'
+   
     
 
