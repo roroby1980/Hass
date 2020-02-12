@@ -72,16 +72,13 @@
 
 - id: ' Light5'
   trigger:
-    - trigger:
-      platform: sun
+    - platform: sun
       event: sunset
       offset: "-00:45:00"
-    - trigger:
-      platform: sun
+    - platform: sun
       event: sunrise
       offset: "00:05:00"
-    - trigger:
-      platform: state
+    - platform: state
       entity_id: group.rgb_lights
       to: 'on'
   condition:
