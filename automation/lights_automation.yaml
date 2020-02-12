@@ -92,7 +92,8 @@
     - action:
       service: yeelight.set_color_temp_scene
       entity_id: group.rgb_lights
-      kelvin: {% if now().hour > 19 %}1700{% elif now().hour < 8 %}1700{% else %}3000{% endif %}
+      data_template:
+        kelvin: {% if now().hour > 19 %}1700{% elif now().hour < 8 %}1700{% else %}3000{% endif %}
     - action:
       service: light.turn_on
       entity_id: group.rgb_lights
