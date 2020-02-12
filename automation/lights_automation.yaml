@@ -70,8 +70,11 @@
 
 #Light Temperature by sunlight
 
-- id: ' Light5'
+- alias: ' Light5'
   trigger:
+    - platform: state
+      entity_id: group.family
+      to: home
     - platform: sun
       event: sunset
       offset: "-00:45:00"
