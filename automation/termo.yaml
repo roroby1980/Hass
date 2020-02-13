@@ -1,8 +1,11 @@
      
 - id: ' Termo1'
   trigger:
-    platform: time
-    at: "06:30:00"
+    - platform: time
+      at: "06:30:00"
+    #- platform: state
+    #  entity_id: group.family
+    #  to: home
   condition:
     condition: state
     entity_id: group.family
