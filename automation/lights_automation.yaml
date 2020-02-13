@@ -93,35 +93,35 @@
     state: 'home'
   action:
     - service: light.turn_on
-      entity_id: group.temperature_lights
+      entity_id: group.rgb_lights
       data_template:
         brightness: '{% if now().hour >= 19 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
         kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
 
-#- alias: ' Light6'
-#  trigger:
-#    - platform: state
-#      entity_id: 
-#        - light.entrance
-#        - light.livingroom 
-#        - light.bagno
-#        - light.l_cucina_2
-#        - light.l_dressingroom
-#        - light.l_bagno
-#        - light.l_bedroom
-#        - light.entrance
-#        - light.livingroom
-#      to: 'on'
-#  condition:
-#    condition: state
-#    entity_id: group.family
-#    state: 'home'
-#  action:
-#    - service: light.turn_on
-#      entity_id: "{{ trigger.entity_id }}"
-#      data_template:
-#        brightness: '{% if now().hour >= 19 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
-#        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
+- alias: ' Light6'
+  trigger:
+    - platform: state
+      entity_id: 
+        - light.entrance
+        - light.livingroom 
+        - light.bagno
+        - light.l_cucina_2
+        - light.l_dressingroom
+        - light.l_bagno
+        - light.l_bedroom
+        - light.entrance
+        - light.livingroom
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ trigger.entity_id }}"
+        brightness: '{% if now().hour >= 19 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
+        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
   
    
     
