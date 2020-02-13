@@ -75,6 +75,12 @@
     - platform: state
       entity_id: group.family
       to: home
+    - platform: time
+      at: "08:00:01"
+    - platform: time
+      at: "19:00:01"
+    - platform: time
+      at: "20:00:01"
     - platform: sun
       event: sunset
       offset: "00:30:00"
@@ -82,7 +88,16 @@
       event: sunrise
       offset: "00:30:00"
     - platform: state
-      entity_id: group.rgb_lights
+      entity_id: 
+        - light.entrance
+        - light.livingroom 
+        - light.bagno
+        - light.l_cucina_2
+        - light.l_dressingroom
+        - light.l_bagno
+        - light.l_bedroom
+        - light.entrance
+        - light.livingroom
       to: 'on'
   condition:
     condition: state
@@ -90,13 +105,13 @@
     state: 'home'
   action:
     - service: light.turn_on
-      entity_id: group.back_home_lights
+      entity_id: group.dim_lights
       data_template:
-        brightness: '{% if now().hour > 20 %}30{% elif now().hour < 8 %}30{% else %}255{% endif %}'
-    - service: yeelight.set_color_temp_scene
-      entity_id: group.rgb_lights
-      data_template:
-        kelvin: '{% if now().hour > 19 %}1700{% elif now().hour < 8 %}1700{% else %}3000{% endif %}'
+        brightness: '{% if now().hour >= 20 %}30{% elif now().hour =< 8 %}30{% else %}255{% endif %}'
+        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour =< 8 %}1700{% else %}3000{% endif %}'
+
+
+
    
     
 

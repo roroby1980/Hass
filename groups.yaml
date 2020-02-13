@@ -24,13 +24,22 @@ rgb_lights:
   entities:
     - light.entrance
     - light.livingroom
+temperature_lights:
+  entities:
+    - light.entrance
+    - light.livingroom
+    - light.bagno
 dim_lights:
   entities:
+    - light.entrance
+    - light.livingroom
     - light.bagno
     - light.l_cucina_2
     - light.l_dressingroom
     - light.l_bagno
     - light.l_bedroom
+    - light.entrance
+    - light.livingroom
 inside_presences:
     entities:
     - binary_sensor.m_bathroom
