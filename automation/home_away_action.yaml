@@ -11,10 +11,10 @@
       entity_id: 
         - switch.sonoff
         - switch.tasmota
-    - service: climate.set_preset_mode
+    - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
-        preset_mode: away
+        temperature: 15
 
 - id: 'Home Mode'
   alias: all on on come back
@@ -23,10 +23,10 @@
     entity_id: group.family
     to: home
   action:
-    - service: climate.set_preset_mode
+    - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
-        preset_mode: none
+        temperature: 15
 
 
 - id: 'Away Mode no phone info'
@@ -53,10 +53,10 @@
       entity_id: 
         - switch.sonoff
         - switch.tasmota
-    - service: climate.set_preset_mode
+    - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
-        preset_mode: away
+        temperature: 15
     - service: notify.mobile_app_iphone_di_roberto
       data_template:
         title: Away Mode while no phone info
