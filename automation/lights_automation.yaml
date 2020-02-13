@@ -107,8 +107,8 @@
     - service: light.turn_on
       entity_id: group.dim_lights
       data_template:
-        brightness: '{% if now().hour >= 20 %}30{% elif now().hour =< 8 %}30{% else %}255{% endif %}'
-        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour =< 8 %}1700{% else %}3000{% endif %}'
+        brightness: '{% if now().hour >= 20 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
+        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
 
 
 
