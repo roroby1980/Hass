@@ -38,8 +38,6 @@ dim_lights:
     - light.l_dressingroom
     - light.l_bagno
     - light.l_bedroom
-    - light.entrance
-    - light.livingroom
 inside_presences:
     entities:
     - binary_sensor.m_bathroom
