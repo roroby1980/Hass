@@ -1,4 +1,4 @@
-- id: 'House notification in/out'
+- id: 'Zone - House notification in/out'
   alias: House notification in/out
   trigger:
     platform: state
@@ -17,7 +17,7 @@
         {% elif  trigger.from_state.state == ''home'' %} {{ now().strftime("%H:%M") }} 
         - Rilevata uscita da parte di {{ trigger.from_state.attributes.friendly_name }} {% endif %}'
 
-- id: 'Work notification out'
+- id: 'Zone - Work notification out'
   alias: Work notification out
   trigger:
     platform: state

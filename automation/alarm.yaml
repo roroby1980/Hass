@@ -1,5 +1,4 @@
-- id: 'Alarm'
-  alias: 'Alarm'
+- alias: 'Alarm'
   trigger:
   - platform: state
     entity_id:
@@ -17,6 +16,6 @@
     state: 'not_home'
   action:
   - data_template:
-      message: 'Detected movment/opening of {{ trigger.from_state.attributes.friendly_name }}'
+      message: 'Detected movment of {{ trigger.from_state.attributes.friendly_name }}'
       title: 'ALARM'
     service: notify.mobile_app_iphone_di_roberto

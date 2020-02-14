@@ -1,5 +1,5 @@
      
-- id: ' Termo1'
+- alias: 'Termo crono'
   trigger:
     - platform: time_pattern
       minutes: 1
@@ -30,7 +30,7 @@
            {% endif %}
         
 
-- id: ' Termo8'
+- alias: 'Termo - manual request '
   trigger:
     platform: state
     entity_id: binary_sensor.sonoff_switch1_2

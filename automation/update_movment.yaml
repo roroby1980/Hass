@@ -1,6 +1,6 @@
 #HOME MOVMENT
 - id: 'Mov1'
-  alias: update last movment entrance
+  alias: Mov1 update last movment entrance
   trigger:
   - platform: state
     entity_id:
@@ -13,7 +13,7 @@
       value_template: '{{ now().strftime("%Y-%m-%d    %H:%M:%S") }}'
 
 - id: 'Mov7'
-  alias: update last movment bathroom
+  alias: Mov7 update last movment bathroom
   trigger:
   - platform: state
     entity_id:
@@ -28,7 +28,7 @@
 #BALCONY MOVMENT      
 
 - id: 'Mov10'
-  alias: update last movment balcony south
+  alias: Mov10 update last movment balcony south
   trigger:
   - platform: state
     entity_id: binary_sensor.m_dressing
@@ -40,7 +40,7 @@
       value_template: '{{ now().strftime("%Y-%m-%d    %H:%M:%S") }}'
       
 - id: 'Mov11'
-  alias: update last movment balcony east
+  alias: Mov11 update last movment balcony east
   trigger:
   - platform: state
     entity_id: binary_sensor.ma_one
@@ -52,7 +52,7 @@
       value_template: '{{ now().strftime("%Y-%m-%d    %H:%M:%S") }}'
       
 - id: 'Mov12'
-  alias: update last movment balcony west
+  alias: Mov12 update last movment balcony west
   trigger:
   - platform: state
     entity_id: binary_sensor.ma_2
@@ -66,7 +66,7 @@
 #WINDOWS LIVINGROOM
 
 - id: 'Mov2'
-  alias: update last open window livingroom
+  alias: Mov2 update last open window livingroom
   trigger:
   - platform: state
     entity_id:
@@ -79,7 +79,7 @@
       value_template: '{{ now().strftime("%Y-%m-%d    %H:%M:%S") }}'
       
 - id: 'Mov3'
-  alias: update last open window livingroom (datetime)
+  alias: Mov3 update last open window livingroom (datetime)
   trigger:
   - platform: state
     entity_id:
@@ -92,7 +92,7 @@
       datetime: "{{ now().strftime('%Y-%m-%d    %H:%M:%S') }}"
     
 - id: 'Mov4'
-  alias: update last close window livingroom (datetime)
+  alias: Mov4 update last close window livingroom (datetime)
   trigger:
   - platform: state
     entity_id:
@@ -105,7 +105,7 @@
       datetime: "{{ now().strftime('%Y-%m-%d    %H:%M:%S') }}"
 
 - id: 'Mov5'
-  alias: set time of windows livingroom was open
+  alias: Mov5 set time of windows livingroom was open
   trigger:
   - platform: state
     entity_id:
@@ -119,7 +119,7 @@
       time: "{{ (as_timestamp(states.input_datetime.livingroom_close.state) - as_timestamp(states.input_datetime.livingroom_open.state)) | timestamp_custom('%H:%M:%S', false) }}"
 
 - id: 'Mov6'
-  alias: 'Update Last open Time'
+  alias: 'Mov6 Update Last open Time'
   trigger:
   - platform: state
     entity_id:
@@ -136,7 +136,7 @@
 #PHONE UPDATE
       
 - id: 'Mov8'
-  alias: Aggiorna Ultima posizione Tami
+  alias: Mov8 Aggiorna Ultima posizione Tami
   trigger:
   - platform: state
     entity_id: sensor.geocoded_location
@@ -147,7 +147,7 @@
       value_template: '{{ now().strftime("%Y-%m-%d    %H:%M:%S") }}'
       
 - id: 'Mov9'
-  alias: Aggiorna Ultima posizione Roby
+  alias: Mov9 Aggiorna Ultima posizione Roby
   trigger:
   - platform: state
     entity_id: sensor.geocoded_location_2
@@ -160,7 +160,7 @@
 ## CAMERA
       
 - id: 'Mov13'
-  alias: update last movment yicam
+  alias: Mov13 update last movment yicam
   trigger:
   - platform: state
     entity_id:
@@ -174,7 +174,7 @@
 
 
 - id: 'Mov14'
-  alias: reset orari last movment
+  alias: Mov14 reset orari last movment
   trigger:
     platform: time
     at: "00:00:00"

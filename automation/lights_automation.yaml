@@ -1,5 +1,4 @@
-- id: 'Light1'
-  alias: raise-up bathroom light at 100% with motion 
+- alias: 'Light1 - raise-up bathroom at 100% with motion '
   trigger:
     platform: state
     entity_id: binary_sensor.m_bathroom
@@ -15,8 +14,7 @@
       transition: 4
       brightness: 255
       
-- id: 'Light2'
-  alias: raise-up bathroom light at 50% with motion 
+- alias: 'Light2 - raise-up bathroom at 50% with motion '
   trigger:
     platform: state
     entity_id: binary_sensor.m_bathroom
@@ -31,8 +29,7 @@
       transition: 4
       brightness: 70
       
-- id: 'Light3'
-  alias: raise-down bathroom light 
+- alias: 'Light3 - raise-down bathroom light'
   trigger:
     platform: state
     entity_id: binary_sensor.m_bathroom
@@ -50,8 +47,7 @@
       transition: 90
       brightness: 10
       
-- id: 'Light4'
-  alias: raise-down bathroom light at (night)
+- id: 'Light4 - raise-down bathroom light at (night)'
   trigger:
     platform: state
     entity_id: binary_sensor.m_bathroom
@@ -70,7 +66,7 @@
 
 #Light Temperature by sunlight
 
-- alias: ' Light5'
+- alias: ' Light5 - automation color/brightness on fixed lights '
   trigger:
     - platform: state
       entity_id: group.family
@@ -102,7 +98,7 @@
         brightness: '{% if now().hour >= 19 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
         kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
 
-- alias: ' Light6'
+- alias: 'Light6 - automation color/brightness triggered by swicth on'
   trigger:
     - platform: state
       entity_id: 
