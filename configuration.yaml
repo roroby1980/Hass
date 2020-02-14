@@ -19,6 +19,8 @@ input_select:
     initial: not_home
     icon: mdi:guy-fawkes-mask
 
+device_tracker:
+  - platform: bluetooth_tracker
 
 
 # Text to speech

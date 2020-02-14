@@ -99,3 +99,21 @@
       data:
         entity_id: climate.riscaldamento
         temperature: 17
+
+
+#- id: ' Termo8'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.sonoff_switch1_2
+#    to: 'on'
+#  condition:
+#    condition: state
+#    entity_id: group.family
+#    state: 'home'
+#  action:
+#    - service: climate.set_temperature
+#      data_template:
+#        entity_id: climate.riscaldamento
+#        temperature: "{{ climate.riscaldamento.temperature |float +0.5 }}"
+
+       
