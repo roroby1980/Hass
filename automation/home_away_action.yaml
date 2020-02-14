@@ -1,4 +1,4 @@
-- id: 'Awway Mode'
+- id: 'Away Mode'
   alias: Switch all off if we are away
   trigger:
     platform: state
@@ -11,18 +11,6 @@
       entity_id: 
         - switch.sonoff
         - switch.tasmota
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.riscaldamento
-        temperature: 15
-
-- id: 'Home Mode'
-  alias: all on on come back
-  trigger:
-    platform: state
-    entity_id: group.family
-    to: home
-  action:
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
