@@ -29,6 +29,10 @@
     to: 'off'
     for:
       minutes: 10
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
   action:
     service: light.turn_on
     entity_id: light.bagno
@@ -104,6 +108,21 @@
               1
            {% endif %}
         transition: 3
+
+- alias: ' Light5 - automation light back home '
+  trigger:
+    - platform: state
+      entity_id: group.family
+      to: home
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+    - service: light.turn_on
+      entity_id: 
+        - light.bagno
+        - light.l_cucina_2
    
 - alias: 'Light7 - LED on wall '
   trigger:
@@ -127,5 +146,25 @@
       entity_id: 
         - switch.sonoff
     
-    
+- alias: 'Light9 - LED on wall '
+  trigger:
+    - platform: state 
+      entity_id:
+        - switch.sonoff
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: 
+        - switch.sonoff_100056b199_3
+        
+- alias: 'Light10 - LED on wall '
+  trigger:
+    - platform: state 
+      entity_id:
+        - switch.sonoff
+      to: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: 
+        - switch.sonoff_100056b199_3
 

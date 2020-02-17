@@ -11,6 +11,8 @@
       entity_id: 
         - switch.sonoff
         - switch.tasmota
+        - switch.sonoff_100056b199_1
+        - switch.sonoff_100056b199_2
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
@@ -41,6 +43,8 @@
       entity_id: 
         - switch.sonoff
         - switch.tasmota
+        - switch.sonoff_100056b199_1
+        - switch.sonoff_100056b199_2
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento

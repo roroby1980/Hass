@@ -47,9 +47,9 @@ climate:
     ac_mode: false
     target_temp: 19.5
     min_cycle_duration:
-      seconds: 30
+      seconds: 120
     initial_hvac_mode: "off"
-    away_temp: 18
+    away_temp: 15
 
 
 group: !include groups.yaml
@@ -59,6 +59,15 @@ script: !include scripts.yaml
 sensor: !include sensors.yaml
 zone: !include zone.yaml
 var: !include variables.yaml
+
+binary_sensor:
+  - platform: trend
+    sensors:
+      bath_humidity:
+        entity_id: sensor.multi_sensor_3_3
+        sample_duration: 1800
+        min_gradient: 0.0055
+        device_class: humidity
 
 light:
   - platform: mqtt

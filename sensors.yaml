@@ -434,3 +434,10 @@
     name: "YICAM"
     state_topic: "yicam/motion"
                  
+  - platform: statistics
+    name: Bathroom Humidity Stats
+    entity_id: sensor.multi_sensor_3_3
+    max_age:
+      minutes: 30
+
+  
