@@ -69,8 +69,6 @@ binary_sensor:
         min_gradient: 0.01
         device_class: moisture
 
-
-
 yeelight:
   devices:
     192.168.1.64:
@@ -99,7 +97,6 @@ input_datetime:
   livingroom_lasttime:
     has_time: true
     has_date: false
-
 
 recorder:
   exclude:
