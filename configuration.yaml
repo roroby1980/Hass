@@ -67,7 +67,7 @@ binary_sensor:
         entity_id: sensor.multi_sensor_3_3
         sample_duration: 1800
         min_gradient: 0.0055
-        device_class: humidity
+        device_class: moisture
 
 light:
   - platform: mqtt
