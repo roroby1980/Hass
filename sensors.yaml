@@ -458,4 +458,4 @@
       - cloud_cover
       - humidity
     scan_interval:
-      - minutes: 15
+      minutes: 15
