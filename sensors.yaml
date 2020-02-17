@@ -440,4 +440,22 @@
     max_age:
       minutes: 30
 
-  
+  - platform: darksky
+    api_key: !secret darksky
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+      - 2
+      - 3
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+      - precip_probability
+      - wind_speed
+      - cloud_cover
+      - humidity
+    scan_interval:
+      - minutes: 15
