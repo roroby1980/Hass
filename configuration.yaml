@@ -4,6 +4,10 @@ default_config:
 discovery:
   ignore:
     - homekit
+    
+sonoff:
+  username: !secret sonoff_mail
+  password: !secret sonoff_pwd
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:

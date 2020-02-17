@@ -74,9 +74,9 @@
     - platform: time
       at: "08:00:01"
     - platform: time
-      at: "19:00:01"
+      at: "17:00:01"
     - platform: time
-      at: "20:00:01"
+      at: "18:00:01"
     - platform: sun
       event: sunset
       offset: "00:30:00"
@@ -95,8 +95,8 @@
         - light.bagno
         - light.l_cucina_2
       data_template:
-        brightness: '{% if now().hour >= 19 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
-        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
+        brightness: '{% if now().hour >= 18 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
+        kelvin: '{% if now().hour >= 17 %}1700{% elif now().hour <= 8 %}1700{% else %}2500{% endif %}'
 
 - alias: 'Light6 - automation color/brightness triggered by swicth on'
   trigger:
@@ -118,9 +118,30 @@
     - service: light.turn_on
       data_template:
         entity_id: "{{ trigger.entity_id }}"
-        brightness: '{% if now().hour >= 19 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
-        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 8 %}1700{% else %}3000{% endif %}'
-  
+        brightness: '{% if now().hour >= 18 %}70{% elif now().hour <= 8 %}17{% else %}255{% endif %}'
+     
    
+- alias: 'Light7 - LED on wall '
+  trigger:
+    - platform: state 
+      entity_id:
+        - switch.sonoff_100056b199_3
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: 
+        - switch.sonoff
+        
+- alias: 'Light8 - LED on wall '
+  trigger:
+    - platform: state 
+      entity_id:
+        - switch.sonoff_100056b199_3
+      to: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: 
+        - switch.sonoff
+    
     
 
