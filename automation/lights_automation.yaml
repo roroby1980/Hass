@@ -1,88 +1,50 @@
-- alias: 'Light1 - raise-up bathroom at 100% with motion '
+- alias: 'Light1 - raise-up bathroom motion '
   trigger:
-    platform: state
-    entity_id: binary_sensor.m_bathroom
-    to: 'on'
-  condition:
-    condition: time
-    after: 07:00:00
-    before: '19:00:00'
+    - platform: state
+      entity_id: binary_sensor.m_bathroom
+      to: 'on'
   action:
     service: light.turn_on
     entity_id: light.bagno
     data_template:
+      brightness: >
+           {% if  now().hour < 6 %} 
+              70
+           {% elif now().hour >= 6 and now().hour < 9 %} 
+              128
+           {% elif now().hour >= 9 and now().hour < 17  %}
+              255
+           {% elif now().hour >= 17 and now().hour < 21  %}
+              128
+           {% elif now().hour >= 21  %}
+              70
+           {% endif %}
+      kelvin: '{% if now().hour >= 17 %}1700{% elif now().hour <= 8 %}1700{% else %}2500{% endif %}'
       transition: 4
-      brightness: 255
-      
-- alias: 'Light2 - raise-up bathroom at 50% with motion '
-  trigger:
-    platform: state
-    entity_id: binary_sensor.m_bathroom
-    to: 'on'
-  condition:
-    condition: time
-    after: '19:00:00'
-  action:
-    service: light.turn_on
-    entity_id: light.bagno
-    data_template:
-      transition: 4
-      brightness: 70
-      
-- alias: 'Light3 - raise-down bathroom light'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.m_bathroom
-    to: 'off'
-    for:
-      minutes: 5
-  condition:
-    condition: time
-    after: 07:00:00
-    before: '19:00:00'
-  action:
-    service: light.turn_on
-    entity_id: light.bagno
-    data_template:
-      transition: 90
-      brightness: 10
-      
-- id: 'Light4 - raise-down bathroom light at (night)'
+   
+- alias: 'Light2 - raise-down bathroom light at'
   trigger:
     platform: state
     entity_id: binary_sensor.m_bathroom
     to: 'off'
     for:
       minutes: 10
-  condition:
-    condition: time
-    after: '19:00:00'
   action:
     service: light.turn_on
     entity_id: light.bagno
     data_template:
-      transition: 45
+      transition: 10
       brightness: 1
 
 #Light Temperature by sunlight
 
-- alias: ' Light5 - automation color/brightness on fixed lights '
+- alias: ' Light3 - automation color/brightness on rgb lights '
   trigger:
     - platform: state
       entity_id: group.family
       to: home
-    - platform: time
-      at: "08:00:01"
-    - platform: time
-      at: "17:00:01"
-    - platform: time
-      at: "18:00:01"
-    - platform: sun
-      event: sunset
-      offset: "00:30:00"
-    - platform: sun
-      event: sunrise
-      offset: "00:30:00"
+    - platform: time_pattern
+      minutes: /10
   condition:
     condition: state
     entity_id: group.family
@@ -92,19 +54,28 @@
       entity_id: 
         - light.entrance
         - light.livingroom 
-        - light.bagno
-        - light.l_cucina_2
       data_template:
-        brightness: '{% if now().hour >= 18 %}30{% elif now().hour <= 8 %}30{% else %}255{% endif %}'
+        brightness: >
+           {% if  now().hour < 6 %} 
+              1
+           {% elif now().hour >= 6 and now().hour < 9 %} 
+              50
+           {% elif now().hour >= 9 and now().hour < 17  %}
+              255
+           {% elif now().hour >= 17 and now().hour < 21  %}
+              100
+           {% elif now().hour >= 21 and now().hour < 23  %}
+              30
+           {% elif now().hour >= 23  %}
+              1
+           {% endif %}
         kelvin: '{% if now().hour >= 17 %}1700{% elif now().hour <= 8 %}1700{% else %}2500{% endif %}'
+        transition: 120
 
-- alias: 'Light6 - automation color/brightness triggered by swicth on'
+- alias: 'Light4 - automation brightness triggered by swicth on'
   trigger:
     - platform: state
       entity_id: 
-        - light.entrance
-        - light.livingroom 
-        - light.bagno
         - light.l_cucina_2
         - light.l_dressingroom
         - light.l_bagno
@@ -118,8 +89,8 @@
     - service: light.turn_on
       data_template:
         entity_id: "{{ trigger.entity_id }}"
-        brightness: '{% if now().hour >= 18 %}70{% elif now().hour <= 8 %}17{% else %}255{% endif %}'
-     
+        brightness: '{% if now().hour >= 18 %}70{% elif now().hour <= 8 %}10{% else %}255{% endif %}'
+        transition: 3
    
 - alias: 'Light7 - LED on wall '
   trigger:
