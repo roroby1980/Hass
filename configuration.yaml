@@ -65,20 +65,10 @@ binary_sensor:
     sensors:
       bath_humidity:
         entity_id: sensor.multi_sensor_3_3
-        sample_duration: 1800
-        min_gradient: 0.0055
+        sample_duration: 3600
+        min_gradient: 0.01
         device_class: moisture
 
-light:
-  - platform: mqtt
-    name: "vintage led"
-    state_topic: 'sonoff/status'
-    command_topic: 'sonoff/switch'
-    availability_topic: "sonoff/available"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "online"
-    payload_not_available: "offline"
 
 
 yeelight:
