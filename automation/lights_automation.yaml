@@ -89,7 +89,20 @@
     - service: light.turn_on
       data_template:
         entity_id: "{{ trigger.entity_id }}"
-        brightness: '{% if now().hour >= 18 %}70{% elif now().hour <= 8 %}10{% else %}255{% endif %}'
+        brightness: >
+           {% if  now().hour < 6 %} 
+              1
+           {% elif now().hour >= 6 and now().hour < 9 %} 
+              128
+           {% elif now().hour >= 9 and now().hour < 17  %}
+              255
+           {% elif now().hour >= 17 and now().hour < 21  %}
+              128
+           {% elif now().hour >= 21 and now().hour < 23  %}
+              30
+           {% elif now().hour >= 23  %}
+              1
+           {% endif %}
         transition: 3
    
 - alias: 'Light7 - LED on wall '
