@@ -53,7 +53,6 @@ climate:
 
 
 group: !include groups.yaml
-#automation: !include automations.yaml
 automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 sensor: !include sensors.yaml
@@ -65,8 +64,8 @@ binary_sensor:
     sensors:
       bath_humidity:
         entity_id: sensor.multi_sensor_3_3
-        sample_duration: 3600
-        min_gradient: 0.01
+        sample_duration: 7200
+        min_gradient: 0.02
         device_class: moisture
 
 yeelight:

@@ -89,7 +89,7 @@
   - service: input_datetime.set_datetime
     data_template:
       entity_id: input_datetime.livingroom_open
-      datetime: "{{ now().strftime('%Y-%m-%d    %H:%M:%S') }}"
+      datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
     
 - id: 'Mov4'
   alias: Mov4 update last close window livingroom (datetime)
@@ -102,7 +102,7 @@
   - service: input_datetime.set_datetime
     data_template:
       entity_id: input_datetime.livingroom_close
-      datetime: "{{ now().strftime('%Y-%m-%d    %H:%M:%S') }}"
+      datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
 
 - id: 'Mov5'
   alias: Mov5 set time of windows livingroom was open

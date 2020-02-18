@@ -438,7 +438,7 @@
     name: Bathroom Humidity Stats
     entity_id: sensor.multi_sensor_3_3
     max_age:
-      minutes: 60
+      minutes: 120
 
   - platform: darksky
     api_key: !secret darksky
