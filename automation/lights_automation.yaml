@@ -55,9 +55,8 @@
     state: 'home'
   action:
     - service: light.turn_on
-      entity_id: 
-        - light.entrance
-        - light.livingroom 
+      entity_id: >
+            {{ states | selectattr('entity_id', 'in', state_attr('group.dim_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') | map(attribute='entity_id')|list }} 
       data_template:
         brightness: >
            {% if  now().hour < 6 %} 
@@ -167,4 +166,6 @@
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_100056b199_3
+
+
 
