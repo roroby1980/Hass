@@ -18,6 +18,30 @@
         entity_id: climate.riscaldamento
         temperature: 15
 
+- alias: Try update phone position
+  trigger:
+    platform: state
+    entity_id: group.inside_presences
+    to: 'off'
+    for:
+      minutes: 40
+  condition:
+    - condition: template
+      value_template: "{{ ((as_timestamp(now()) - as_timestamp(as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local)) /3600) |round > 12 }}"
+    - condition: time
+      after: '08:00:00'
+      before: '22:00:00'
+    - condition: state
+      entity_id: group.family
+      state: home 
+  action:
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+        title: try to update phone information 
+        message: 'last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
+    - service: notify.mobile_app_tamar_s_iphone
+      data:
+        message: "request_location_update"
 
 - id: 'Away Mode no phone info'
   alias: Away Mode no phone info
@@ -31,7 +55,7 @@
     - condition: template
       value_template: "{{ ((as_timestamp(now()) - as_timestamp(as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local)) /3600) |round > 12 }}"
     - condition: time
-      after: '07:00:00'
+      after: '08:00:00'
       before: '22:00:00'
     - condition: state
       entity_id: group.family
