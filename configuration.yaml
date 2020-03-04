@@ -68,6 +68,9 @@ binary_sensor:
         sample_duration: 7200
         min_gradient: 0.02
         device_class: moisture
+  - platform: rpi_gpio
+    ports:
+      04: test
 
 yeelight:
   devices:
