@@ -48,4 +48,3 @@
         temperature: "{{ states.climate.riscaldamento.attributes.temperature |float +0.5 }}"
 
      
-       
