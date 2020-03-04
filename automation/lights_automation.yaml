@@ -42,7 +42,7 @@
 
 #Light Temperature by sunlight
 
-- alias: ' Light3 - automation color/brightness on rgb lights '
+- alias: ' Light3 - automation color/brightness on dim lights '
   trigger:
     - platform: state
       entity_id: group.family
@@ -65,7 +65,7 @@
            {% if  now().hour < 6 %} 
               1
            {% elif now().hour >= 6 and now().hour < 9 %} 
-              50
+              75
            {% elif now().hour >= 9 and now().hour < 17  %}
               255
            {% elif now().hour >= 17 and now().hour < 21  %}
