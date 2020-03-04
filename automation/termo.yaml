@@ -6,6 +6,8 @@
     - platform: state
       entity_id: group.family
       to: home
+    - platform: homeassistant
+      event: start
   condition:
     condition: state
     entity_id: group.family
@@ -20,7 +22,7 @@
            {% elif now().hour >= 6 and now().hour < 9 %} 
               20
            {% elif now().hour >= 9 and now().hour < 17  %}
-              18.5
+              19
            {% elif now().hour >= 17 and now().hour < 21  %}
               20
            {% elif now().hour >= 21 and now().hour < 23  %}

@@ -8,6 +8,7 @@ discovery:
 sonoff:
   username: !secret sonoff_mail
   password: !secret sonoff_pwd
+ # reload: always
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
@@ -48,7 +49,7 @@ climate:
     target_temp: 19.5
     min_cycle_duration:
       seconds: 120
-    initial_hvac_mode: "off"
+    initial_hvac_mode: "heat"
     away_temp: 15
 
 

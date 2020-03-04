@@ -125,6 +125,8 @@
       entity_id: 
         - light.bagno
         - light.l_cucina_2
+        - light.livingroom
+        - light.entrance
    
 - alias: 'Light7 - LED on wall '
   trigger:
