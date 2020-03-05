@@ -35,13 +35,13 @@ input_select:
     icon: mdi:guy-fawkes-mask
 
 influxdb:
-  host: roroby-influxdb
-  port: 8086
-  database: homeassistant
-  username: hassio
-  password: hassio
-  max_retries: 3
-  default_measurement: state
+  host: influxdb
+  port: 8086
+  database: homeassistant
+  username: hassio
+  password: hassio
+  max_retries: 3
+  default_measurement: state
 
 #Bluethoot
 device_tracker:
