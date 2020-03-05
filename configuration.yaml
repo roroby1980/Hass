@@ -1,10 +1,19 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automation
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+zone: !include zone.yaml
+var: !include variables.yaml
+
 discovery:
   ignore:
     - homekit
-    
+  
+#sonoffLAN
 sonoff:
   username: !secret sonoff_mail
   password: !secret sonoff_pwd
@@ -16,6 +25,7 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
+#FOR guest
 input_select:
   guests:
     options:
@@ -25,7 +35,7 @@ input_select:
     icon: mdi:guy-fawkes-mask
 
 influxdb:
-  host: a0d7b954-influxdb
+  host: roroby-influxdb
   port: 8086
   database: homeassistant
   username: hassio
@@ -33,9 +43,9 @@ influxdb:
   max_retries: 3
   default_measurement: state
 
+#Bluethoot
 device_tracker:
   - platform: bluetooth_tracker
-
 
 # Text to speech
 tts:
@@ -43,10 +53,12 @@ tts:
   
 system_health:
 
+#shelly_integration
 shelly:
 
 webhook:
 
+#termostato
 climate:
   - platform: generic_thermostat
     name: Riscaldamento
@@ -62,12 +74,6 @@ climate:
     away_temp: 15
 
 
-group: !include groups.yaml
-automation: !include_dir_merge_list automation
-script: !include scripts.yaml
-sensor: !include sensors.yaml
-zone: !include zone.yaml
-var: !include variables.yaml
 
 binary_sensor:
   - platform: trend
