@@ -85,7 +85,10 @@ binary_sensor:
         device_class: moisture
   - platform: rpi_gpio
     ports:
-      4: test
+      4: test4
+      10: tes10
+      11: test11
+      17: test17
 
 yeelight:
   devices:
