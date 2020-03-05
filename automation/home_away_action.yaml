@@ -61,6 +61,12 @@
       entity_id: group.family
       state: home 
   action:
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+        title: Away Mode while no phone info
+        message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }}
+         Away mode set in 5 min from now : {{ now().strftime("%H:%M:%S") }}'
+    - delay: '00:05:00'
     - service: light.turn_off
       entity_id: group.all_lights
     - service: switch.turn_off
@@ -73,8 +79,3 @@
       data:
         entity_id: climate.riscaldamento
         temperature: 15
-    - service: notify.mobile_app_iphone_di_roberto
-      data_template:
-        title: Away Mode while no phone info
-        message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }}
-         Away mode set now : {{ now().strftime("%H:%M:%S") }}'
