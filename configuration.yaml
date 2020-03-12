@@ -112,12 +112,12 @@ binary_sensor:
       26: test26 #non collegato
       27: test27
     
-
-customize:
-  binary_sensor.mainbedroomwindow:
-    device_class: window
-  binary_sensor.bedroomshield:
-    device_class: window
+homeassistant:
+  customize:
+    binary_sensor.mainbedroomwindow:
+      device_class: window
+    binary_sensor.bedroomshield:
+      device_class: window
     
  
 
