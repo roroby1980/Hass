@@ -111,6 +111,7 @@ binary_sensor:
       25: test25
       26: test26 #non collegato
       27: test27
+    device_class: window
 
 yeelight:
   devices:
