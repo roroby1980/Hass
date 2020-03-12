@@ -13,6 +13,15 @@
     entity_id: group.family
     state: 'home'
   action:
+    - service:  climate.set_hvac_mode
+      data_template:
+        entity_id: climate.riscaldamento
+        hvac_mode: >
+          {% if  now().strftime("%m") |int < 4 and now().strftime("%m") |int > 10 %} 
+            'heat'
+          {% else %} 
+            'off'
+          {% endif %}
     - service: climate.set_temperature
       data_template:
         entity_id: climate.riscaldamento
@@ -48,3 +57,17 @@
         temperature: "{{ states.climate.riscaldamento.attributes.temperature |float +0.5 }}"
 
      
+- alias: 'Termo - window open '
+  trigger:
+    platform: state
+    entity_id: binary_sensor.w_livingroom
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.riscaldamento
+        temperature: 15
