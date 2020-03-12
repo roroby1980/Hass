@@ -105,10 +105,11 @@ binary_sensor:
       19: test19   #non collegato
       20: test20
       21: test21
-      22: test22
-      23: test23
+      22: MainBedroomWindow
+      23: BedroomShield
       24: test24
       25: test25
+      26: test26 #non collegato
       27: test27
 
 yeelight:
