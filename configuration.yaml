@@ -117,7 +117,7 @@ homeassistant:
     binary_sensor.mainbedroomwindow:
       device_class: window
     binary_sensor.bedroomshield:
-      device_class: window
+      device_class: door
     
  
 
