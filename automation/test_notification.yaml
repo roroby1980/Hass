@@ -1,0 +1,14 @@
+- alias: tets notification
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    service: notify.mobile_app_iphone_di_roberto
+    data_template:
+      title: test1
+      message: >
+        {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
+          'heat'
+        {% else %} 
+          'off'
+        {% endif %}

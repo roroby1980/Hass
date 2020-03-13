@@ -2,12 +2,16 @@
 - alias: 'Termo crono'
   trigger:
     - platform: time_pattern
-      minutes: 1
+      minutes: "/10"
     - platform: state
       entity_id: group.family
       to: home
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id:
+        - binary_sensor.w_livingroom
+      to: 'off'
   condition:
     condition: state
     entity_id: group.family
@@ -60,7 +64,8 @@
 - alias: 'Termo - window open '
   trigger:
     platform: state
-    entity_id: binary_sensor.w_livingroom
+    entity_id:
+      - binary_sensor.w_livingroom
     to: 'on'
   condition:
     condition: state
