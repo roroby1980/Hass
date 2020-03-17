@@ -12,6 +12,14 @@ var: !include variables.yaml
 discovery:
   ignore:
     - homekit
+
+camera:
+  - platform: onvif
+    host: 192.168.1.94
+    port: 554
+    username: admin
+    profile: 2
+    password: !secret camera_yoosee
   
 #sonoffLAN
 sonoff:
@@ -70,7 +78,7 @@ climate:
     target_temp: 19.5
     min_cycle_duration:
       seconds: 120
-    initial_hvac_mode: "off"
+    initial_hvac_mode: "heat"
     away_temp: 15
 
 
@@ -84,6 +92,7 @@ binary_sensor:
         min_gradient: 0.02
         device_class: moisture
   - platform: rpi_gpio
+    bouncetime: 500
     ports:
       #2: test2 no serigrafia
       #3: test3 no serigrafia
@@ -115,9 +124,9 @@ binary_sensor:
 homeassistant:
   customize:
     binary_sensor.mainbedroomwindow:
-      device_class: window
+      device_class: opening
     binary_sensor.bedroomshield:
-      device_class: door
+      device_class: opening
     
  
 
@@ -173,6 +182,27 @@ recorder:
      - sensor.ritardo_630
      - sensor.where_630
      - sensor.when_630
+     - sensor.shelly_shsw_pm_b984a1_current_consumption
+     - sensor.shelly_shsw_pm_b906cb_current_consumption
+     - sensor.shelly_shsw_pm_b98576_current_consumption
+     - sensor.shelly_shsw_pm_b9273a_current_consumption
+     - sensor.shelly_shsw_pm_b901af_current_consumption
+     - sensor.shelly_shsw_pm_b9841d_current_consumption
+     - binary_sensor.test12
+     - binary_sensor.test13
+     - binary_sensor.test16
+     - binary_sensor.test17
+     - binary_sensor.test18
+     - binary_sensor.test19
+     - binary_sensor.test20
+     - binary_sensor.test21
+     - binary_sensor.test24
+     - binary_sensor.test25
+     - binary_sensor.test26
+     - binary_sensor.test27
+     - binary_sensor.test4
+     - binary_sensor.test5
+     - binary_sensor.test6
 
 history:
   exclude:
@@ -197,3 +227,24 @@ history:
      - sensor.ritardo_630
      - sensor.where_630
      - sensor.when_630
+     - sensor.shelly_shsw_pm_b984a1_current_consumption
+     - sensor.shelly_shsw_pm_b906cb_current_consumption
+     - sensor.shelly_shsw_pm_b98576_current_consumption
+     - sensor.shelly_shsw_pm_b9273a_current_consumption
+     - sensor.shelly_shsw_pm_b901af_current_consumption
+     - sensor.shelly_shsw_pm_b9841d_current_consumption
+     - binary_sensor.test12
+     - binary_sensor.test13
+     - binary_sensor.test16
+     - binary_sensor.test17
+     - binary_sensor.test18
+     - binary_sensor.test19
+     - binary_sensor.test20
+     - binary_sensor.test21
+     - binary_sensor.test24
+     - binary_sensor.test25
+     - binary_sensor.test26
+     - binary_sensor.test27
+     - binary_sensor.test4
+     - binary_sensor.test5
+     - binary_sensor.test6

@@ -67,6 +67,8 @@
     entity_id:
       - binary_sensor.w_livingroom
     to: 'on'
+    for:
+      minutes: 3
   condition:
     condition: state
     entity_id: group.family
