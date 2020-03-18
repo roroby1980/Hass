@@ -122,6 +122,7 @@ binary_sensor:
  #     27: test27
     
 homeassistant:
+  packages: !include_dir_named packages
   customize:
     binary_sensor.mainbedroomwindow:
       device_class: opening
