@@ -3,7 +3,19 @@
   #Cesano 7:30 --> 618
   #Cesano 7:35 --> 2718 --> N00085
   #cesano 8:00 --> 1622
-  
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_utc'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+
+
   - platform: template
     sensors:
       time_last_motion:
