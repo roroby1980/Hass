@@ -70,7 +70,7 @@ webhook:
 climate:
   - platform: generic_thermostat
     name: Riscaldamento
-    heater: switch.sonoff_2
+    heater: switch.thermostat
     target_sensor: sensor.house_temperature
     min_temp: 10
     max_temp: 25
@@ -78,7 +78,7 @@ climate:
     target_temp: 19.5
     min_cycle_duration:
       seconds: 120
-    initial_hvac_mode: "heat"
+    initial_hvac_mode: "off"
     away_temp: 15
 
 
@@ -91,35 +91,35 @@ binary_sensor:
         sample_duration: 7200
         min_gradient: 0.02
         device_class: moisture
-  - platform: rpi_gpio
-    bouncetime: 500
-    ports:
-      #2: test2 no serigrafia
-      #3: test3 no serigrafia
-      4: test4
-      5: test5     #non collegato
-      6: test6     #non collegato
-      #7: test7 no serigrafia
-      #8: test8 no serigrafia
-      #9: test9 no serigrafia
-      #10: test10 no serigrafia
-      #11: test11 no serigrafia
-      12: test12
-      13: test13   #non collegato
-      #14: test14   no serigrafia
-      #15: test15 no serigrafia
-      16: test16
-      17: test17
-      18: test18
-      19: test19   #non collegato
-      20: test20
-      21: test21
-      22: MainBedroomWindow
-      23: BedroomShield
-      24: test24
-      25: test25
-      26: test26 #non collegato
-      27: test27
+ # - platform: rpi_gpio
+ #   bouncetime: 500
+ #   ports:
+ #     #2: test2 no serigrafia
+ #     #3: test3 no serigrafia
+ #     4: test4
+ #     5: test5     #non collegato
+ #     6: test6     #non collegato
+ #     #7: test7 no serigrafia
+ #     #8: test8 no serigrafia
+ #     #9: test9 no serigrafia
+ #     #10: test10 no serigrafia
+ #     #11: test11 no serigrafia
+ #     12: test12
+ #     13: test13   #non collegato
+ #     #14: test14   no serigrafia
+ #     #15: test15 no serigrafia
+ #     16: test16
+ #     17: test17
+ #     18: test18
+ #     19: test19   #non collegato
+ #     20: test20
+ #     21: test21
+ #     22: MainBedroomWindow
+ #     23: BedroomShield
+ #     24: test24
+ #     25: test25
+ #     26: test26 #non collegato
+ #     27: test27
     
 homeassistant:
   customize:

@@ -22,26 +22,26 @@
         entity_id: climate.riscaldamento
         hvac_mode: >
           {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
-            'heat'
+            "heat"
           {% else %} 
-            'off'
+            "off"
           {% endif %}
     - service: climate.set_temperature
       data_template:
         entity_id: climate.riscaldamento
         temperature:  >
            {% if  now().hour < 7 %} 
-              15
+              10
            {% elif now().hour >= 7 and now().hour < 9 %} 
-              20
-           {% elif now().hour >= 9 and now().hour < 17  %}
+              19
+           {% elif now().hour >= 9 and now().hour < 19  %}
               18
-           {% elif now().hour >= 18 and now().hour < 21  %}
+           {% elif now().hour >= 19 and now().hour < 21  %}
               20
            {% elif now().hour >= 21 and now().hour < 23  %}
-              19.5
+              19
            {% elif now().hour >= 23  %}
-              15
+              10
            {% endif %}
         
 
@@ -77,4 +77,4 @@
     - service: climate.set_temperature
       data_template:
         entity_id: climate.riscaldamento
-        temperature: 15
+        temperature: 10

@@ -12,3 +12,14 @@
         {% else %} 
           'summer season heater: off'
         {% endif %}
+
+- alias: Thermo notification
+  trigger:
+    - platform: state
+      entity_id: switch.thermostat
+  action:
+    service: notify.mobile_app_iphone_di_roberto
+    data_template:
+      title: Thermostat {{trigger.to_state.state}}
+      message: '{{ now().strftime("%H:%M") }} Thermostat {{trigger.to_state.state}}'
+

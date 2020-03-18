@@ -62,6 +62,20 @@
     value_template: 'Treno 8:00'
     scan_interval: 30
 
+
+  - platform: template
+    current_power:
+      friendly_name: "Power light total"
+      unit_of_measurement: 'W'
+      value_template: '{{ states("sensor.shelly_shsw_pm_b984a1_current_consumption") |int + 
+                          states("sensor.shelly_shsw_pm_b906cb_current_consumption") |int +
+                          states("sensor.shelly_shsw_pm_b91874_current_consumption") |int +
+                          states("sensor.shelly_shsw_pm_b98576_current_consumption") |int +
+                          states("sensor.shelly_shsw_pm_b9273a_current_consumption") |int +
+                          states("sensor.shelly_shsw_pm_b901af_current_consumption") |int +
+                          states("sensor.shelly_shsw_pm_b9841d_current_consumption") |int }}'
+
+
   - platform: template
     sensors:
       est_pow_l_cucina_2:
@@ -100,18 +114,6 @@
         friendly_name: "Power light livingroom LED"
         unit_of_measurement: 'W'
         value_template: '{% if states("switch.tasmota") == "on" %} 15 {% elif  states("switch.tasmota") == "off" %} 0 {% endif %}'
-      current_power:
-        friendly_name: "Power light total"
-        unit_of_measurement: 'W'
-        value_template: ' {{ states("est_pow_l_cucina_2") |int
-                         + states("est_pow_l_bagno") |int
-                         + states("est_pow_l_bedroom") |int
-                         + states("est_pow_l_dressingroom") |int
-                         + states("est_pow_bagno_lamp") |int
-                         + states("est_pow_entrance") |int
-                         + states("est_pow_livingroom_l") |int
-                         + states("est_pow_livingroom_lights") |int
-                         + states("est_pow_livingroom_led_lights") |int }}'
 
   - platform: integration
     source: sensor.current_power
@@ -368,7 +370,7 @@
        
   - platform: history_stats
     name: Riscaldamento today
-    entity_id: switch.sonoff_2
+    entity_id: switch.thermostat
     state: 'on'
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
@@ -376,7 +378,7 @@
     
   - platform: history_stats
     name: Riscaldamento yesterday
-    entity_id: switch.sonoff_2
+    entity_id: switch.thermostat
     state: 'on'
     type: time 
     end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
@@ -385,36 +387,36 @@
        
   - platform: history_stats
     name: Riscaldamento this week
-    entity_id: switch.sonoff_2
+    entity_id: switch.thermostat
     state: 'on'
     type: time 
     start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
     end: '{{ now() }}'
   
-  - platform: viaggiatreno
-    train_name: Cesano train 6:30
-    train_id: 612
-    station_id: N00079
+#  - platform: viaggiatreno
+#    train_name: Cesano train 6:30
+#    train_id: 612
+#    station_id: N00079
 
-  - platform: viaggiatreno
-    train_name: Cesano train 7:00
-    train_id: 1614
-    station_id: N00074
+#  - platform: viaggiatreno
+#    train_name: Cesano train 7:00
+#    train_id: 1614
+#    station_id: N00074
 
-  - platform: viaggiatreno
-    train_name: Cesano train 7:30
-    train_id: 618
-    station_id: N00079
+#  - platform: viaggiatreno
+#    train_name: Cesano train 7:30
+#    train_id: 618
+#    station_id: N00079
     
-  - platform: viaggiatreno
-    train_name: Cesano train 7:35
-    train_id: 2718
-    station_id: N00085
+#  - platform: viaggiatreno
+#    train_name: Cesano train 7:35
+#    train_id: 2718
+#    station_id: N00085
     
-  - platform: viaggiatreno
-    train_name: Cesano train 8:00
-    train_id: 1622
-    station_id: N00079
+#  - platform: viaggiatreno
+#    train_name: Cesano train 8:00
+#    train_id: 1622
+#    station_id: N00079
     
   - platform: history_stats
     name: livingroom open today
@@ -446,8 +448,6 @@
       - 0
     hourly_forecast:
       - 0
-      - 1
-      - 2
       - 3
     monitored_conditions:
       - summary
