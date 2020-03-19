@@ -4,6 +4,7 @@
   #Cesano 7:35 --> 2718 --> N00085
   #cesano 8:00 --> 1622
 
+sensor:
   - platform: time_date
     display_options:
       - 'time'
