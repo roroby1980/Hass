@@ -13,13 +13,13 @@ discovery:
   ignore:
     - homekit
 
-camera:
-  - platform: onvif
-    host: 192.168.1.94
-    port: 554
-    username: admin
-    profile: 2
-    password: !secret camera_yoosee
+#camera:
+#  - platform: onvif
+#    host: 192.168.1.94
+#    port: 554
+#    username: admin
+#    profile: 2
+#    password: !secret camera_yoosee
   
 #sonoffLAN
 sonoff:
@@ -42,14 +42,14 @@ input_select:
     initial: not_home
     icon: mdi:guy-fawkes-mask
 
-influxdb:
-  host: influxdb
-  port: 8086
-  database: homeassistant
-  username: hassio
-  password: hassio
-  max_retries: 3
-  default_measurement: state
+#influxdb:
+#  host: influxdb
+#  port: 8086
+#  database: homeassistant
+#  username: hassio
+#  password: hassio
+#  max_retries: 3
+#  default_measurement: state
 
 #Bluethoot
 device_tracker:
