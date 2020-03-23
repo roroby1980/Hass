@@ -22,9 +22,9 @@
         entity_id: climate.riscaldamento
         hvac_mode: >
           {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
-            "heat"
+            heat
           {% else %} 
-            "off"
+            off
           {% endif %}
     - service: climate.set_temperature
       data_template:
