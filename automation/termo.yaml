@@ -34,9 +34,9 @@
               10
            {% elif now().hour >= 7 and now().hour < 9 %} 
               19
-           {% elif now().hour >= 9 and now().hour < 19  %}
+           {% elif now().hour >= 9 and now().hour < 18  %}
               18
-           {% elif now().hour >= 19 and now().hour < 21  %}
+           {% elif now().hour >= 18 and now().hour < 21  %}
               20
            {% elif now().hour >= 21 and now().hour < 23  %}
               19
