@@ -1,0 +1,52 @@
+- alias: notify washing machine
+  initial_state: False  # spenta quando Home Assistant si avvia
+  trigger:
+- platform: numeric_state
+  entity_id: sensor.shelly_shsw_pm_b9841d_current_consumption
+  below: '3'
+  for:
+    minutes: 8
+  action:
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+        title: 'washing machine'
+        message: '{{ now().strftime("%H:%M") }} washing machine finish to wash'
+    - service: automation.turn_off
+      entity_id: automation.notify_washing_machine
+
+
+- alias: Attiva Notifica lavatrice
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.shelly_shsw_pm_b9841d_current_consumption
+      above: '50'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.notify_washing_machine
+
+
+- alias: notify dishwasher 
+  initial_state: False  # spenta quando Home Assistant si avvia
+  trigger:
+- platform: numeric_state
+  entity_id: sensor.shelly_shsw_pm_b901af_current_consumption
+  below: '3'
+  for:
+    minutes: 8
+  action:
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+        title: 'dishwasher'
+        message: '{{ now().strftime("%H:%M") }} dishwasher finish to wash'
+    - service: automation.turn_off
+      entity_id: automation.notify_dishwasher
+
+
+- alias: Attiva Notifica lavatrice
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.shelly_shsw_pm_b901af_current_consumption
+      above: '50'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.notify_dishwasher
