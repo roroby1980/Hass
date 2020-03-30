@@ -204,10 +204,10 @@ recorder:
      - binary_sensor.test4
      - binary_sensor.test5
      - binary_sensor.test6
-     - sensor.dark_sky_cloud_coverage	
-     - sensor.dark_sky_cloud_coverage_0d	
-     - sensor.dark_sky_cloud_coverage_0h	
-     - sensor.dark_sky_cloud_coverage_3h	
+     - sensor.dark_sky_cloud_coverage
+     - sensor.dark_sky_cloud_coverage_0d
+     - sensor.dark_sky_cloud_coverage_0h
+     - sensor.dark_sky_cloud_coverage_3h
      - sensor.dark_sky_humidity	
      - sensor.dark_sky_humidity_0d
      - sensor.dark_sky_humidity_0h
@@ -216,25 +216,26 @@ recorder:
      - sensor.dark_sky_icon_0d
      - sensor.dark_sky_icon_0h
      - sensor.dark_sky_icon_3h
-     - sensor.dark_sky_precip_probability	
-     - sensor.dark_sky_precip_probability_0d	
-     - sensor.dark_sky_precip_probability_0h	
-     - sensor.dark_sky_precip_probability_3h	
-     - sensor.dark_sky_summary	
-     - sensor.dark_sky_summary_0d	
-     - sensor.dark_sky_summary_0h	
-     - sensor.dark_sky_summary_3h	
-     - sensor.dark_sky_temperature	
-     - sensor.dark_sky_temperature_0h	
-     - sensor.dark_sky_temperature_3h	
-     - sensor.dark_sky_wind_speed	
-     - sensor.dark_sky_wind_speed_0d	
-     - sensor.dark_sky_wind_speed_0h	
+     - sensor.dark_sky_precip_probability
+     - sensor.dark_sky_precip_probability_0d
+     - sensor.dark_sky_precip_probability_0h
+     - sensor.dark_sky_precip_probability_3h
+     - sensor.dark_sky_summary
+     - sensor.dark_sky_summary_0d
+     - sensor.dark_sky_summary_0h
+     - sensor.dark_sky_summary_3h
+     - sensor.dark_sky_temperature
+     - sensor.dark_sky_temperature_0d
+     - sensor.dark_sky_temperature_0h
+     - sensor.dark_sky_temperature_3h
+     - sensor.dark_sky_wind_speed
+     - sensor.dark_sky_wind_speed_0d
+     - sensor.dark_sky_wind_speed_0h
      - sensor.dark_sky_wind_speed_3h
      - sensor.date
      - sensor.date_time
      - sensor.date_time_iso
-     - sensor.date_time_utc	
+     - sensor.date_time_utc
      - sensor.daylight
 
 history:
@@ -281,11 +282,11 @@ history:
      - binary_sensor.test4
      - binary_sensor.test5
      - binary_sensor.test6
-     - sensor.dark_sky_cloud_coverage	
-     - sensor.dark_sky_cloud_coverage_0d	
-     - sensor.dark_sky_cloud_coverage_0h	
-     - sensor.dark_sky_cloud_coverage_3h	
-     - sensor.dark_sky_humidity	
+     - sensor.dark_sky_cloud_coverage
+     - sensor.dark_sky_cloud_coverage_0d
+     - sensor.dark_sky_cloud_coverage_0h
+     - sensor.dark_sky_cloud_coverage_3h
+     - sensor.dark_sky_humidity
      - sensor.dark_sky_humidity_0d
      - sensor.dark_sky_humidity_0h
      - sensor.dark_sky_humidity_3h
@@ -293,23 +294,23 @@ history:
      - sensor.dark_sky_icon_0d
      - sensor.dark_sky_icon_0h
      - sensor.dark_sky_icon_3h
-     - sensor.dark_sky_precip_probability	
-     - sensor.dark_sky_precip_probability_0d	
-     - sensor.dark_sky_precip_probability_0h	
-     - sensor.dark_sky_precip_probability_3h	
-     - sensor.dark_sky_summary	
-     - sensor.dark_sky_summary_0d	
-     - sensor.dark_sky_summary_0h	
-     - sensor.dark_sky_summary_3h	
-     - sensor.dark_sky_temperature	
-     - sensor.dark_sky_temperature_0h	
-     - sensor.dark_sky_temperature_3h	
-     - sensor.dark_sky_wind_speed	
-     - sensor.dark_sky_wind_speed_0d	
-     - sensor.dark_sky_wind_speed_0h	
+     - sensor.dark_sky_precip_probability
+     - sensor.dark_sky_precip_probability_0
+     - sensor.dark_sky_precip_probability_0h
+     - sensor.dark_sky_precip_probability_3h
+     - sensor.dark_sky_summary
+     - sensor.dark_sky_summary_0d
+     - sensor.dark_sky_summary_0h
+     - sensor.dark_sky_summary_3h
+     - sensor.dark_sky_temperature
+     - sensor.dark_sky_temperature_0h
+     - sensor.dark_sky_temperature_3h
+     - sensor.dark_sky_wind_speed
+     - sensor.dark_sky_wind_speed_0d
+     - sensor.dark_sky_wind_speed_0h
      - sensor.dark_sky_wind_speed_3h
      - sensor.date
      - sensor.date_time
      - sensor.date_time_iso
-     - sensor.date_time_utc	
+     - sensor.date_time_utc
      - sensor.daylight

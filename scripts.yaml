@@ -1,46 +1,51 @@
 alexa_announce_example:
   sequence:
-    - service: notify.alexa_media
+  - service: notify.alexa_media
+    data:
+      target: media_player.echo_dot_di_roberto
+      message: hi, baby , just want to tell you That i love you
       data:
-        target: media_player.echo_dot_di_roberto
-        message: "hi, baby , just want to tell you That i love you"
-        data:
-          type: announce
-          method: all # or speak or show
-
-
+        type: announce
+        method: all
 manual_home_mode:
   sequence:
-    - service: light.turn_on
-      entity_id: group.back_home_lights
-      data_template:
-        transition: 1
-        brightness: 50
-    - service: climate.set_preset_mode
-      data:
-        entity_id: climate.riscaldamento
-        preset_mode: none
-    - service: notify.mobile_app_iphone_di_roberto
-      data_template:
-        title: Manual Home Mode
-        message: 'Home mode set manually @ {{ now().strftime("%H:%M:%S") }}'
-
-
+  - service: light.turn_on
+    entity_id: group.back_home_lights
+    data_template:
+      transition: 1
+      brightness: 50
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.riscaldamento
+      preset_mode: none
+  - service: notify.mobile_app_iphone_di_roberto
+    data_template:
+      title: Manual Home Mode
+      message: Home mode set manually @ {{ now().strftime("%H:%M:%S") }}
 manual_away_mode:
   sequence:
-    - service: light.turn_off
-      entity_id: group.all_lights
-      data_template:
-        transition: 1
-    - service: switch.turn_off
-      entity_id: 
-        - switch.sonoff
-        - switch.tasmota
-    - service: climate.set_preset_mode
+  - service: light.turn_off
+    entity_id: group.all_lights
+    data_template:
+      transition: 1
+  - service: switch.turn_off
+    entity_id:
+    - switch.sonoff
+    - switch.tasmota
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.riscaldamento
+      preset_mode: away
+  - service: notify.mobile_app_iphone_di_roberto
+    data_template:
+      title: Manual Away Mode
+      message: Away mode set manually @ {{ now().strftime("%H:%M:%S") }}
+'1584482930150':
+  alias: test echo show
+  sequence:
+  - data:
       data:
-        entity_id: climate.riscaldamento
-        preset_mode: away
-    - service: notify.mobile_app_iphone_di_roberto
-      data_template:
-        title: Manual Away Mode
-        message: 'Away mode set manually @ {{ now().strftime("%H:%M:%S") }}'
+        method: show
+        type: announce
+      message: Test
+    service: notify.alexa_media_bed
