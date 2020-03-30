@@ -10,16 +10,16 @@
       brightness: >
            {% if  now().hour < 6 %} 
               70
-           {% elif now().hour >= 6 and now().hour < 9 %} 
+           {% elif now().hour >= 6 and now().hour < 7 %} 
               128
-           {% elif now().hour >= 9 and now().hour < 17  %}
+           {% elif now().hour >= 7 and now().hour < 20  %}
               255
-           {% elif now().hour >= 17 and now().hour < 21  %}
+           {% elif now().hour >= 20 and now().hour < 22  %}
               128
            {% elif now().hour >= 21  %}
               70
            {% endif %}
-      kelvin: '{% if now().hour >= 17 %}1700{% elif now().hour <= 8 %}1700{% else %}2500{% endif %}'
+      kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 7 %}1700{% else %}2500{% endif %}'
       transition: 4
    
 - alias: 'Light2 - raise-down bathroom light at'
@@ -62,20 +62,20 @@
                {%- endfor %}
             #{{ states | selectattr('entity_id', 'in', state_attr('group.dim_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') | map(attribute='entity_id')|list }}
         brightness: >
-           {% if  now().hour < 6 %} 
+           {% if  now().hour < 5 %} 
               1
-           {% elif now().hour >= 6 and now().hour < 9 %} 
+           {% elif now().hour >= 5 and now().hour < 7 %} 
               75
-           {% elif now().hour >= 9 and now().hour < 17  %}
+           {% elif now().hour >= 7 and now().hour < 20  %}
               255
-           {% elif now().hour >= 17 and now().hour < 21  %}
+           {% elif now().hour >= 20 and now().hour < 22  %}
               100
-           {% elif now().hour >= 21 and now().hour < 23  %}
+           {% elif now().hour >= 22 and now().hour < 23  %}
               30
            {% elif now().hour >= 23  %}
               1
            {% endif %}
-        kelvin: '{% if now().hour >= 17 %}1700{% elif now().hour <= 8 %}1700{% else %}2500{% endif %}'
+        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 7 %}1700{% else %}2500{% endif %}'
         transition: 120
 
 - alias: 'Light4 - automation brightness triggered by swicth on'
@@ -98,11 +98,11 @@
         brightness: >
            {% if  now().hour < 6 %} 
               1
-           {% elif now().hour >= 6 and now().hour < 9 %} 
+           {% elif now().hour >= 6 and now().hour < 7 %} 
               128
-           {% elif now().hour >= 9 and now().hour < 17  %}
+           {% elif now().hour >= 7 and now().hour < 20  %}
               255
-           {% elif now().hour >= 17 and now().hour < 21  %}
+           {% elif now().hour >= 20 and now().hour < 21  %}
               128
            {% elif now().hour >= 21 and now().hour < 23  %}
               30

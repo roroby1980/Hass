@@ -204,6 +204,7 @@ recorder:
      - binary_sensor.test4
      - binary_sensor.test5
      - binary_sensor.test6
+     - darksky.*
 
 history:
   exclude:
@@ -249,3 +250,4 @@ history:
      - binary_sensor.test4
      - binary_sensor.test5
      - binary_sensor.test6
+     - darksky.*

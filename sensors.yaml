@@ -88,44 +88,44 @@
                             states("sensor.shelly_shsw_pm_b9841d_current_consumption") |int }}'
 
 
-  - platform: template
-    sensors:
-      est_pow_l_cucina_2:
-        friendly_name: "Power light cucina"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.l_cucina_2', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
-      est_pow_l_bagno:
-        friendly_name: "Power light bagno"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.l_bagno', 'brightness') |int +1) * (8.5 /255))  |round(2) }} "
-      est_pow_l_bedroom:
-        friendly_name: "Power light bedroom"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.l_bedroom', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
-      est_pow_l_dressingroom:
-        friendly_name: "Power light dressingroom"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.l_dressingroom', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
-      est_pow_bagno_lamp:
-        friendly_name: "Power light bagno lamp"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.bagno', 'brightness') |int +1) * (10 /255)) |round(2) }} "
-      est_pow_entrance:
-        friendly_name: "Power light entrance"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.entrance', 'brightness') |int +1) * (10 /255)) |round(2) }} "
-      est_pow_livingroom_l:
-        friendly_name: "Power light livingroom yeelight"
-        unit_of_measurement: 'W'
-        value_template: "{{ ((state_attr('light.livingroom', 'brightness') |int +1) * (10 /255)) |round(2) }} "
-      est_pow_livingroom_lights:
-        friendly_name: "Power light livingroom lights"
-        unit_of_measurement: 'W'
-        value_template: '{% if states("switch.sonoff") == "on" %} 15 {% elif  states("switch.sonoff") == "off" %} 0 {% endif %}'
-      est_pow_livingroom_led_lights:
-        friendly_name: "Power light livingroom LED"
-        unit_of_measurement: 'W'
-        value_template: '{% if states("switch.tasmota") == "on" %} 15 {% elif  states("switch.tasmota") == "off" %} 0 {% endif %}'
+  # - platform: template
+  #   sensors:
+  #     est_pow_l_cucina_2:
+  #       friendly_name: "Power light cucina"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.l_cucina_2', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
+  #     est_pow_l_bagno:
+  #       friendly_name: "Power light bagno"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.l_bagno', 'brightness') |int +1) * (8.5 /255))  |round(2) }} "
+  #     est_pow_l_bedroom:
+  #       friendly_name: "Power light bedroom"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.l_bedroom', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
+  #     est_pow_l_dressingroom:
+  #       friendly_name: "Power light dressingroom"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.l_dressingroom', 'brightness') |int +1) * (8.5 /255)) |round(2) }} "
+  #     est_pow_bagno_lamp:
+  #       friendly_name: "Power light bagno lamp"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.bagno', 'brightness') |int +1) * (10 /255)) |round(2) }} "
+  #     est_pow_entrance:
+  #       friendly_name: "Power light entrance"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.entrance', 'brightness') |int +1) * (10 /255)) |round(2) }} "
+  #     est_pow_livingroom_l:
+  #       friendly_name: "Power light livingroom yeelight"
+  #       unit_of_measurement: 'W'
+  #       value_template: "{{ ((state_attr('light.livingroom', 'brightness') |int +1) * (10 /255)) |round(2) }} "
+  #     est_pow_livingroom_lights:
+  #       friendly_name: "Power light livingroom lights"
+  #       unit_of_measurement: 'W'
+  #       value_template: '{% if states("switch.sonoff") == "on" %} 15 {% elif  states("switch.sonoff") == "off" %} 0 {% endif %}'
+  #     est_pow_livingroom_led_lights:
+  #       friendly_name: "Power light livingroom LED"
+  #       unit_of_measurement: 'W'
+  #       value_template: '{% if states("switch.tasmota") == "on" %} 15 {% elif  states("switch.tasmota") == "off" %} 0 {% endif %}'
 
   - platform: integration
     source: sensor.current_power
@@ -192,184 +192,184 @@
     value_template: '{{ value | multiply(0.001) }}'
 
 #STats
-  - platform: history_stats
-    name: Led ON today
-    entity_id: switch.sonoff
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: Led ON today
+  #   entity_id: switch.sonoff
+  #   state: 'on'
+  #   type: time
+  #   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   end: '{{ now() }}'
     
-  - platform: history_stats
-    name: Led ON yesterday
-    entity_id: switch.sonoff
-    state: 'on'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
+  # - platform: history_stats
+  #   name: Led ON yesterday
+  #   entity_id: switch.sonoff
+  #   state: 'on'
+  #   type: time 
+  #   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   duration:
+  #      hours: 24
        
-  - platform: history_stats
-    name: Led ON this week
-    entity_id: switch.sonoff
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: Led ON this week
+  #   entity_id: switch.sonoff
+  #   state: 'on'
+  #   type: time 
+  #   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+  #   end: '{{ now() }}'
     
 
-  - platform: template
-    sensors:
-      value_leds_on_today:
-        friendly_name: 'Livingroom LED on today'
-        value_template: '{{ states.sensor.led_on_today.attributes.value }}'
+  # - platform: template
+  #   sensors:
+  #     value_leds_on_today:
+  #       friendly_name: 'Livingroom LED on today'
+  #       value_template: '{{ states.sensor.led_on_today.attributes.value }}'
 
-  - platform: template
-    sensors:
-      value_leds_on_yesterday:
-        friendly_name: 'Livingroom LED on yesterday'
-        value_template: '{{ states.sensor.sensor.led_on_yesterday.attributes.value }}'
+  # - platform: template
+  #   sensors:
+  #     value_leds_on_yesterday:
+  #       friendly_name: 'Livingroom LED on yesterday'
+  #       value_template: '{{ states.sensor.sensor.led_on_yesterday.attributes.value }}'
 
-  - platform: template
-    sensors:
-      value_leds_on_this_week:
-        friendly_name: 'Livingroom LED on this week'
-        value_template: '{{ states.sensor.led_on_this_week.attributes.value }}'
+  # - platform: template
+  #   sensors:
+  #     value_leds_on_this_week:
+  #       friendly_name: 'Livingroom LED on this week'
+  #       value_template: '{{ states.sensor.led_on_this_week.attributes.value }}'
     
     #####
     
-  - platform: history_stats
-    name: Entrance ON today
-    entity_id: light.entrance
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: Entrance ON today
+  #   entity_id: light.entrance
+  #   state: 'on'
+  #   type: time
+  #   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   end: '{{ now() }}'
     
-  - platform: history_stats
-    name: Entrance ON yesterday
-    entity_id: light.entrance
-    state: 'on'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
+  # - platform: history_stats
+  #   name: Entrance ON yesterday
+  #   entity_id: light.entrance
+  #   state: 'on'
+  #   type: time 
+  #   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   duration:
+  #      hours: 24
        
-  - platform: history_stats
-    name: Entrance ON this week
-    entity_id: light.entrance
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: Entrance ON this week
+  #   entity_id: light.entrance
+  #   state: 'on'
+  #   type: time 
+  #   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+  #   end: '{{ now() }}'
     
     #####
     
-  - platform: history_stats
-    name: Work today
-    entity_id: person.roby
-    state: 'Work'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: Work today
+  #   entity_id: person.roby
+  #   state: 'Work'
+  #   type: time
+  #   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   end: '{{ now() }}'
 
-  - platform: history_stats
-    name: work yesterday
-    entity_id: person.roby
-    state: 'Work'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
+  # - platform: history_stats
+  #   name: work yesterday
+  #   entity_id: person.roby
+  #   state: 'Work'
+  #   type: time 
+  #   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   duration:
+  #      hours: 24
        
-  - platform: history_stats
-    name: work this week
-    entity_id: person.roby
-    state: 'Work'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: work this week
+  #   entity_id: person.roby
+  #   state: 'Work'
+  #   type: time 
+  #   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+  #   end: '{{ now() }}'
     
         #####
     
-  - platform: history_stats
-    name: roby home today
-    entity_id: person.roby
-    state: 'home'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: roby home today
+  #   entity_id: person.roby
+  #   state: 'home'
+  #   type: time
+  #   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   end: '{{ now() }}'
 
-  - platform: history_stats
-    name: roby home yesterday
-    entity_id: person.roby
-    state: 'home'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
+  # - platform: history_stats
+  #   name: roby home yesterday
+  #   entity_id: person.roby
+  #   state: 'home'
+  #   type: time 
+  #   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   duration:
+  #      hours: 24
        
-  - platform: history_stats
-    name: roby home  this week
-    entity_id: person.roby
-    state: 'home'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: roby home  this week
+  #   entity_id: person.roby
+  #   state: 'home'
+  #   type: time 
+  #   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+  #   end: '{{ now() }}'
     
         #####
     
-  - platform: history_stats
-    name: tami home today
-    entity_id: person.tami
-    state: 'home'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: tami home today
+  #   entity_id: person.tami
+  #   state: 'home'
+  #   type: time
+  #   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   end: '{{ now() }}'
 
-  - platform: history_stats
-    name: tami home yesterday
-    entity_id: person.tami
-    state: 'home'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
+  # - platform: history_stats
+  #   name: tami home yesterday
+  #   entity_id: person.tami
+  #   state: 'home'
+  #   type: time 
+  #   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   duration:
+  #      hours: 24
        
-  - platform: history_stats
-    name: tami home  this week
-    entity_id: person.tami
-    state: 'home'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: tami home  this week
+  #   entity_id: person.tami
+  #   state: 'home'
+  #   type: time 
+  #   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+  #   end: '{{ now() }}'
 
     #####
 
-  - platform: history_stats
-    name: lights ON today
-    entity_id: switch.tasmota
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: lights ON today
+  #   entity_id: switch.tasmota
+  #   state: 'on'
+  #   type: time
+  #   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   end: '{{ now() }}'
     
-  - platform: history_stats
-    name: lights ON yesterday
-    entity_id: switch.tasmota
-    state: 'on'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
+  # - platform: history_stats
+  #   name: lights ON yesterday
+  #   entity_id: switch.tasmota
+  #   state: 'on'
+  #   type: time 
+  #   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  #   duration:
+  #      hours: 24
        
-  - platform: history_stats
-    name: lights ON this week
-    entity_id: switch.tasmota
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+  # - platform: history_stats
+  #   name: lights ON this week
+  #   entity_id: switch.tasmota
+  #   state: 'on'
+  #   type: time 
+  #   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+  #   end: '{{ now() }}'
     
     
   - platform: min_max
