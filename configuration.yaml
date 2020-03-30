@@ -20,7 +20,7 @@ discovery:
 #    username: admin
 #    profile: 2
 #    password: !secret camera_yoosee
-  
+
 #sonoffLAN
 sonoff:
   username: !secret sonoff_mail
@@ -58,7 +58,7 @@ device_tracker:
 # Text to speech
 tts:
   - platform: google_translate
-  
+
 system_health:
 
 #shelly_integration
@@ -120,7 +120,7 @@ binary_sensor:
  #     25: test25
  #     26: test26 #non collegato
  #     27: test27
-    
+
 homeassistant:
   packages: !include_dir_named packages
   customize:
@@ -128,8 +128,8 @@ homeassistant:
       device_class: opening
     binary_sensor.bedroomshield:
       device_class: opening
-    
- 
+
+
 
 yeelight:
   devices:
@@ -139,7 +139,7 @@ yeelight:
       name: bagno
     192.168.1.66:
       name: Livingroom
-  
+
 api:
 
 hacs:
@@ -208,7 +208,7 @@ recorder:
      - sensor.dark_sky_cloud_coverage_0d
      - sensor.dark_sky_cloud_coverage_0h
      - sensor.dark_sky_cloud_coverage_3h
-     - sensor.dark_sky_humidity	
+     - sensor.dark_sky_humidity
      - sensor.dark_sky_humidity_0d
      - sensor.dark_sky_humidity_0h
      - sensor.dark_sky_humidity_3h
