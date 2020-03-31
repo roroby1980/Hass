@@ -10,5 +10,5 @@
       #confirmation: true
     - service: notify.mobile_app_iphone_di_roberto
       data_template:
-      title: Reboot camera mqtt freeze 
-      message: '{{ now().strftime("%H:%M") }} Reboot camera mqtt freeze'
+        title: Reboot camera mqtt freeze 
+        message: '{{ now().strftime("%H:%M") }} Reboot camera mqtt freeze'
