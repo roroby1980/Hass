@@ -161,6 +161,10 @@ input_datetime:
     has_date: false
 
 recorder:
+  include:
+    domains:
+      - sensor
+      - switch
   exclude:
     entities:
      - sensor.tr800
@@ -239,6 +243,10 @@ recorder:
      - sensor.daylight
 
 history:
+  include:
+    domains:
+      - sensor
+      - switch
   exclude:
     entities:
      - sensor.tr800
