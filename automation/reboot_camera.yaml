@@ -1,0 +1,14 @@
+- alias: 'Reboot camera mqtt freeze '
+  trigger:
+    platform: state
+    entity_id: sensor.yicam
+    to: 'motion_start'
+    for:
+      minutes: 15
+  action:
+    - service: shell_command.reboot_camera_living_room
+      confirmation: true
+    - service: notify.mobile_app_iphone_di_roberto
+      data_template:
+      title: Reboot camera mqtt freeze 
+      message: '{{ now().strftime("%H:%M") }} Reboot camera mqtt freeze'

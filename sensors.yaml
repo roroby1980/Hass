@@ -22,12 +22,12 @@
     scan_interval: 1200
     value_template: '{{ value | int - 1 }}'
 
-  - platform: template
-    sensors:
-      time_last_motion:
-        friendly_name: Ultimo Movimento
-        icon_template: mdi:map-marker
-        value_template:  "{{states.variable.ultimo_movimento.state}} {{as_timestamp(states.variable.ultimo_movimento.last_changed) | timestamp_custom('%H:%M')}}"
+ # - platform: template
+ #   sensors:
+ #     time_last_motion:
+ #       friendly_name: Ultimo Movimento
+ #       icon_template: mdi:map-marker
+ #       value_template:  "{{states.variable.ultimo_movimento.state}} {{as_timestamp(states.variable.ultimo_movimento.last_changed) | timestamp_custom('%H:%M')}}"
 
   - platform: rest
     name: tr630

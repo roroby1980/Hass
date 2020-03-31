@@ -40,12 +40,9 @@ manual_away_mode:
     data_template:
       title: Manual Away Mode
       message: Away mode set manually @ {{ now().strftime("%H:%M:%S") }}
-'1584482930150':
-  alias: test echo show
-  sequence:
-  - data:
-      data:
-        method: show
-        type: announce
-      message: Test
-    service: notify.alexa_media_bed
+
+
+
+
+
+
