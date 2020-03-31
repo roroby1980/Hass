@@ -404,6 +404,7 @@ recorder:
       - sensor.where_735
       - sensor.where_800
 #      - sensor.yicam
+      - sensor.db_file_size
 
 history:
   include:
@@ -650,5 +651,6 @@ history:
       - sensor.where_735
       - sensor.where_800
 #      - sensor.yicam
+      - sensor.db_file_size
 
 
