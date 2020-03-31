@@ -7,7 +7,7 @@
       minutes: 15
   action:
     - service: shell_command.reboot_camera_living_room
-      confirmation: true
+      #confirmation: true
     - service: notify.mobile_app_iphone_di_roberto
       data_template:
       title: Reboot camera mqtt freeze 
