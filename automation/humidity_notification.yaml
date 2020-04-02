@@ -11,7 +11,7 @@
                       {{ states("sensor.multi_sensor_4") |int - 
                          states("sensor.multi_sensor_3_3") |int> 0  
                          or ( states("sensor.house_temperature") |round(1)*10 |int 
-                         - states("sensor.multi_sensor_3_2") |round(1)*10 |int ) -20 >0 }}
+                         - states("sensor.multi_sensor_3_2") |round(1)*10 |int ) -9 >0 }}
   action:
     service: notify.mobile_app_iphone_di_roberto
     data_template:
