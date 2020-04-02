@@ -45,14 +45,14 @@ input_select:
     initial: not_home
     icon: mdi:guy-fawkes-mask
 
-#influxdb:
-#  host: influxdb
-#  port: 8086
-#  database: homeassistant
-#  username: hassio
-#  password: hassio
-#  max_retries: 3
-#  default_measurement: state
+influxdb:
+  host: localhost
+  port: 8086
+  database: homeassistant
+  username: hassio
+  password: hassio
+  max_retries: 3
+  default_measurement: state
 
 #Bluethoot
 device_tracker:
