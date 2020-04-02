@@ -29,7 +29,7 @@
     condition: template
     value_template: >
                       {{ states("sensor.multi_sensor_4") |int - states("sensor.multi_sensor_3_3") |int < 0  
-                      and ( states("sensor.multi_sensor_3_3") |int >70 ) }}
+                      and ( states("sensor.multi_sensor_3_3") |int >60 ) }}
   action:
     service: notify.mobile_app_iphone_di_roberto
     data_template:
