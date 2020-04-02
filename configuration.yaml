@@ -29,7 +29,7 @@ sonoff:
 
 shell_command:
   reboot_camera_living_room: "curl http://192.168.1.67/cgi-bin/reboot.sh"
-  
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   base_url: !secret url
@@ -221,7 +221,7 @@ recorder:
       - sensor.burned_kilocalories
       - sensor.connection_type
       - sensor.connection_type_2
-#      - sensor.cpu_temperature
+      - sensor.cpu_temperature
       - sensor.current_pow1
       - sensor.current_power
       - sensor.daily_step_goal
@@ -335,19 +335,19 @@ recorder:
       - sensor.ritardo_800
       - sensor.s_livingroom_battery_level
       - sensor.sedentary_time
-#      - sensor.shelly_shsw_pm_b901af_current_consumption
+      - sensor.shelly_shsw_pm_b901af_current_consumption
       - sensor.shelly_shsw_pm_b901af_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b906cb_current_consumption
+      - sensor.shelly_shsw_pm_b906cb_current_consumption
       - sensor.shelly_shsw_pm_b906cb_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b91874_current_consumption
+      - sensor.shelly_shsw_pm_b91874_current_consumption
       - sensor.shelly_shsw_pm_b91874_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b9273a_current_consumption
+      - sensor.shelly_shsw_pm_b9273a_current_consumption
       - sensor.shelly_shsw_pm_b9273a_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b9841d_current_consumption
+      - sensor.shelly_shsw_pm_b9841d_current_consumption
       - sensor.shelly_shsw_pm_b9841d_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b984a1_current_consumption
+      - sensor.shelly_shsw_pm_b984a1_current_consumption
       - sensor.shelly_shsw_pm_b984a1_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b98576_current_consumption
+      - sensor.shelly_shsw_pm_b98576_current_consumption
       - sensor.shelly_shsw_pm_b98576_total_consumption_attr
       - sensor.sim_1
       - sensor.sim_1_2
@@ -468,7 +468,7 @@ history:
       - sensor.burned_kilocalories
       - sensor.connection_type
       - sensor.connection_type_2
-#      - sensor.cpu_temperature
+      - sensor.cpu_temperature
       - sensor.current_pow1
       - sensor.current_power
       - sensor.daily_step_goal
@@ -582,19 +582,19 @@ history:
       - sensor.ritardo_800
       - sensor.s_livingroom_battery_level
       - sensor.sedentary_time
-#      - sensor.shelly_shsw_pm_b901af_current_consumption
+      - sensor.shelly_shsw_pm_b901af_current_consumption
       - sensor.shelly_shsw_pm_b901af_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b906cb_current_consumption
+      - sensor.shelly_shsw_pm_b906cb_current_consumption
       - sensor.shelly_shsw_pm_b906cb_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b91874_current_consumption
+      - sensor.shelly_shsw_pm_b91874_current_consumption
       - sensor.shelly_shsw_pm_b91874_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b9273a_current_consumption
+      - sensor.shelly_shsw_pm_b9273a_current_consumption
       - sensor.shelly_shsw_pm_b9273a_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b9841d_current_consumption
+      - sensor.shelly_shsw_pm_b9841d_current_consumption
       - sensor.shelly_shsw_pm_b9841d_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b984a1_current_consumption
+      - sensor.shelly_shsw_pm_b984a1_current_consumption
       - sensor.shelly_shsw_pm_b984a1_total_consumption_attr
-#      - sensor.shelly_shsw_pm_b98576_current_consumption
+      - sensor.shelly_shsw_pm_b98576_current_consumption
       - sensor.shelly_shsw_pm_b98576_total_consumption_attr
       - sensor.sim_1
       - sensor.sim_1_2
