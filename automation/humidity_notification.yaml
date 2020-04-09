@@ -18,7 +18,7 @@
       title: "close bathroom window"
       message: '{{ now().strftime("%H:%M:%S")}} -can close bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}} %  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C'
 
-- alias: humidity notification wornk - apen windows
+- alias: humidity notification wornk - open windows
   trigger:
     - platform: state
       entity_id: binary_sensor.w_bathroom
