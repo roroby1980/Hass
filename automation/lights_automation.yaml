@@ -218,3 +218,41 @@
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_100056b199_2
+
+- alias: 'Light15 - bathroom celing light '
+  trigger:
+    - platform: state
+      entity_id: 
+        - switch.sonoff_1000a53f4b
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.l_bagno
+        brightness: >
+           {% if  now().hour < 6 %} 
+              1
+           {% elif now().hour >= 6 and now().hour < 7 %} 
+              128
+           {% elif now().hour >= 7 and now().hour < 20  %}
+              255
+           {% elif now().hour >= 20 and now().hour < 21  %}
+              128
+           {% elif now().hour >= 21 and now().hour < 23  %}
+              30
+           {% elif now().hour >= 23  %}
+              1
+           {% endif %}
+        transition: 3
+
+- alias: 'Light16 - bathroom celing light '
+  trigger:
+    - platform: state
+      entity_id: 
+        - switch.sonoff_1000a53f4b
+      to: 'off'
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: light.l_bagno
+        transition: 3
