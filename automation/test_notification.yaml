@@ -3,7 +3,7 @@
     - platform: homeassistant
       event: start
   action:
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     data_template:
       title: Hassio Restarted
       message: >

@@ -3,7 +3,7 @@
     - platform: homeassistant
       event: start
   action:
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     data_template:
       title: Hassio Restarted
       message: >
@@ -18,7 +18,7 @@
     - platform: state
       entity_id: switch.thermostat
   action:
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     data_template:
       title: Thermostat {{trigger.to_state.state}}
       message: '{{ now().strftime("%H:%M") }} Thermostat {{trigger.to_state.state}}'

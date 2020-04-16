@@ -13,12 +13,12 @@
                          or ( states("sensor.house_temperature") |round(1)*10 |int 
                          - states("sensor.multi_sensor_3_2") |round(1)*10 |int ) -9 >0 }}
   action:
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     data_template:
       title: "close bathroom window"
       message: '{{ now().strftime("%H:%M:%S")}} -can close bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}} %  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C'
 
-- alias: humidity notification wornk - open windows
+- alias: humidity notification bad - open windows
   trigger:
     - platform: state
       entity_id: binary_sensor.w_bathroom
@@ -31,7 +31,7 @@
                       {{ states("sensor.multi_sensor_4") |int - states("sensor.multi_sensor_3_3") |int < 0  
                       and ( states("sensor.multi_sensor_3_3") |int >60 ) }}
   action:
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     data_template:
       title: "Open bathroom window"
       message: '{{ now().strftime("%H:%M:%S") }} - should open bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}}  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C '
