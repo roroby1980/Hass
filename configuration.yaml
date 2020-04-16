@@ -36,6 +36,22 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
+
+# Example configuration.yaml entry for the Telegram Bot
+telegram_bot:
+  - platform: polling
+    api_key: !secret api_telegram
+    allowed_chat_ids:
+      - 925364597
+
+
+# Example configuration.yaml entry for the notifier
+notify:
+  - name: telegram_roby
+    platform: telegram
+    chat_id: 925364597
+
+
 #FOR guest
 input_select:
   guests:
@@ -131,6 +147,9 @@ homeassistant:
       device_class: opening
     binary_sensor.bedroomshield:
       device_class: opening
+    switch.sonoff_1000a54613:
+      device_class: light
+      
 
 
 
