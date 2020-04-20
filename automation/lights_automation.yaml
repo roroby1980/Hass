@@ -243,7 +243,7 @@
            {% elif now().hour >= 23  %}
               1
            {% endif %}
-        transition: 3
+        transition: 4
 
 - alias: 'Light16 - bathroom celing light '
   trigger:
@@ -255,4 +255,4 @@
     - service: light.turn_off
       data_template:
         entity_id: light.l_bagno
-        transition: 3
+
