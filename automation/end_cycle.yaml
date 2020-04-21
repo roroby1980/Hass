@@ -65,7 +65,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.shelly_shsw_pm_b911e9_current_consumption
-      below: '20'
+      below: '100'
       for:
         minutes: 5
   action:

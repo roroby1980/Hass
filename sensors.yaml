@@ -86,13 +86,15 @@
       current_power:
         friendly_name: "Power light total"
         unit_of_measurement: 'W'
-        value_template: '{{ states("sensor.shelly_shsw_pm_b984a1_current_consumption") |int + 
-                            states("sensor.shelly_shsw_pm_b906cb_current_consumption") |int +
-                            states("sensor.shelly_shsw_pm_b91874_current_consumption") |int +
-                            states("sensor.shelly_shsw_pm_b98576_current_consumption") |int +
-                            states("sensor.shelly_shsw_pm_b9273a_current_consumption") |int +
-                            states("sensor.shelly_shsw_pm_b901af_current_consumption") |int +
-                            states("sensor.shelly_shsw_pm_b9841d_current_consumption") |int }}'
+        value_template: '{{ states("sensor.shelly_shsw_pm_b901af_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b906cb_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b911e9_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b91874_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b9273a_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b9841d_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b984a1_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_b98576_current_consumption") |float 
+                          }}'
 
 
   # - platform: template
