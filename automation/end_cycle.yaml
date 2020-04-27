@@ -36,7 +36,7 @@
       entity_id: sensor.shelly_shsw_pm_b901af_current_consumption
       below: '3'
       for:
-        minutes: 5
+        minutes: 3
   action:
     - service: notify.mobile_app_iphone_di_roberto
       data_template:
@@ -67,7 +67,7 @@
       entity_id: sensor.shelly_shsw_pm_b911e9_current_consumption
       below: '100'
       for:
-        minutes: 5
+        minutes: 1
   action:
     - service: notify.mobile_app_iphone_di_roberto
       data_template:

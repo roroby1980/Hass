@@ -368,6 +368,8 @@ recorder:
       - sensor.shelly_shsw_pm_b984a1_total_consumption_attr
       - sensor.shelly_shsw_pm_b98576_current_consumption
       - sensor.shelly_shsw_pm_b98576_total_consumption_attr
+      - sensor.shelly_shsw_pm_b911e9_current_consumption
+      - sensor.shelly_shsw_pm_b911e9_total_consumption_attr
       - sensor.sim_1
       - sensor.sim_1_2
       - sensor.sleep_duration
@@ -615,6 +617,8 @@ history:
       - sensor.shelly_shsw_pm_b984a1_total_consumption_attr
       - sensor.shelly_shsw_pm_b98576_current_consumption
       - sensor.shelly_shsw_pm_b98576_total_consumption_attr
+      - sensor.shelly_shsw_pm_b911e9_current_consumption
+      - sensor.shelly_shsw_pm_b911e9_total_consumption_attr
       - sensor.sim_1
       - sensor.sim_1_2
       - sensor.sleep_duration
