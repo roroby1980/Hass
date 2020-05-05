@@ -1,39 +1,39 @@
-# - alias: humidity notification ok - close windows
-#   trigger:
-#     - platform: template
-#       value_template: >
-#                       {{ states("sensor.multi_sensor_4") |int - 
-#                          states("sensor.multi_sensor_3_3") |int> 0  
-#                          or ( states("sensor.house_temperature") |round(1)*10 |int 
-#                          - states("sensor.multi_sensor_3_2") |round(1)*10 |int ) -9 >0 }}
-#       for:
-#         minutes: 5
-#   condition:
-#     - condition: state
-#       entity_id: binary_sensor.w_bathroom
-#       state: 'on' 
-#   action:
-#     service: telegram_bot.send_message
-#     data_template:
-#       title: "close bathroom window"
-#       message: '{{ now().strftime("%H:%M:%S")}} - can close bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}} %  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C'
+- alias: humidity notification ok - close windows
+  trigger:
+    - platform: template
+      value_template: >
+                      {{ states("sensor.multi_sensor_4") |int - 
+                         states("sensor.multi_sensor_3_3") |int> 0  
+                         or ( states("sensor.house_temperature") |round(1)*10 |int 
+                         - states("sensor.multi_sensor_3_2") |round(1)*10 |int ) -9 >0 }}
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: binary_sensor.w_bathroom
+      state: 'on' 
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      title: "close bathroom window"
+      message: '{{ now().strftime("%H:%M:%S")}} - can close bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}} %  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C'
 
-# - alias: humidity notification bad - open windows
-#   trigger:
-#     - platform: template
-#       value_template: > 
-#                       {{ states("sensor.multi_sensor_4") 
-#                         |int - states("sensor.multi_sensor_3_3") 
-#                         |int < 0 
-#                         and ( states("sensor.multi_sensor_3_3") |int >60 ) }}"
-#       for:
-#         minutes: 5
-#   condition:
-#     - condition: state
-#       entity_id: binary_sensor.w_bathroom
-#       state: 'off' 
-#   action:
-#     service: telegram_bot.send_message
-#     data_template:
-#       title: "Open bathroom window"
-#       message: '{{ now().strftime("%H:%M:%S") }} - should open bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}}  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C '
+- alias: humidity notification bad - open windows
+  trigger:
+    - platform: template
+      value_template: > 
+                      {{ states("sensor.multi_sensor_4") 
+                        |int - states("sensor.multi_sensor_3_3") 
+                        |int < 0 
+                        and ( states("sensor.multi_sensor_3_3") |int >60 ) }}"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: binary_sensor.w_bathroom
+      state: 'off' 
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      title: "Open bathroom window"
+      message: '{{ now().strftime("%H:%M:%S") }} - should open bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}}  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C '
