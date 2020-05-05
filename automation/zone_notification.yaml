@@ -9,7 +9,7 @@
    - condition: template
      value_template: '{{ trigger.to_state.state != trigger.from_state.state }}'
   action:
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     data_template:
       title: Entrance/Exits
       message: '{% if trigger.to_state.state == ''home'' %} {{ now().strftime("%H:%M") }} 
