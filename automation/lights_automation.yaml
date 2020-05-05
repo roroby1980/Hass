@@ -188,7 +188,7 @@
     condition: state
     entity_id: light.l_bagno
     state: 'off'
-    action:
+  action:
     - service: light.turn_on
       data_template:
         entity_id: light.l_bagno
