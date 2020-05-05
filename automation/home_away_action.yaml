@@ -13,10 +13,11 @@
         - switch.tasmota
         - switch.sonoff_100056b199_1
         - switch.sonoff_100056b199_2
+        - switch.sonoff_1000a5758e  
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
-        temperature: 15
+        temperature: 10
 
 - alias: Try update phone position
   trigger:
@@ -35,10 +36,6 @@
       entity_id: group.family
       state: home 
   action:
-    - service: notify.mobile_app_iphone_di_roberto
-      data_template:
-        title: try to update phone information 
-        message: 'last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
     - service: notify.mobile_app_tamar_s_iphone
       data:
         message: "request_location_update"
@@ -46,8 +43,6 @@
       data_template:
         title: try to update phone information 
         message: 'last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
-
-        
 
 - id: 'Away Mode no phone info'
   alias: Away Mode no phone info
@@ -66,8 +61,10 @@
     - condition: state
       entity_id: group.family
       state: home 
+    - condition: template
+      value_template: "{{ not is_state('person.roby', 'home') }}"
   action:
-    - service: notify.mobile_app_iphone_di_roberto
+    - service: telegram_bot.send_message
       data_template:
         title: Away Mode while no phone info
         message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }}
@@ -81,12 +78,13 @@
         - switch.tasmota
         - switch.sonoff_100056b199_1
         - switch.sonoff_100056b199_2
+        - switch.sonoff_1000a5758e 
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
         temperature: 10
     - service: telegram_bot.send_message
       data_template:
-        title: Away Mode while no phone info
+        title: Away Mode setted
         message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.geocoded_location.last_updated) |timestamp_local }}
-         Away mode set in 5 min from now : {{ now().strftime("%H:%M:%S") }}'
+         Away mode setted now : {{ now().strftime("%H:%M:%S") }}'

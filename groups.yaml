@@ -12,14 +12,45 @@ back_home_lights:
     - light.livingroom
 all_lights:
   entities:
-    - light.entrance
-    - light.bagno
-    - light.l_cucina_2
-    - light.livingroom
-    - light.l_dressingroom
-    - light.l_bagno
-    - switch.sonoff
-    - light.l_bedroom
+    - light.entrance        #Livingroom side lamp1
+    - light.bagno           #bathroom table lamp
+    - light.l_cucina_2      #kitchen up lamp
+    - light.livingroom      #Livingroom side lamp2
+    - light.l_dressingroom  #dressingroom ceiling light
+    - light.l_bagno         #bathroom ceiling light
+    - switch.sonoff         #Livingroom table light
+    - light.l_bedroom       #masterbedroom ceiling light  
+    - light.sonoff_1000994c1d #not connetted lamp from sonoff fan controller
+    - switch.sonoff_100056b199_1 # sonoff touch input 1
+    - switch.sonoff_100056b199_2 # sonoff touch input 2
+    - switch.sonoff_100056b199_3 # sonoff touch input 3
+    - switch.sonoff_1000a495ae # balcony south light
+    - switch.sonoff_1000a5758e # bathroom mirror light
+    - switch.sonoff_1000a53c6c # Entrance ceiling light
+all_socket:
+  entities:
+    - switch.shelly_shsw_pm_b901af #Dishwasher
+    - switch.shelly_shsw_pm_b906cb #General 10A
+    - switch.shelly_shsw_pm_b911e9 #Oven
+    - switch.shelly_shsw_pm_b91874 #Priority Line 10A
+    - switch.shelly_shsw_pm_b9273a #Kitchen 1 /fridge
+    - switch.shelly_shsw_pm_b9841d #Washing Machine
+    - switch.shelly_shsw_pm_b984a1 #Bathroom socket
+    - switch.shelly_shsw_pm_b98576 #General 16A
+sockets_off:
+  entities:
+    - switch.shelly_shsw_pm_b906cb #General 10A
+    - switch.shelly_shsw_pm_b911e9 #Oven
+    - switch.shelly_shsw_pm_b984a1 #Bathroom socket
+    - switch.shelly_shsw_pm_b98576 #General 16A
+sockets_conditional_off:
+  entities:
+    - switch.shelly_shsw_pm_b901af #Dishwasher
+    - switch.shelly_shsw_pm_b9841d #Washing Machine
+sonoff_inputs:
+  entities:
+    - switch.sonoff_1000a53f4b #input bathroom
+    - switch.sonoff_1000a4166e #input entrance
 automatic_lights:
   entities:
     - light.bagno

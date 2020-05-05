@@ -34,11 +34,17 @@
     entity_id: group.family
     state: 'home'
   action:
-    service: light.turn_on
-    entity_id: light.bagno
-    data_template:
-      transition: 10
-      brightness: 1
+    - service: light.turn_on
+      entity_id: light.bagno
+      data_template:
+        transition: 10
+        brightness: 1
+    - service: light.turn_off
+      data_template:
+        entity_id: light.l_bagno
+    - service: switch.turn_off
+      entity_id: 
+        - switch.sonoff_1000a5758e  
 
 #Light Temperature by sunlight
 
@@ -173,59 +179,16 @@
       entity_id: 
         - switch.sonoff_100056b199_3
 
-#wall kitchen connection
-
-- alias: 'Light11 - LEkitchenD on wall '
-  trigger:
-    - platform: state 
-      entity_id:
-        - switch.sonoff_100056b199_2
-      to: 'on'
-  action:
-    - service: switch.turn_on
-      entity_id: 
-        - switch.sonoff_1000a54613
-        
-- alias: 'Light12 - kitchen on wall '
-  trigger:
-    - platform: state 
-      entity_id:
-        - switch.sonoff_100056b199_2
-      to: 'off'
-  action:
-    - service: switch.turn_off
-      entity_id: 
-        - switch.sonoff_1000a54613
-    
-- alias: 'Light13 - kitchen on wall '
-  trigger:
-    - platform: state 
-      entity_id:
-        - switch.sonoff_1000a54613
-      to: 'on'
-  action:
-    - service: switch.turn_on
-      entity_id: 
-        - switch.sonoff_100056b199_2
-        
-- alias: 'Light14 - kitchen on wall '
-  trigger:
-    - platform: state 
-      entity_id:
-        - switch.sonoff_1000a54613
-      to: 'off'
-  action:
-    - service: switch.turn_off
-      entity_id: 
-        - switch.sonoff_100056b199_2
-
 - alias: 'Light15 - bathroom celing light '
   trigger:
     - platform: state
       entity_id: 
         - switch.sonoff_1000a53f4b
-      to: 'on'
-  action:
+  condition:
+    condition: state
+    entity_id: light.l_bagno
+    state: 'off'
+    action:
     - service: light.turn_on
       data_template:
         entity_id: light.l_bagno
@@ -250,9 +213,39 @@
     - platform: state
       entity_id: 
         - switch.sonoff_1000a53f4b
-      to: 'off'
+  condition:
+    condition: state
+    entity_id: light.l_bagno
+    state: 'on'
   action:
     - service: light.turn_off
       data_template:
         entity_id: light.l_bagno
 
+- alias: 'Light17 - balcony south '
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.m_dressing
+      to: 'on'
+  condition:
+    condition: state  # from sunset until sunrise
+    entity_id: sun.sun
+    state: 'below_horizon'
+  action:
+    - service: switch.turn_on
+      data_template:
+        entity_id: switch.sonoff_1000a495ae
+
+- alias: 'Light18 - balcony south '
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.m_dressing
+      to: 'off'
+      for:
+       minutes: 3
+  action:
+    - service: switch.turn_off
+      data_template:
+        entity_id: switch.sonoff_1000a495ae
