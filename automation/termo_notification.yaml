@@ -17,6 +17,9 @@
   trigger:
     - platform: state
       entity_id: switch.thermostat
+      to:
+        - 'on'
+        - 'off'
   action:
     service: telegram_bot.send_message
     data_template:

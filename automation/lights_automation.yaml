@@ -184,6 +184,9 @@
     - platform: state
       entity_id: 
         - switch.sonoff_1000a53f4b
+      to:
+        - 'on'
+        - 'off'
   condition:
     condition: state
     entity_id: light.l_bagno
