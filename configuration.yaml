@@ -189,7 +189,7 @@ recorder:
       - switch
   exclude:
     entities:
-      - binary_sensor.accensione_carico
+#      - binary_sensor.accensione_carico
 #      - binary_sensor.bath_humidity
 #      - binary_sensor.m_bathroom
 #      - binary_sensor.m_dressing
@@ -282,8 +282,8 @@ recorder:
       - sensor.echo_dot_di_roberto_next_reminder
       - sensor.echo_dot_di_roberto_next_timer
 #      - sensor.energy_spent
-      - sensor.esclusione_1
-      - sensor.esclusione_2
+#      - sensor.esclusione_1
+#      - sensor.esclusione_2
       - sensor.floors_ascended
       - sensor.floors_ascended_2
       - sensor.floors_ascended_3
@@ -385,8 +385,8 @@ recorder:
       - sensor.tasmota_status
 #      - sensor.temperature_24
       - sensor.temperature_24_battery_level
-      - sensor.tempo_in_extrasoglia
-      - sensor.tempo_superamento_soglia_180_min
+#      - sensor.tempo_in_extrasoglia
+#      - sensor.tempo_superamento_soglia_180_min
       - sensor.this_device_next_alarm
       - sensor.this_device_next_reminder
       - sensor.this_device_next_timer
@@ -403,8 +403,8 @@ recorder:
       - sensor.tr730
       - sensor.tr735
       - sensor.tr800
-      - sensor.ultimo_carico_spento
-      - sensor.ultimo_intervento
+#      - sensor.ultimo_carico_spento
+#      - sensor.ultimo_intervento
       - sensor.uncat_stress_duration
       - sensor.us_coronavirus_confirmed
       - sensor.us_coronavirus_current
@@ -430,6 +430,8 @@ recorder:
 #      - sensor.yicam
       - sensor.db_file_size
 
+
+
 history:
   include:
     domains:
@@ -438,7 +440,7 @@ history:
       - light
   exclude:
     entities:
-      - binary_sensor.accensione_carico
+#      - binary_sensor.accensione_carico
 #      - binary_sensor.bath_humidity
 #      - binary_sensor.m_bathroom
 #      - binary_sensor.m_dressing
@@ -531,8 +533,8 @@ history:
       - sensor.echo_dot_di_roberto_next_reminder
       - sensor.echo_dot_di_roberto_next_timer
 #      - sensor.energy_spent
-      - sensor.esclusione_1
-      - sensor.esclusione_2
+#      - sensor.esclusione_1
+#      - sensor.esclusione_2
       - sensor.floors_ascended
       - sensor.floors_ascended_2
       - sensor.floors_ascended_3
@@ -634,8 +636,8 @@ history:
       - sensor.tasmota_status
 #      - sensor.temperature_24
       - sensor.temperature_24_battery_level
-      - sensor.tempo_in_extrasoglia
-      - sensor.tempo_superamento_soglia_180_min
+#      - sensor.tempo_in_extrasoglia
+#      - sensor.tempo_superamento_soglia_180_min
       - sensor.this_device_next_alarm
       - sensor.this_device_next_reminder
       - sensor.this_device_next_timer
@@ -652,8 +654,8 @@ history:
       - sensor.tr730
       - sensor.tr735
       - sensor.tr800
-      - sensor.ultimo_carico_spento
-      - sensor.ultimo_intervento
+#      - sensor.ultimo_carico_spento
+#      - sensor.ultimo_intervento
       - sensor.uncat_stress_duration
       - sensor.us_coronavirus_confirmed
       - sensor.us_coronavirus_current
