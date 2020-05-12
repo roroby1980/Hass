@@ -17,18 +17,12 @@
   trigger:
     - platform: state
       entity_id: switch.thermostat
+      from: 
+        - 'on'
+        - 'off'
       to:
         - 'on'
         - 'off'
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: switch.thermostat
-        state: 'off'
-      - condition: state
-        entity_id: switch.thermostat
-        state: 'on'
   action:
     service: telegram_bot.send_message
     data_template:
