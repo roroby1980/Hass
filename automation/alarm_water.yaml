@@ -12,6 +12,7 @@
         title: "Wet Detected"
         message: '{{ now().strftime("%H:%M:%S") }} - wet {{trigger.entity_id}} '
     - service: light.turn_on
+      data_template:
         entity_id: light.livingroom
         brightness: 255
         color_name: blu
