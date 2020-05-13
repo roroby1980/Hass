@@ -15,7 +15,10 @@
       data_template:
         entity_id: light.livingroom
         brightness: 255
-        color_name: blu
+        rgb_color: 
+          - 0
+          - 0
+          - 255
         flash: short
 
     
