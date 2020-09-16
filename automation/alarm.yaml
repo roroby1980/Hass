@@ -18,5 +18,5 @@
   - data_template:
       message: 'Detected movment of {{ trigger.from_state.attributes.friendly_name }}'
       title: 'ALARM'
-    service: notify.mobile_app_iphone_di_roberto
+    service: telegram_bot.send_message
     

@@ -11,7 +11,7 @@
   action:
     service: telegram_bot.send_message
     data_template:
-      title: Entrance/Exits
+      title: '{% if trigger.to_state.state == ''home'' %} Entrance {% else %} Exit {% endif %} - {{ trigger.from_state.attributes.friendly_name }}'
       message: '{% if trigger.to_state.state == ''home'' %} {{ now().strftime("%H:%M") }} 
         - Rilevato ingresso in casa da parte di {{ trigger.from_state.attributes.friendly_name }}
         {% elif  trigger.from_state.state == ''home'' %} {{ now().strftime("%H:%M") }} 

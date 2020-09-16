@@ -57,10 +57,6 @@
       for:
         minutes: 1
   action:
-    - service: notify.mobile_app_iphone_di_roberto
-      data_template:
-        title: 'Oven'
-        message: '{{ now().strftime("%H:%M") }} Oven has stop'
     - service: automation.turn_off
       entity_id: automation.notify_oven
     - service: telegram_bot.send_message

@@ -7,7 +7,7 @@ automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 sensor: !include sensors.yaml
 zone: !include zone.yaml
-var: !include variables.yaml
+#var: !include variables.yaml
 
 discovery:
   ignore:
@@ -32,7 +32,7 @@ shell_command:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-  base_url: !secret url
+#  base_url: !secret url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
@@ -47,7 +47,7 @@ telegram_bot:
 
 # Example configuration.yaml entry for the notifier
 notify:
-  - name: telegram_roby
+  - name: telegram
     platform: telegram
     chat_id: 925364597
 
@@ -71,8 +71,8 @@ influxdb:
   default_measurement: state
 
 #Bluethoot
-device_tracker:
-  - platform: bluetooth_tracker
+#device_tracker:
+#  - platform: bluetooth_tracker
 
 # Text to speech
 tts:
@@ -155,18 +155,18 @@ homeassistant:
 
 yeelight:
   devices:
-    192.168.1.64:
-      name: entrance
-    192.168.1.68:
-      name: bagno
-    192.168.1.66:
-      name: Livingroom
+    192.168.1.73:
+      name: Livingroom yeelight1
+    192.168.1.62:
+      name: bathroom
+    192.168.1.74:
+      name: Livingroom yeelight2
 
 api:
 
-hacs:
-  token: !secret token_hacs
-  theme: true
+#hacs:
+#  token: !secret token_hacs
+#  theme: true
 
 frontend:
   themes: !include_dir_merge_named themes
@@ -187,6 +187,9 @@ recorder:
     domains:
       - sensor
       - switch
+      - light
+      - binary_sensor
+      - device_tracker
   exclude:
     entities:
 #      - binary_sensor.accensione_carico
@@ -354,21 +357,21 @@ recorder:
       - sensor.ritardo_800
       - sensor.s_livingroom_battery_level
       - sensor.sedentary_time
-      - sensor.shelly_shsw_pm_b901af_current_consumption
+#      - sensor.shelly_shsw_pm_b901af_current_consumption
       - sensor.shelly_shsw_pm_b901af_total_consumption_attr
-      - sensor.shelly_shsw_pm_b906cb_current_consumption
+#      - sensor.shelly_shsw_pm_b906cb_current_consumption
       - sensor.shelly_shsw_pm_b906cb_total_consumption_attr
-      - sensor.shelly_shsw_pm_b91874_current_consumption
+#      - sensor.shelly_shsw_pm_b91874_current_consumption
       - sensor.shelly_shsw_pm_b91874_total_consumption_attr
-      - sensor.shelly_shsw_pm_b9273a_current_consumption
+#      - sensor.shelly_shsw_pm_b9273a_current_consumption
       - sensor.shelly_shsw_pm_b9273a_total_consumption_attr
-      - sensor.shelly_shsw_pm_b9841d_current_consumption
+#      - sensor.shelly_shsw_pm_b9841d_current_consumption
       - sensor.shelly_shsw_pm_b9841d_total_consumption_attr
-      - sensor.shelly_shsw_pm_b984a1_current_consumption
+#      - sensor.shelly_shsw_pm_b984a1_current_consumption
       - sensor.shelly_shsw_pm_b984a1_total_consumption_attr
-      - sensor.shelly_shsw_pm_b98576_current_consumption
+#      - sensor.shelly_shsw_pm_b98576_current_consumption
       - sensor.shelly_shsw_pm_b98576_total_consumption_attr
-      - sensor.shelly_shsw_pm_b911e9_current_consumption
+#      - sensor.shelly_shsw_pm_b911e9_current_consumption
       - sensor.shelly_shsw_pm_b911e9_total_consumption_attr
       - sensor.sim_1
       - sensor.sim_1_2
@@ -438,6 +441,8 @@ history:
       - sensor
       - switch
       - light
+      - binary_sensor
+      - device_tracker
   exclude:
     entities:
 #      - binary_sensor.accensione_carico
@@ -542,8 +547,8 @@ history:
       - sensor.floors_descended
       - sensor.floors_descended_2
       - sensor.floors_descended_3
-      - sensor.geocoded_location
-      - sensor.geocoded_location_2
+#      - sensor.geocoded_location
+#      - sensor.geocoded_location_2
       - sensor.hacs
       - sensor.high_stress_duration
 #      - sensor.house_temperature
@@ -605,21 +610,21 @@ history:
       - sensor.ritardo_800
       - sensor.s_livingroom_battery_level
       - sensor.sedentary_time
-      - sensor.shelly_shsw_pm_b901af_current_consumption
+#      - sensor.shelly_shsw_pm_b901af_current_consumption
       - sensor.shelly_shsw_pm_b901af_total_consumption_attr
-      - sensor.shelly_shsw_pm_b906cb_current_consumption
+#      - sensor.shelly_shsw_pm_b906cb_current_consumption
       - sensor.shelly_shsw_pm_b906cb_total_consumption_attr
-      - sensor.shelly_shsw_pm_b91874_current_consumption
+#      - sensor.shelly_shsw_pm_b91874_current_consumption
       - sensor.shelly_shsw_pm_b91874_total_consumption_attr
-      - sensor.shelly_shsw_pm_b9273a_current_consumption
+#      - sensor.shelly_shsw_pm_b9273a_current_consumption
       - sensor.shelly_shsw_pm_b9273a_total_consumption_attr
-      - sensor.shelly_shsw_pm_b9841d_current_consumption
+#      - sensor.shelly_shsw_pm_b9841d_current_consumption
       - sensor.shelly_shsw_pm_b9841d_total_consumption_attr
-      - sensor.shelly_shsw_pm_b984a1_current_consumption
+#      - sensor.shelly_shsw_pm_b984a1_current_consumption
       - sensor.shelly_shsw_pm_b984a1_total_consumption_attr
-      - sensor.shelly_shsw_pm_b98576_current_consumption
+#      - sensor.shelly_shsw_pm_b98576_current_consumption
       - sensor.shelly_shsw_pm_b98576_total_consumption_attr
-      - sensor.shelly_shsw_pm_b911e9_current_consumption
+#      - sensor.shelly_shsw_pm_b911e9_current_consumption
       - sensor.shelly_shsw_pm_b911e9_total_consumption_attr
       - sensor.sim_1
       - sensor.sim_1_2

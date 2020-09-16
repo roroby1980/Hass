@@ -6,18 +6,18 @@ family:
     - input_select.guests
 back_home_lights:
   entities:
-    - light.entrance
-    - light.bagno
-    - light.l_cucina_2
-    - light.livingroom
+    - light.livingroom_yeelight1
+    - light.bathroom
+    - light.l_kitchen
+    - light.livingroom_yeelight2
 all_lights:
   entities:
-    - light.entrance        #Livingroom side lamp1
-    - light.bagno           #bathroom table lamp
-    - light.l_cucina_2      #kitchen up lamp
-    - light.livingroom      #Livingroom side lamp2
+    - light.livingroom_yeelight1        #Livingroom side lamp1
+    - light.bathroom           #bathroom table lamp
+    - light.l_kitchen      #kitchen up lamp
+    - light.livingroom_yeelight2      #Livingroom side lamp2
     - light.l_dressingroom  #dressingroom ceiling light
-    - light.l_bagno         #bathroom ceiling light
+    - light.l_bathroom_main         #bathroom ceiling light
     - switch.sonoff         #Livingroom table light
     - light.l_bedroom       #masterbedroom ceiling light  
     - light.sonoff_1000994c1d #not connetted lamp from sonoff fan controller
@@ -53,14 +53,14 @@ sonoff_inputs:
     - switch.sonoff_1000a4166e #input entrance
 automatic_lights:
   entities:
-    - light.bagno
+    - light.bathroom
 dim_lights:
   entities:
-    - light.entrance
-    - light.livingroom
-    - light.l_cucina_2
+    - light.livingroom_yeelight1
+    - light.livingroom_yeelight2
+    - light.l_kitchen
     - light.l_dressingroom
-    - light.l_bagno
+    - light.l_bathroom_main
     - light.l_bedroom
 inside_presences:
     entities:
