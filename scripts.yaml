@@ -18,7 +18,7 @@ manual_home_mode:
     data:
       entity_id: climate.riscaldamento
       preset_mode: none
-  - service: notify.mobile_app_iphone_di_roberto
+  - service: telegram_bot.send_message
     data_template:
       title: Manual Home Mode
       message: Home mode set manually @ {{ now().strftime("%H:%M:%S") }}
@@ -36,7 +36,7 @@ manual_away_mode:
     data:
       entity_id: climate.riscaldamento
       preset_mode: away
-  - service: notify.mobile_app_iphone_di_roberto
+  - service: telegram_bot.send_message
     data_template:
       title: Manual Away Mode
       message: Away mode set manually @ {{ now().strftime("%H:%M:%S") }}
