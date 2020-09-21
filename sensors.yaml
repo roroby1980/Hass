@@ -385,9 +385,9 @@
     name: house temperature
     type: mean
     entity_ids:
-       -  sensor.temperature_24
-       -  sensor.multi_sensor_2_4
-       -  sensor.multi_sensor_3_2
+       -  sensor.t_bathroom
+       -  sensor.t_bedroom
+       -  sensor.t_livingroom
        
   - platform: history_stats
     name: Riscaldamento today
@@ -414,30 +414,6 @@
     start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
     end: '{{ now() }}'
   
-#  - platform: viaggiatreno
-#    train_name: Cesano train 6:30
-#    train_id: 612
-#    station_id: N00079
-
-#  - platform: viaggiatreno
-#    train_name: Cesano train 7:00
-#    train_id: 1614
-#    station_id: N00074
-
-#  - platform: viaggiatreno
-#    train_name: Cesano train 7:30
-#    train_id: 618
-#    station_id: N00079
-    
-#  - platform: viaggiatreno
-#    train_name: Cesano train 7:35
-#    train_id: 2718
-#    station_id: N00085
-    
-#  - platform: viaggiatreno
-#    train_name: Cesano train 8:00
-#    train_id: 1622
-#    station_id: N00079
     
   - platform: history_stats
     name: livingroom open today
@@ -459,7 +435,7 @@
                  
   - platform: statistics
     name: Bathroom Humidity Stats
-    entity_id: sensor.multi_sensor_3_3
+    entity_id: sensor.t_bathroom_2
     max_age:
       minutes: 120
 

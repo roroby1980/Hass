@@ -106,7 +106,7 @@ binary_sensor:
   - platform: trend
     sensors:
       bath_humidity:
-        entity_id: sensor.multi_sensor_3_3
+        entity_id: sensor.t_bathroom_2
         sample_duration: 7200
         min_gradient: 0.02
         device_class: moisture
@@ -330,18 +330,6 @@ recorder:
       - sensor.max_stress_level
       - sensor.medium_stress_duration
       - sensor.min_heart_rate
-#      - sensor.multi_sensor
-#      - sensor.multi_sensor_2
-#      - sensor.multi_sensor_2_2
-#      - sensor.multi_sensor_2_3
-#      - sensor.multi_sensor_2_4
-      - sensor.multi_sensor_2_battery_level
-#      - sensor.multi_sensor_3
-#      - sensor.multi_sensor_3_2
-#      - sensor.multi_sensor_3_3
-      - sensor.multi_sensor_3_battery_level
-#      - sensor.multi_sensor_4
-      - sensor.multi_sensor_battery_level
 #      - sensor.potenza_istantanea
       - sensor.power_pow1
       - sensor.pressure_26
@@ -386,8 +374,6 @@ recorder:
       - sensor.tamar_s_iphone_battery_state
       - sensor.tamars_macbook_pro_battery_state
       - sensor.tasmota_status
-#      - sensor.temperature_24
-      - sensor.temperature_24_battery_level
 #      - sensor.tempo_in_extrasoglia
 #      - sensor.tempo_superamento_soglia_180_min
       - sensor.this_device_next_alarm
@@ -583,18 +569,6 @@ history:
       - sensor.max_stress_level
       - sensor.medium_stress_duration
       - sensor.min_heart_rate
-#      - sensor.multi_sensor
-#      - sensor.multi_sensor_2
-#      - sensor.multi_sensor_2_2
-#      - sensor.multi_sensor_2_3
-#      - sensor.multi_sensor_2_4
-      - sensor.multi_sensor_2_battery_level
-#      - sensor.multi_sensor_3
-#      - sensor.multi_sensor_3_2
-#      - sensor.multi_sensor_3_3
-      - sensor.multi_sensor_3_battery_level
-#      - sensor.multi_sensor_4
-      - sensor.multi_sensor_battery_level
 #      - sensor.potenza_istantanea
       - sensor.power_pow1
       - sensor.pressure_26
@@ -639,8 +613,6 @@ history:
       - sensor.tamar_s_iphone_battery_state
       - sensor.tamars_macbook_pro_battery_state
       - sensor.tasmota_status
-#      - sensor.temperature_24
-      - sensor.temperature_24_battery_level
 #      - sensor.tempo_in_extrasoglia
 #      - sensor.tempo_superamento_soglia_180_min
       - sensor.this_device_next_alarm

@@ -2,10 +2,10 @@
   trigger:
     - platform: template
       value_template: >
-                      {{ states("sensor.multi_sensor_4") |int - 
-                         states("sensor.multi_sensor_3_3") |int> 0  
+                      {{ states("sensor.t_outside_2") |int - 
+                         states("sensor.t_bathroom_2") |int> 0  
                          or ( states("sensor.house_temperature") |round(1)*10 |int 
-                         - states("sensor.multi_sensor_3_2") |round(1)*10 |int ) -9 >0 }}
+                         - states("sensor.t_bathroom") |round(1)*10 |int ) -9 >0 }}
       for:
         minutes: 5
   condition:
@@ -16,16 +16,16 @@
     service: telegram_bot.send_message
     data_template:
       title: "close bathroom window"
-      message: '{{ now().strftime("%H:%M:%S")}} - can close bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}} %  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C'
+      message: '{{ now().strftime("%H:%M:%S")}} - can close bathroom windows humidity now at {{states("sensor.t_bathroom_2")}} %  ;  temperature  {{states("sensor.t_bathroom")}} °C'
 
 - alias: humidity notification bad - open windows
   trigger:
     - platform: template
       value_template: > 
-                      {{ states("sensor.multi_sensor_4") 
-                        |int - states("sensor.multi_sensor_3_3") 
+                      {{ states("sensor.t_outside_2") 
+                        |int - states("sensor.t_bathroom_2") 
                         |int < 0 
-                        and ( states("sensor.multi_sensor_3_3") |int >60 ) }}"
+                        and ( states("sensor.t_bathroom_2") |int >60 ) }}"
       for:
         minutes: 5
   condition:
@@ -36,4 +36,4 @@
     service: telegram_bot.send_message
     data_template:
       title: "Open bathroom window"
-      message: '{{ now().strftime("%H:%M:%S") }} - should open bathroom windows humidity now at {{states("sensor.multi_sensor_3_3")}}  ;  temperature  {{states("sensor.multi_sensor_3_2")}} °C '
+      message: '{{ now().strftime("%H:%M:%S") }} - should open bathroom windows humidity now at {{states("sensor.t_bathroom_2")}}  ;  temperature  {{states("sensor.t_bathroom")}} °C '
