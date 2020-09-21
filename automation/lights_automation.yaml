@@ -264,7 +264,7 @@
     - service: light.turn_on
       data_template:
         entity_id: 
-         - light.livingroom_yeelight1
+         - light.livingroom_cornerlamp
          - light.livingroom_yeelight2
         brightness: 255
         kelvin: 2500
@@ -294,7 +294,7 @@
     - service: light.turn_off
       data_template:
         entity_id: 
-         - light.livingroom_yeelight1
+         - light.livingroom_cornerlamp
          - light.livingroom_yeelight2
          - light.shelly_shrgbw2_f4337c_1
          - light.shelly_shrgbw2_f4337c_2
@@ -310,7 +310,7 @@
     - service: light.turn_on
       data_template:
         entity_id: 
-         - light.livingroom_yeelight1
+         - light.livingroom_cornerlamp
          - light.livingroom_yeelight2
         brightness: 1
         kelvin: 1700
@@ -354,7 +354,7 @@
     - service: light.turn_off
       data_template:
         entity_id: 
-         - light.livingroom_yeelight1
+         - light.livingroom_cornerlamp
          - light.livingroom_yeelight2
          - light.shelly_shrgbw2_f4337c_1
          - light.shelly_shrgbw2_f4337c_2

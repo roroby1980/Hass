@@ -6,13 +6,13 @@ family:
     - input_select.guests
 back_home_lights:
   entities:
-    - light.livingroom_yeelight1
+    - light.livingroom_cornerlamp
     - light.bathroom
     - light.l_kitchen
     - light.livingroom_yeelight2
 all_lights:
   entities:
-    - light.livingroom_yeelight1        #Livingroom side lamp1
+    - light.livingroom_cornerlamp        #Livingroom side lamp1
     - light.bathroom           #bathroom table lamp
     - light.l_kitchen      #kitchen up lamp
     - light.livingroom_yeelight2      #Livingroom side lamp2
@@ -56,7 +56,7 @@ automatic_lights:
     - light.bathroom
 dim_lights:
   entities:
-    - light.livingroom_yeelight1
+    - light.livingroom_cornerlamp
     - light.livingroom_yeelight2
     - light.l_kitchen
     - light.l_dressingroom

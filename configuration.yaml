@@ -156,7 +156,7 @@ homeassistant:
 yeelight:
   devices:
     192.168.1.73:
-      name: Livingroom yeelight1
+      name: Livingroom cornerlamp
     192.168.1.62:
       name: bathroom
     192.168.1.74:
