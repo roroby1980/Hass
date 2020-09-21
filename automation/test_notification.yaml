@@ -1,4 +1,4 @@
-- alias: tets notification
+- alias: hassio restart notification
   trigger:
     - platform: homeassistant
       event: start

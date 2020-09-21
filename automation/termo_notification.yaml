@@ -1,18 +1,3 @@
-- alias: tets notification
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      title: Hassio Restarted
-      message: >
-        {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
-          'winter season heater are: heat'
-        {% else %} 
-          'summer season heater: off'
-        {% endif %}
-
 - alias: Thermo notification
   trigger:
     - platform: state
