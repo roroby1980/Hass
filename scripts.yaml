@@ -41,9 +41,8 @@ manual_away_mode:
       title: Manual Away Mode
       message: Away mode set manually @ {{ now().strftime("%H:%M:%S") }}
 reboot_camera:
+  alias: new_reboot_camera
+  sequence:
   - service: shell_command.reboot_camera_living_room
-
-
-
-
-
+    data: {}
+  mode: single

@@ -7,12 +7,14 @@
       for:
         minutes: 3
   action:
-    - service: automation.turn_off
-      entity_id: automation.notify_washing_machine
     - service: telegram_bot.send_message
       data_template:
         title: 'washing machine'
         message: '{{ now().strftime("%H:%M") }} washing machine finish to wash'
+    - service: automation.turn_off
+      entity_id: automation.notify_washing_machine
+
+     
 
 - alias: Attiva Notifica lavatrice
   trigger:
@@ -36,13 +38,13 @@
       for:
         minutes: 3
   action:
-    - service: automation.turn_off
-      entity_id: automation.notify_dishwasher
     - service: telegram_bot.send_message
       data_template:
         title: 'dishwasher'
         message: '{{ now().strftime("%H:%M") }} dishwasher finish to wash'
-
+    - service: automation.turn_off
+      entity_id: automation.notify_dishwasher
+      
 - alias: check running dishwasher
   trigger:
     - platform: numeric_state
@@ -61,12 +63,12 @@
       for:
         minutes: 1
   action:
-    - service: automation.turn_off
-      entity_id: automation.notify_oven
     - service: telegram_bot.send_message
       data_template:
         title: 'Oven'
         message: '{{ now().strftime("%H:%M") }} Oven has stop'
+    - service: automation.turn_off
+      entity_id: automation.notify_oven
 
 - alias: check running Oven
   trigger:
