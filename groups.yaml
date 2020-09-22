@@ -6,13 +6,11 @@ family:
     - input_select.guests
 back_home_lights:
   entities:
-    - light.livingroom_cornerlamp
     - light.bathroom
-    - light.l_kitchen
-    - light.livingroom_yeelight2
+    - light.shelly_shrgbw2_f4337c_3
 all_lights:
   entities:
-    - light.livingroom_cornerlamp        #Livingroom side lamp1
+    - light.livingroom_yeelight1        #Livingroom side lamp1
     - light.bathroom           #bathroom table lamp
     - light.l_kitchen      #kitchen up lamp
     - light.livingroom_yeelight2      #Livingroom side lamp2
@@ -24,9 +22,15 @@ all_lights:
     - switch.sonoff_100056b199_1 # sonoff touch input 1
     - switch.sonoff_100056b199_2 # sonoff touch input 2
     - switch.sonoff_100056b199_3 # sonoff touch input 3
+    - switch.sonoff_10008cbb1d_1 #
+    - switch.sonoff_10008cbb1d_2 #
+    - switch.sonoff_10008cbb1d_3 #
+    - switch.sonoff_1000a54613 # kitchen LED
     - switch.sonoff_1000a495ae # balcony south light
     - switch.sonoff_1000a5758e # bathroom mirror light
-    - switch.sonoff_1000a53c6c # Entrance ceiling light
+    - light.shelly_shrgbw2_f4337c_1 #Livingroom Led Warm
+    - light.shelly_shrgbw2_f4337c_2 #Livingroom Led Natural
+    - light.shelly_shrgbw2_f4337c_3 #Entance service Led
 all_socket:
   entities:
     - switch.shelly_shsw_pm_b901af #Dishwasher
@@ -51,12 +55,9 @@ sonoff_inputs:
   entities:
     - switch.sonoff_1000a53f4b #input bathroom
     - switch.sonoff_1000a4166e #input entrance
-automatic_lights:
-  entities:
-    - light.bathroom
 dim_lights:
   entities:
-    - light.livingroom_cornerlamp
+    - light.livingroom_yeelight1
     - light.livingroom_yeelight2
     - light.l_kitchen
     - light.l_dressingroom
