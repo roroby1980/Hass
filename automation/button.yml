@@ -18,7 +18,7 @@
       event: '1004'
   action:
     - service: light.toggle
-      entity_id: light.dimmer_switch_7 # emma bedroom main
+      entity_id: light.shelly_shdm_1_d1818c # emma bedroom main
 
 
 #- id: Button Emma long press 
