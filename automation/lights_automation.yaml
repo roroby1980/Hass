@@ -401,3 +401,25 @@
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_10008cbb5e_1
+
+- alias: Button Emma single press 
+  trigger:
+    platform: event
+    event_type: deconz.event
+    event_data:
+      id: switch_29
+      event: '1002'
+  action:
+    - service: light.toggle
+      entity_id: light.light.emma_bedroom # emma bedroom yeeelight
+
+- alias: Button Emma double press 
+  trigger:
+    platform: event
+    event_type: deconz.event
+    event_data:
+      id: switch_29
+      event: '1004'
+  action:
+    - service: light.toggle
+      entity_id: light.shelly_shdm_1_d1818c # emma bedroom main
