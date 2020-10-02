@@ -1,1 +1,39 @@
+- id: Button Emma single press 
+  trigger:
+    platform: event
+    event_type: deconz.event
+    event_data:
+      id: switch_29
+      event: '1002'
+  action:
+    - service: light.toggle
+      entity_id: light.light.emma_bedroom # emma bedroom yeeelight
+
+- id: Button Emma double press 
+  trigger:
+    platform: event
+    event_type: deconz.event
+    event_data:
+      id: switch_29
+      event: '1004'
+  action:
+    - service: light.toggle
+      entity_id: light.dimmer_switch_7 # emma bedroom main
+
+
+#- id: Button Emma long press 
+#  trigger:
+#    platform: event
+#    event_type: deconz.event
+#    event_data:
+#      id: switch_29
+#      event: '1001'
+
+#- id: Button Emma long press release
+#  trigger:
+#    platform: event
+#    event_type: deconz.event
+#    event_data:
+#      id: switch_29
+#      event: '1003'
 
