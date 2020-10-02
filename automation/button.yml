@@ -1,4 +1,4 @@
-- id: Button Emma single press 
+- alias: Button Emma single press 
   trigger:
     platform: event
     event_type: deconz.event
@@ -9,7 +9,7 @@
     - service: light.toggle
       entity_id: light.light.emma_bedroom # emma bedroom yeeelight
 
-- id: Button Emma double press 
+- alias: Button Emma double press 
   trigger:
     platform: event
     event_type: deconz.event
