@@ -407,7 +407,7 @@
     platform: event
     event_type: deconz.event
     event_data:
-      id: switch_29
+      id: switch_emma
       event: '1002'
   action:
     - service: light.toggle
@@ -418,7 +418,7 @@
     platform: event
     event_type: deconz.event
     event_data:
-      id: switch_29
+      id: switch_emma
       event: '1004'
   action:
     - service: light.toggle
