@@ -411,7 +411,7 @@
       event: '1002'
   action:
     - service: light.toggle
-      entity_id: light.light.emma_bedroom # emma bedroom yeeelight
+      entity_id: light.emma_bedroom # emma bedroom yeeelight
 
 - alias: Button Emma double press 
   trigger:
