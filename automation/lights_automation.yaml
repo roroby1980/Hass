@@ -408,7 +408,7 @@
     event_type: deconz.event
     event_data:
       id: switch_emma
-      event: '1002'
+      event: 1002
   action:
     - service: light.toggle
       entity_id: light.emma_bedroom # emma bedroom yeeelight
@@ -419,7 +419,7 @@
     event_type: deconz.event
     event_data:
       id: switch_emma
-      event: '1004'
+      event: 1004
   action:
     - service: light.toggle
       entity_id: light.shelly_shdm_1_d1818c # emma bedroom main
