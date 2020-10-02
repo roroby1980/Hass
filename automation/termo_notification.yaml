@@ -1,7 +1,7 @@
 - alias: Thermo notification
   trigger:
     - platform: state
-      entity_id: switch.thermostat
+      entity_id: switch.sonoff_2
       from: 
         - 'on'
         - 'off'

@@ -89,7 +89,7 @@ webhook:
 climate:
   - platform: generic_thermostat
     name: Riscaldamento
-    heater: switch.thermostat
+    heater: switch.sonoff_2
     target_sensor: sensor.house_temperature
     min_temp: 10
     max_temp: 25

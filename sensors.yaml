@@ -391,7 +391,7 @@
        
   - platform: history_stats
     name: Riscaldamento today
-    entity_id: switch.thermostat
+    entity_id: switch.sonoff_2
     state: 'on'
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
@@ -399,7 +399,7 @@
     
   - platform: history_stats
     name: Riscaldamento yesterday
-    entity_id: switch.thermostat
+    entity_id: switch.sonoff_2
     state: 'on'
     type: time 
     end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
@@ -408,7 +408,7 @@
        
   - platform: history_stats
     name: Riscaldamento this week
-    entity_id: switch.thermostat
+    entity_id: switch.sonoff_2
     state: 'on'
     type: time 
     start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
