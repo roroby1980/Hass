@@ -405,7 +405,7 @@
 - alias: Button Emma single press 
   trigger:
     platform: event
-    event_type: deconz.event
+    event_type: deconz_event
     event_data:
       id: switch_emma
       event: 1002
@@ -416,7 +416,7 @@
 - alias: Button Emma double press 
   trigger:
     platform: event
-    event_type: deconz.event
+    event_type: deconz_event
     event_data:
       id: switch_emma
       event: 1004
