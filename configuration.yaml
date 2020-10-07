@@ -143,6 +143,8 @@ binary_sensor:
 homeassistant:
   packages: !include_dir_named packages
   customize:
+    switch.sonoff_1000a539ca:
+      device_class: lock
     binary_sensor.mainbedroomwindow:
       device_class: opening
     binary_sensor.bedroomshield:
