@@ -145,10 +145,6 @@ homeassistant:
   customize:
     switch.sonoff_1000a539ca:
       device_class: lock
-    binary_sensor.mainbedroomwindow:
-      device_class: opening
-    binary_sensor.bedroomshield:
-      device_class: opening
     switch.sonoff_1000a54613:
       device_class: light
       
