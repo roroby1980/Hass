@@ -423,3 +423,18 @@
   action:
     - service: light.toggle
       entity_id: light.shelly_shdm_1_d1818c # emma bedroom main
+
+- alias: 'Light26 - entrance '
+  trigger:
+    - platform: state 
+      entity_id:
+        - switch.sonoff_1000a4166e
+      to: 
+        - 'off'
+        - 'on'
+  action:
+    - service: light.toggle
+      entity_id: 
+        - light.shelly_shrgbw2_f4337c_4
+
+      
