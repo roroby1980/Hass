@@ -468,10 +468,6 @@
       state: 
        - 'off'
        - 'Unavailable'
-    - condition: state 
-      entity_id: sun.sun
-      state: 
-        - 'below_horizon'
   action:
     - service: light.turn_on
       entity_id: 
