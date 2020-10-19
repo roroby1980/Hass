@@ -469,7 +469,7 @@
        - 'off'
        - 'Unavailable'
     - condition: state 
-        entity_id: sun.sun
+      entity_id: sun.sun
       state: 
         - 'below_horizon'
   action:
