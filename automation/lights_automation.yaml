@@ -437,4 +437,62 @@
       entity_id: 
         - light.shelly_shrgbw2_f4337c_4
 
-      
+- alias: 'Light27 - nightlight '
+  trigger:
+    - platform: state 
+        entity_id: sun.sun
+      to: 
+        - 'below_horizon'
+        - 'above_horizon'
+    - platform: state
+      entity_id: light.l_bedroom
+      to: 
+       - 'off'
+       - 'Unavailable'
+    - platform: state
+      entity_id: light.shelly_shrgbw2_f43a0c_1
+      to: 
+       - 'off'
+       - 'Unavailable'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: state
+      entity_id: light.l_bedroom
+      state: 
+       - 'off'
+       - 'Unavailable'
+    - condition: state
+      entity_id: light.shelly_shrgbw2_f43a0c_1
+      state: 
+       - 'off'
+       - 'Unavailable'
+    - condition: state 
+        entity_id: sun.sun
+      state: 
+        - 'below_horizon'
+  action:
+    - service: light.turn_on
+      entity_id: 
+        - light.shelly_shrgbw2_f43a0c_2
+
+- alias: 'Light28 - nightlight '
+  trigger:
+    - platform: state 
+        entity_id: sun.sun
+      to: 
+        - 'above_horizon'
+    - platform: state
+      entity_id: light.l_bedroom
+      to: 
+        - 'on'
+    - platform: state
+      entity_id: light.shelly_shrgbw2_f43a0c_1
+      to: 
+        - 'on'
+  condition:
+  action:
+    - service: light.turn_off
+      entity_id: 
+        - light.shelly_shrgbw2_f43a0c_2

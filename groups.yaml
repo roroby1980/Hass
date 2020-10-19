@@ -11,14 +11,14 @@ back_home_lights:
 all_lights:
   entities:
     - light.emma_bedroom
-    - light.livingroom_cornerlamp      #Livingroom side lamp1
-    - light.bathroom           #bathroom table lamp
-    - light.l_kitchen      #kitchen up lamp
-    - light.livingroom_tv      #Livingroom side lamp2
-    - light.l_dressingroom  #dressingroom ceiling light
+    - light.livingroom_cornerlamp      #Livingroom cornerlamp
+    - light.bathroom                #bathroom table lamp
+    - light.l_kitchen          #kitchen up lamp
+    - light.livingroom_tv      #Livingroom tv lamp
+    - light.l_dressingroom         #dressingroom ceiling light
     - light.l_bathroom_main         #bathroom ceiling light
-    - switch.sonoff         #Livingroom table light
-    - light.l_bedroom       #masterbedroom ceiling light  
+    - switch.sonoff            #Livingroom table light
+    - light.l_bedroom          #masterbedroom  light  
     - light.sonoff_1000994c1d #not connetted lamp from sonoff fan controller
     - switch.sonoff_100056b199_1 # sonoff touch input 1
     - switch.sonoff_100056b199_2 # sonoff touch input 2
@@ -32,6 +32,7 @@ all_lights:
     - light.shelly_shrgbw2_f4337c_1 #Livingroom Led Warm
     - light.shelly_shrgbw2_f4337c_2 #Livingroom Led Natural
     - light.shelly_shrgbw2_f4337c_3 #Entance service Led
+    - light.shelly_shrgbw2_f4337c_4 #Entance main Led
 all_socket:
   entities:
     - switch.shelly_shsw_pm_b901af #Dishwasher
