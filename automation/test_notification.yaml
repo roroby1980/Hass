@@ -36,3 +36,8 @@
       data_template:
         title: "Risk of blackout"
         message: 'at {{ now().strftime("%H:%M") }} shelly has stop {{trigger.from_state.attributes.friendly_name}} while was {{states.sensor.current_power.state}} W used'
+    - delay: '00:00:30'
+    - service: telegram_bot.send_message
+      data_template:
+        title: "Risk of blackout"
+        message: 'now that  {{trigger.from_state.attributes.friendly_name}} is stop  there is {{states.sensor.current_power.state}} W used'
