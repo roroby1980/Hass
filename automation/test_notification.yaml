@@ -34,9 +34,5 @@
   action:
     - service: telegram_bot.send_message
       data_template:
-        title: "Shelly has stop "
-        message: 'shelly '
-    - service: telegram_bot.send_message
-      data_template:
-        title: "Shelly has stop "
-        message: 'shelly {{ now().strftime("%H:%M") }} stop {{trigger.from_state.attributes.friendly_name}}'
+        title: "Risk of blackout"
+        message: 'at {{ now().strftime("%H:%M") }} shelly has stop {{trigger.from_state.attributes.friendly_name}} while was {{sensor.current_power}} W used'
