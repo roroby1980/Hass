@@ -481,6 +481,12 @@
     name: Shelly Dishwasher
     json_attributes:
       - temperature
+      - meters.counters
+      - overtemperature
+      - meters.overpower
+      - uptime
+      - meters.total
+      - has_update
     resource: "http://192.168.1.81/status/"
     value_template: 'Dishwasher relay temperature'
     scan_interval: 300
