@@ -36,4 +36,4 @@
     data_template:
       title: Shelly has stop {{ trigger.entity_id }}
       message: >
-      "{{ now().strftime("%H:%M") }} stop {{ trigger.entity_id }} because now it's using  {{sensor.current_power}}"
+      {{ now().strftime("%H:%M") }} 'stop' {{ trigger.entity_id }} 'because now its using'  {{sensor.current_power}}
