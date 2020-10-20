@@ -482,5 +482,5 @@
     json_attributes:
       - temperature
     resource: "http://192.168.1.81/status/"
-    value_template: 'Treno 8:00'
+    value_template: 'Dishwasher relay temperature'
     scan_interval: 300
