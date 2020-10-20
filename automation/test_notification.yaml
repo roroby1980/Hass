@@ -27,5 +27,5 @@
   action:
     service: telegram_bot.send_message
     data_template:
-      title: 'Shelly has stop {{ trigger.entity_id }}'
-      message: 'shelly {{ now().strftime("%H:%M") }} stop {{ trigger.entity_id }} because now its using {{sensor.current_power}}'
+      title: 'Shelly has stop '
+      message: 'shelly {{ now().strftime("%H:%M") }} '
