@@ -474,3 +474,13 @@
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'power') }}"
       current_pow1:
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'current') }}"
+
+
+
+  - platform: rest
+    name: Shelly Dishwasher
+    json_attributes:
+      - temperature
+    resource: "http://192.168.1.81/status/"
+    value_template: 'Treno 8:00'
+    scan_interval: 300
