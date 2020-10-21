@@ -161,6 +161,8 @@ yeelight:
       name: Livingroom cornerlamp
     192.168.1.93:
       name: Emma Bedroom
+    192.168.1.97:
+      name: livingroom 3
 
 api:
 
