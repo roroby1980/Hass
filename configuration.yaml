@@ -61,14 +61,14 @@ input_select:
     initial: not_home
     icon: mdi:guy-fawkes-mask
 
-influxdb:
-  host: localhost
-  port: 8086
-  database: homeassistant
-  username: hassio
-  password: hassio
-  max_retries: 3
-  default_measurement: state
+# influxdb:
+#   host: localhost
+#   port: 8086
+#   database: homeassistant
+#   username: hassio
+#   password: hassio
+#   max_retries: 3
+#   default_measurement: state
 
 #Bluethoot
 #device_tracker:
@@ -155,14 +155,19 @@ yeelight:
   devices:
     192.168.1.73:
       name: Livingroom tv
+      model: color2
     192.168.1.62:
       name: Alma bedroom
+      model: white2
     192.168.1.74:
       name: Livingroom cornerlamp
+      model: color2
     192.168.1.93:
       name: Emma Bedroom
+      model: color2
     192.168.1.97:
       name: livingroom 3
+      model: white2
 
 api:
 
