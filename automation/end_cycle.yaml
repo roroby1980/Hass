@@ -6,6 +6,10 @@
       below: '3'
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: switch.shelly_shsw_pm_b9841d
+      state: 'on'
   action:
     - service: telegram_bot.send_message
       data_template:
@@ -35,6 +39,10 @@
       below: '3'
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: switch.shelly_shsw_pm_b901af
+      state: 'on'
   action:
     - service: telegram_bot.send_message
       data_template:
@@ -57,9 +65,13 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.shelly_shsw_pm_b911e9_current_consumption
-      below: '100'
+      below: '60'
       for:
         minutes: 1
+  condition:
+    - condition: state
+      entity_id: switch.shelly_shsw_pm_b911e9
+      state: 'on'
   action:
     - service: telegram_bot.send_message
       data_template:
@@ -72,7 +84,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.shelly_shsw_pm_b911e9_current_consumption
-      above: '100'
+      above: '500'
   action:
     - service: automation.turn_on
       entity_id: automation.notify_oven
