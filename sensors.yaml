@@ -490,3 +490,9 @@
     resource: "http://192.168.1.81/status/"
     value_template: 'Dishwasher relay temperature'
     scan_interval: 300
+
+  - platform: rest
+    name: Shelly Dishwasher2
+    resource: "http://192.168.1.81/status/"
+    value_template: 'Dishwasher relay temperature'
+    scan_interval: 300
