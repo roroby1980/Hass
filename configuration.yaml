@@ -154,11 +154,11 @@ homeassistant:
 yeelight:
   devices:
     192.168.1.73:
-      name: Livingroom cornerlamp
-    192.168.1.62:
-      name: bathroom
-    192.168.1.74:
       name: Livingroom tv
+    192.168.1.62:
+      name: Alma bedroom
+    192.168.1.74:
+      name: Livingroom cornerlamp
     192.168.1.93:
       name: Emma Bedroom
 
