@@ -443,8 +443,13 @@
       minutes: /60
     - platform: state
       entity_id: 
-        - light.l_bedroom
         - light.shelly_shrgbw2_f43a0c_1
+      to: 
+       - 'off'
+       - 'Unavailable'
+    - platform: state
+      entity_id: 
+        - light.l_bedroom
       to: 
        - 'off'
        - 'Unavailable'
