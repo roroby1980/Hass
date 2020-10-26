@@ -440,7 +440,7 @@
 - alias: 'Light27 - nightlight '
   trigger:
     - platform: time_pattern
-      minutes: /60
+      hours: /1
     - platform: state
       entity_id: 
         - light.shelly_shrgbw2_f43a0c_1
