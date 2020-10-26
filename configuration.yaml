@@ -147,9 +147,23 @@ homeassistant:
       device_class: lock
     switch.sonoff_1000a54613:
       device_class: light
-      
+
+utility_meter:
+  daily_energy_dishwasher:
+    source: sensor.shelly_shsw_pm_b906cb_current_consumption
+    cycle: daily 
+  monthly_energy_dishwasher:
+    source: sensor.shelly_shsw_pm_b906cb_current_consumption
+    cycle: monthly   
+  daily_energy_general_10a:
+    source: sensor.shelly_shsw_pm_b901af_current_consumption
+    cycle: daily 
+  monthly_energy_general_10a:
+    source: sensor.shelly_shsw_pm_b901af_current_consumption
+    cycle: monthly  
 
 
+sensor.shelly_shsw_pm_b906cb_current_consumption
 
 # yeelight:
 #   devices:
