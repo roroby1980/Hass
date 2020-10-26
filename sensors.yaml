@@ -388,6 +388,14 @@
        -  sensor.t_bathroom
        -  sensor.t_bedroom
        -  sensor.t_livingroom
+
+  - platform: min_max
+    name: house humidity
+    type: mean
+    entity_ids:
+       -  sensor.t_bathroom_2
+       -  sensor.t_bedroom_2
+       -  sensor.t_livingroom_2
        
   - platform: history_stats
     name: Riscaldamento today
