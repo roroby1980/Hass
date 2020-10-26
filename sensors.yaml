@@ -394,7 +394,7 @@
     type: mean
     entity_ids:
        -  sensor.t_bathroom_2
-       -  sensor.t_bedroom_2
+       -  sensor.t_bedroom_3
        -  sensor.t_livingroom_2
        
   - platform: history_stats
