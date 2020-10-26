@@ -163,7 +163,6 @@ utility_meter:
     cycle: monthly  
 
 
-sensor.shelly_shsw_pm_b906cb_current_consumption
 
 # yeelight:
 #   devices:
