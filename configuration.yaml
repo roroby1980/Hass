@@ -151,23 +151,23 @@ homeassistant:
 
 
 
-yeelight:
-  devices:
-    192.168.1.73:
-      name: Livingroom tv
-      model: color2
-    192.168.1.62:
-      name: Alma bedroom
-      model: mono1
-    192.168.1.74:
-      name: Livingroom cornerlamp
-      model: color2
-    192.168.1.93:
-      name: Emma Bedroom
-      model: color2
-    192.168.1.97:
-      name: livingroom 3
-      model: mono1
+# yeelight:
+#   devices:
+#     192.168.1.73:
+#       name: Livingroom tv
+#       model: color2
+#     192.168.1.62:
+#       name: Alma bedroom
+#       model: mono1
+#     192.168.1.74:
+#       name: Livingroom cornerlamp
+#       model: color2
+#     192.168.1.93:
+#       name: Emma Bedroom
+#       model: color2
+#     192.168.1.97:
+#       name: livingroom 3
+#       model: mono1
 
 api:
 
