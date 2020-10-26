@@ -455,6 +455,11 @@
     - condition: state
       entity_id: 
         - light.l_bedroom
+      state: 
+       - 'off'
+       - 'Unavailable'
+    - condition: state
+      entity_id: 
         - light.shelly_shrgbw2_f43a0c_1
       state: 
        - 'off'
