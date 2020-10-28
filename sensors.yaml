@@ -15,6 +15,12 @@
       - 'time_utc'
       - 'beat'
 
+  - platform: mold_indicator
+    indoor_temp_sensor: sensor.house_temperature
+    indoor_humidity_sensor: sensor.house_humidity
+    outdoor_temp_sensor: sensor.t_outside
+    calibration_factor: 2.15
+
   - platform: command_line
     name: db_file_size
     command: "du -m /config/home-assistant_v2.db | cut -f1"

@@ -481,7 +481,7 @@
               12
            {% elif now().hour >= 8 and now().hour < 18  %}
               255
-           {% elif now().hour >= 18 and now().hour < 20  %}
+           {% elif now().hour >= 18 and now().hour < 22  %}
               30
            {% elif now().hour >= 22  %}
               3
