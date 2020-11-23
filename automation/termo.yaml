@@ -30,15 +30,17 @@
       data_template:
         entity_id: climate.riscaldamento
         temperature:  >
-           {% if  now().hour < 7 %} 
+           {% if  now().hour < 6 %} 
               10
-           {% elif now().hour >= 7 and now().hour < 9 %} 
+           {% elif now().hour >= 6 and now().hour < 7 %} 
               19
-           {% elif now().hour >= 9 and now().hour < 18  %}
-              18
-           {% elif now().hour >= 18 and now().hour < 21  %}
+           {% elif now().hour >= 9 and now().hour < 11  %}
               20
-           {% elif now().hour >= 21 and now().hour < 23  %}
+           {% elif now().hour >= 11 and now().hour < 15  %}
+              18
+           {% elif now().hour >= 15 and now().hour < 19  %}
+              20
+           {% elif now().hour >= 19 and now().hour < 23  %}
               19
            {% elif now().hour >= 23  %}
               10
