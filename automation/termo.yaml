@@ -80,3 +80,31 @@
       data_template:
         entity_id: climate.riscaldamento
         temperature: 10
+
+
+- alias: 'Termo - fan on '
+  trigger:
+    - platform: state
+      entity_id:
+        - switch.sonoff_2
+      to: 'on'
+      for:
+        minutes: 10
+  condition:
+    condition: time
+    after: '09:00:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.tasmota
+
+- alias: 'Termo - fan off '
+  trigger:
+    - platform: state
+      entity_id:
+        - switch.sonoff_2
+      to: 'off'
+    - platform: time
+      at: "20:15:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.tasmota
