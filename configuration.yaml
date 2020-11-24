@@ -95,8 +95,10 @@ climate:
     max_temp: 25
     ac_mode: false
     target_temp: 19.5
+    cold_tolerance: 0.1
+    hot_tolerance : 0.1
     min_cycle_duration:
-      seconds: 120
+      seconds: 1200
     initial_hvac_mode: "off"
     away_temp: 15
 
