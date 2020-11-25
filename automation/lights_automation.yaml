@@ -427,7 +427,6 @@
   action:
     - service: yeelight.start_flow
       entity_id: light.yeelight_emma # emma bedroom yeeelight
-      entity_id: light.yeelight_emma
       transitions:
         - RGBTransition:
            - 0
