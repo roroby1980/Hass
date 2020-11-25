@@ -491,41 +491,41 @@
 
 
 
-  - platform: rest
-    name: Shelly Dishwasher
-    json_attributes:
-      - temperature
-      - meters.counters
-      - overtemperature
-      - meters.overpower
-      - uptime
-      - meters.total
-      - has_update
-    resource: "http://192.168.1.81/status/"
-    value_template: 'Dishwasher relay temperature'
-    scan_interval: 300
+  # - platform: rest
+  #   name: Shelly Dishwasher
+  #   json_attributes:
+  #     - temperature
+  #     - meters.counters
+  #     - overtemperature
+  #     - meters.overpower
+  #     - uptime
+  #     - meters.total
+  #     - has_update
+  #   resource: "http://192.168.1.81/status/"
+  #   value_template: 'Dishwasher relay temperature'
+  #   scan_interval: 300
 
-  - platform: rest
-    name: Shelly Dishwasher meter
-    resource: "http://192.168.1.81/status/"
-    value_template: '{{value_json.meters[0]["power"]}}'
-    scan_interval: 60
+  # - platform: rest
+  #   name: Shelly Dishwasher meter
+  #   resource: "http://192.168.1.81/status/"
+  #   value_template: '{{value_json.meters[0]["power"]}}'
+  #   scan_interval: 60
 
 
-  - platform: rest
-    name: Shelly General 10A
-    json_attributes:
-      - temperature
-      - overtemperature
-      - uptime
-      - has_update
-    resource: "http://192.168.1.76/status/"
-    value_template: 'Dishwasher relay temperature'
-    scan_interval: 300
+  # - platform: rest
+  #   name: Shelly General 10A
+  #   json_attributes:
+  #     - temperature
+  #     - overtemperature
+  #     - uptime
+  #     - has_update
+  #   resource: "http://192.168.1.76/status/"
+  #   value_template: 'Dishwasher relay temperature'
+  #   scan_interval: 300
 
-  - platform: rest
-    name: Shelly General 10A meter
-    resource: "http://192.168.1.76/status/"
-    value_template: '{{value_json.meters[0]["power"]}}'
-    scan_interval: 60
+  # - platform: rest
+  #   name: Shelly General 10A meter
+  #   resource: "http://192.168.1.76/status/"
+  #   value_template: '{{value_json.meters[0]["power"]}}'
+  #   scan_interval: 60
 
