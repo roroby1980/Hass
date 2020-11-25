@@ -458,7 +458,7 @@
     - service: yeelight.set_mode
       entity_id: light.yeelight_emma # emma bedroom yeeelight
       mode: rgb
-      
+
 - alias: Button Emma double press 
   trigger:
     platform: event
