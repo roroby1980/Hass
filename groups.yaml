@@ -9,11 +9,12 @@ back_home_lights:
     - light.shelly_shrgbw2_f4337c_3
 all_lights:
   entities:
-    - light.emma_bedroom
-    - light.livingroom_cornerlamp      #Livingroom cornerlamp
+    - light.yeelight_emma
+    - light.yeelight_l_corner      #Livingroom cornerlamp
     - light.alma_bedroom                #alma table lamp
     - light.l_kitchen          #kitchen up lamp
-    - light.livingroom_tv      #Livingroom tv lamp
+    - light.yeelight_l_table      #Livingroom tv lamp
+    - light.yeelight_l_ceiling
     - light.l_dressingroom         #dressingroom ceiling light
     - light.l_bathroom_main         #bathroom ceiling light
     - switch.sonoff            #Livingroom table light
@@ -58,13 +59,14 @@ sonoff_inputs:
     - switch.sonoff_1000a4166e #input entrance
 dim_lights:
   entities:
-    - light.livingroom_cornerlamp
-    - light.livingroom_tv
+    - light.yeelight_l_corner
+    - light.yeelight_l_table
+    - light.yeelight_l_ceiling
     - light.l_kitchen
     - light.l_dressingroom
     - light.l_bathroom_main
     - light.l_bedroom
-    - light.emma_bedroom
+    - light.yeelight_emma
     - light.alma_bedroom
 inside_presences:
     entities:
