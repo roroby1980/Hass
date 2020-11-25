@@ -417,47 +417,47 @@
     - service: light.toggle
       entity_id: light.yeelight_emma # emma bedroom yeeelight
 
-- alias: Button Emma long press start 
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: switch_emma
-      event: 1001
-  action:
-    - service: yeelight.start_flow
-      entity_id: light.yeelight_emma # emma bedroom yeeelight
-      transitions:
-        - RGBTransition:
-           - 0
-           - 255
-           - 255
-           - 5000
-           - 100
-        - RGBTransition:
-           - 255
-           - 0
-           - 255
-           - 5000
-           - 100
-        - RGBTransition:
-           - 255
-           - 255
-           - 0
-           - 5000
-           - 100
+# - alias: Button Emma long press start 
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: switch_emma
+#       event: 1001
+#   action:
+#     - service: yeelight.start_flow
+#       entity_id: light.yeelight_emma # emma bedroom yeeelight
+#       transitions:
+#         - RGBTransition:
+#            - 0
+#            - 255
+#            - 255
+#            - 5000
+#            - 100
+#         - RGBTransition:
+#            - 255
+#            - 0
+#            - 255
+#            - 5000
+#            - 100
+#         - RGBTransition:
+#            - 255
+#            - 255
+#            - 0
+#            - 5000
+#            - 100
 
-- alias: Button Emma long press release 
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: switch_emma
-      event: 1003
-  action:
-    - service: yeelight.set_mode
-      entity_id: light.yeelight_emma # emma bedroom yeeelight
-      mode: rgb
+# - alias: Button Emma long press release 
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: switch_emma
+#       event: 1003
+#   action:
+#     - service: yeelight.set_mode
+#       entity_id: light.yeelight_emma # emma bedroom yeeelight
+#       mode: rgb
 
 - alias: Button Emma double press 
   trigger:
