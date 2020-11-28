@@ -13,9 +13,12 @@
         - binary_sensor.w_livingroom
       to: 'off'
   condition:
-    condition: state
-    entity_id: group.family
-    state: 'home'
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: state
+      entity_id: binary_sensor.w_livingroom
+      state: 'off'
   action:
     - service:  climate.set_hvac_mode
       data_template:
@@ -89,12 +92,12 @@
         - switch.sonoff_2
       to: 'on'
       for:
-        minutes: 10
+        minutes: 5
   condition:
     - condition: time
       after: '09:00:00'
     - condition: time
-      before: '20:00:00'
+      before: '19:30:00'
   action:
     - service: switch.turn_on
       entity_id: switch.tasmota
@@ -106,7 +109,7 @@
         - switch.sonoff_2
       to: 'off'
     - platform: time
-      at: "20:15:00"
+      at: "19:45:00"
   action:
     - service: switch.turn_off
       entity_id: switch.tasmota

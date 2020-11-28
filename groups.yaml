@@ -7,6 +7,7 @@ family:
 back_home_lights:
   entities:
     - light.shelly_shrgbw2_f4337c_3
+    - light.l_kitchen
 all_lights:
   entities:
     - light.yeelight_emma
@@ -15,6 +16,9 @@ all_lights:
     - light.l_kitchen          #kitchen up lamp
     - light.yeelight_l_table      #Livingroom tv lamp
     - light.yeelight_l_ceiling
+    - light.yeelight_l_corner
+    - light.yeelight_emma
+    - light.yeelight_alma
     - light.l_dressingroom         #dressingroom ceiling light
     - light.l_bathroom_main         #bathroom ceiling light
     - switch.sonoff            #Livingroom table light
