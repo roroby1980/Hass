@@ -93,11 +93,16 @@
       to: 'on'
       for:
         minutes: 5
+    - platform: time
+      at: "08:45:00"
   condition:
     - condition: time
-      after: '09:00:00'
+      after: '08:30:00'
     - condition: time
       before: '19:30:00'
+    - condition: state
+      entity_id: switch.sonoff_2
+      state: 'on'
   action:
     - service: switch.turn_on
       entity_id: switch.tasmota
