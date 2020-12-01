@@ -13,11 +13,7 @@ discovery:
   ignore:
     - homekit
 
-media_player:
-  - platform: alexa
-    email: !secret alexa_mail
-    password: !secret alexa_pwd
-    url: "amazon.it"
+
 
 #camera:
 #  - platform: onvif
