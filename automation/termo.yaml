@@ -134,6 +134,7 @@
     context:
       user_id:
         - admin
+        - 03061f28b50f4160ace1de4cdc48f6ee
   action:
     - service: input_select.select_option
       data:
