@@ -128,8 +128,9 @@
     event_type: state_changed
     # optional
     event_data:
-      state: on
-      entity_id: switch.sonoff_2
+      new_state:
+        state: 'on'
+        entity_id: switch.sonoff_2
     context:
       user_id:
         - admin
