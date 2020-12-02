@@ -36,11 +36,11 @@
            {% if  now().hour < 6 %} 
               10
            {% elif now().hour >= 6 and now().hour < 7 %} 
-              19
+              19.5
            {% elif now().hour >= 9 and now().hour < 11  %}
               20
            {% elif now().hour >= 11 and now().hour < 15  %}
-              18
+              19
            {% elif now().hour >= 15 and now().hour < 19  %}
               20
            {% elif now().hour >= 19 and now().hour < 23  %}
@@ -71,6 +71,7 @@
     platform: state
     entity_id:
       - binary_sensor.w_livingroom
+      - binary_sensor.w_bathroom
     to: 'on'
     for:
       minutes: 3
@@ -118,3 +119,25 @@
   action:
     - service: switch.turn_off
       entity_id: switch.tasmota
+
+
+
+- alias: 'Termo - manual request '
+  trigger:
+    platform: event
+    event_type: state_changed
+    # optional
+    event_data:
+      state: on
+      entity_id: switch.sonoff_2
+    context:
+      user_id:
+        - ADMIN
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.termo
+      option: manual
+    - delay: '01:00:00'
+    - service: input_select.select_option
+      entity_id: input_select.termo
+      option: crono

@@ -13,8 +13,6 @@ discovery:
   ignore:
     - homekit
 
-
-
 #camera:
 #  - platform: onvif
 #    host: 192.168.1.94
@@ -65,6 +63,11 @@ input_select:
       - not_home
     initial: not_home
     icon: mdi:guy-fawkes-mask
+  termo:
+    options:
+      - manual
+      - crono
+    initial: crono
 
 # influxdb:
 #   host: localhost

@@ -17,6 +17,7 @@
       entity_id: automation.avoid_blackout_notification
 
 - alias: avoid blackout notification
+  initial_state: False  # spenta quando Home Assistant si avvia
   trigger:
     - platform: state
       entity_id: 
