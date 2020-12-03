@@ -130,8 +130,8 @@
     event_data:
       entity_id: switch.sonoff_2
       new_state: 
-         state: 'on'
-     context:
+        state: 'on'
+    context:
       user_id:
          - admin
          - ADMIN
