@@ -127,8 +127,8 @@
     platform: event
     event_type: state_changed
     # optional
-    # event_data:
-    #   entity_id: switch.sonoff_2
+    event_data:
+      entity_id: switch.sonoff_2
     #   new_state : 'on'
     # context:
     #   user_id:
