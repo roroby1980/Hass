@@ -1,6 +1,8 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+logger:
+  default: notset
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automation
