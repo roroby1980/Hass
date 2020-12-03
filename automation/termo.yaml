@@ -126,9 +126,9 @@
   trigger:
     platform: event
     event_type: state_changed
-    entity_id: switch.sonoff_2
     # optional
     data:
+      entity_id: switch.sonoff_2
       new_state:
         state: 'on'
         context:
