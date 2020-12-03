@@ -127,14 +127,21 @@
     platform: event
     event_type: state_changed
     # optional
-    event_data:
-      entity_id: switch.sonoff_2
-      new_state:
-        state: 'on'
+    # event_data:
+    #   entity_id: switch.sonoff_2
+    #   new_state:
+    #     state: 'on'
       #context:
        # user_id:
         #    - admin
         #    - 03061f28b50f4160ace1de4cdc48f6ee
+  condition:
+    - condition: template
+      value_template: "{{ trigger.event.data.new_state is defined }}"
+    - condition: template
+      value_template: "{{ trigger.event.data.new_state.entity_id == 'entity_id' }}"
+    - condition: template
+      value_template: "{{ trigger.event.data.new_state.state == 'on' }}"
   action:
     - service: input_select.select_option
       data:
