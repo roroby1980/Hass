@@ -129,11 +129,6 @@
     # optional
     event_data:
       entity_id: switch.sonoff_2
-    context:
-      user_id:
-         - admin
-         - ADMIN
-         - 03061f28b50f4160ace1de4cdc48f6ee
   condition:
     - condition: template
       value_template: "{{ trigger.event.data.new_state.state == 'on' }}"
