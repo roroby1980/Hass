@@ -126,11 +126,11 @@
   trigger:
     platform: event
     event_type: state_changed
+    entity_id: switch.sonoff_2
     # optional
     data:
       new_state:
         state: 'on'
-        entity_id: switch.sonoff_2
         context:
           user_id:
             - admin
