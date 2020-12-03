@@ -123,7 +123,7 @@
 
 
 - alias: 'Termo - manual request '
-trigger:
+  trigger:
     platform: event
     event_type: MY_CUSTOM_EVENT
     # optional
