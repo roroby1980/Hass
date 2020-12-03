@@ -127,15 +127,15 @@
     platform: event
     event_type: state_changed
     # optional
-    event_data:
-      entity_id: switch.sonoff_2
-      new_state : 'on'
-    context:
-      user_id:
-      # any of these will match
-        - admin
-        - ADMIN
-        - 03061f28b50f4160ace1de4cdc48f6ee
+    # event_data:
+    #   entity_id: switch.sonoff_2
+    #   new_state : 'on'
+    # context:
+    #   user_id:
+    #   # any of these will match
+    #     - admin
+    #     - ADMIN
+    #     - 03061f28b50f4160ace1de4cdc48f6ee
   action:
     - service: input_select.select_option
       data:
