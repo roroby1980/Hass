@@ -141,8 +141,8 @@
       data:
         entity_id: input_select.termo
         option: manual
-    - delay: '01:00:00'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.termo
-        option: crono
+    # - delay: '01:00:00'
+    # - service: input_select.select_option
+    #   data:
+    #     entity_id: input_select.termo
+    #     option: crono
