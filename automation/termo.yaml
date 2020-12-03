@@ -125,7 +125,7 @@
 - alias: 'Termo - manual request '
   trigger:
     platform: event
-    event_type: MY_CUSTOM_EVENT
+    event_type: state_changed
     # optional
     event_data:
       entity_id: switch.sonoff_2
