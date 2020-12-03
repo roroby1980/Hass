@@ -127,12 +127,12 @@
     platform: event
     event_type: state_changed
     # optional
-    data:
+    event_data:
       entity_id: switch.sonoff_2
       new_state:
         state: 'on'
-        #context:
-        #  user_id:
+      #context:
+       # user_id:
         #    - admin
         #    - 03061f28b50f4160ace1de4cdc48f6ee
   action:
