@@ -35,7 +35,7 @@
         temperature:  >
            {% if  now().hour < 6 %} 
               10
-           {% elif now().hour >= 6 and now().hour < 7 %} 
+           {% elif now().hour >= 6 and now().hour < 9 %} 
               19.5
            {% elif now().hour >= 9 and now().hour < 11  %}
               20

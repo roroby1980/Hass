@@ -12,5 +12,5 @@
     service: telegram_bot.send_message
     data_template:
       title: Thermostat {{trigger.to_state.state}}
-      message: '{{ now().strftime("%H:%M") }} Thermostat {{trigger.to_state.state}}'
+      message: '{{ now().strftime("%H:%M") }} Thermostat {{trigger.to_state.state}} temperature {{sensor.house_temperature}}'
 
