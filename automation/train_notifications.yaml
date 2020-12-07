@@ -1,3 +1,17 @@
+- alias: 'monitor trains''
+  trigger:
+    - platform: time_pattern
+      seconds: '/5'
+  action:
+    - service: homeassistant.update_entity
+      entity_id: 
+       - sensor.tr630
+       - sensor.tr700
+       - sensor.tr730
+       - sensor.tr735
+       - sensor.tr800
+       
+
 - id: 'train1'
   alias: Notifica Treno 8:00
   trigger:

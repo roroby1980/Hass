@@ -37,7 +37,7 @@
       - compOraUltimoRilevamento
     resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/612"
     value_template: 'Treno 6:30'
-    scan_interval: 30
+    scan_interval: 315360000 
     
   - platform: rest
     name: tr700
@@ -48,7 +48,7 @@
       #- fermate[fermate.lenght-1].stazione
     resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00074/1614"
     value_template: 'Treno 7:00'
-    scan_interval: 30
+    scan_interval: 315360000 
 
   - platform: rest
     name: tr730
@@ -58,7 +58,7 @@
       - compOraUltimoRilevamento
     resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/618"
     value_template: 'Treno 7:30'
-    scan_interval: 30
+    scan_interval: 315360000 
 
   - platform: rest
     name: tr735
@@ -68,7 +68,7 @@
       - compOraUltimoRilevamento
     resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00085/2718"
     value_template: 'Treno 7:35'
-    scan_interval: 30  
+    scan_interval: 315360000   
 
   - platform: rest
     name: tr800
@@ -78,7 +78,7 @@
       - compOraUltimoRilevamento
     resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/1622"
     value_template: 'Treno 8:00'
-    scan_interval: 30
+    scan_interval: 315360000 
 
 
   - platform: template
@@ -95,13 +95,7 @@
                             states("sensor.shelly_shsw_pm_b984a1_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b98576_current_consumption") |float 
                           }}'
-
-
-  - platform: integration
-    source: sensor.current_power
-    name: energy_spent
-    unit_prefix: k
-    round: 2        
+   
 
     
   - platform: template
@@ -214,19 +208,6 @@
     end: '{{ now() }}'
   
     
-  - platform: history_stats
-    name: livingroom open today
-    entity_id: binary_sensor.w_livingroom
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
-
-  - platform: template
-    sensors:
-      value_livingroom_today:
-        friendly_name: 'Window livingroom open today'
-        value_template: '{{ states.sensor.livingroom_open_today.attributes.value }}'
 
   - platform: mqtt
     name: "YICAM"
