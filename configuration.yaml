@@ -9,7 +9,7 @@ automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 sensor: !include sensors.yaml
 zone: !include zone.yaml
-#var: !include variables.yaml
+var: !include variables.yaml
 
 discovery:
   ignore:

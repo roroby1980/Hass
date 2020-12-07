@@ -1,13 +1,3 @@
-last_movment_entrance:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-  
-last_movment_bathroom:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-
 ultimo_aggiornamento_tami_phone:
   initial_value: 'Unknown'
   restore: true
@@ -18,32 +8,3 @@ ultimo_aggiornamento_roby_phone:
   restore: true
   icon: mdi:map-marker
   
-last_movment_balcony_south:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-
-last_movment_balcony_west:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-  
-last_movment_balcony_east:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-  
-last_open_livingroom_window:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-  
-time_open_livingroom_window:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
-  
-last_movment_yicam:
-  initial_value: 'Unknown'
-  restore: true
-  icon: mdi:map-marker
