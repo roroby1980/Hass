@@ -12,9 +12,13 @@
           {% else %} 
             'summer season heater: off'
           {% endif %}
-    - delay: '00:01:30'
+    - delay: '00:00:30'
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
+    - service: telegram_bot.send_message
+      data_template:
+        title: Blackout 
+        message: 'automation is {{states.automation.avoid_blackout_notification.state}}'
 
 - alias: avoid blackout notification
   initial_state: False  # spenta quando Home Assistant si avvia
