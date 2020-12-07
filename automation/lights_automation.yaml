@@ -555,3 +555,19 @@
            {% elif now().hour >= 23  %}
               1
            {% endif %}
+
+
+- alias: 'bedrooms lights '
+  trigger:
+    - platform: state
+      entity_id: 
+        - light.l_bedroom
+      to:
+        - 'unavailable'
+        - 'off'
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: 
+        - light.shelly_shrgbw2_f43a0c_1
+        - light.shelly_shrgbw2_f43a0c_4
