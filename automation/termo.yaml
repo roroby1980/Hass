@@ -50,7 +50,7 @@
               20
            {% elif now().hour >= 19 and now().hour < 22  %}
               19
-           {% elif now().hour >= 23  %}
+           {% elif now().hour >= 22  %}
               10
            {% endif %}
         
