@@ -201,7 +201,7 @@
     start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0).replace(day=1))  }}'
     end: '{{ now() }}'
   
-    - platform: history_stats
+  - platform: history_stats
     name: Riscaldamento  Ottobre
     entity_id: switch.sonoff_2
     state: 'on'
@@ -209,7 +209,7 @@
     start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=10)) }}'
     end: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=11)) }}'
     
-    - platform: history_stats
+  - platform: history_stats
     name: Riscaldamento  Novembre
     entity_id: switch.sonoff_2
     state: 'on'
@@ -217,7 +217,7 @@
     start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=11)) }}'
     end: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=12)) }}'
     
-    - platform: history_stats
+  - platform: history_stats
     name: Riscaldamento  Dicembre
     entity_id: switch.sonoff_2
     state: 'on'
@@ -225,7 +225,7 @@
     start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=12)) }}'
     end: '{{ as_timestamp( now().replace(day=31).replace(hour=23).replace(minute=59).replace(second=59).replace(month=12)) }}'
 
-    - platform: history_stats
+  - platform: history_stats
     name: Riscaldamento  Gennaio
     entity_id: switch.sonoff_2
     state: 'on'
