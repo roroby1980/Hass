@@ -15,10 +15,7 @@
     - delay: '00:00:30'
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
-    - service: telegram_bot.send_message
-      data_template:
-        title: Blackout 
-        message: 'automation is {{states.automation.avoid_blackout_notification.state}}'
+
 
 - alias: avoid blackout notification
   initial_state: False  # spenta quando Home Assistant si avvia
@@ -49,3 +46,5 @@
       data_template:
         title: "Risk of blackout"
         message: 'now that  {{trigger.from_state.attributes.friendly_name}} is stop  there is {{states.sensor.current_power.state}} W used'
+    - service: automation.turn_on
+      entity_id: automation.avoid_blackout_notification
