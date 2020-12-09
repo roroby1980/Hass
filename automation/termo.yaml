@@ -11,7 +11,7 @@
     - platform: state
       entity_id:
         - binary_sensor.w_livingroom
-      to: 'off'
+      to: 'off' 
   condition:
     - condition: state
       entity_id: group.family
@@ -19,6 +19,9 @@
     - condition: state
       entity_id: binary_sensor.w_livingroom
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.manual_heater
+      state: 'off'     
   action:
     - service:  climate.set_hvac_mode
       data_template:
@@ -35,22 +38,24 @@
         temperature:  >
            {% if  now().hour < 6 %} 
               10
-           {% elif now().hour >= 6 and now().hour < 9 %} 
-              19.5
+           {% elif now().hour >= 6 and now().hour < 7 %} 
+              18.8
+           {% elif now().hour >= 7 and now().hour < 9 %} 
+              19 
            {% elif now().hour >= 9 and now().hour < 11  %}
               20
            {% elif now().hour >= 11 and now().hour < 15  %}
               19
            {% elif now().hour >= 15 and now().hour < 19  %}
               20
-           {% elif now().hour >= 19 and now().hour < 23  %}
+           {% elif now().hour >= 19 and now().hour < 22  %}
               19
            {% elif now().hour >= 23  %}
               10
            {% endif %}
         
 
-- alias: 'Termo - manual request '
+- alias: 'Termo - manual request  wall'
   trigger:
     platform: state
     entity_id: binary_sensor.sonoff_switch1_2
@@ -63,8 +68,12 @@
     - service: climate.set_temperature
       data_template:
         entity_id: climate.riscaldamento
-        temperature: "{{ states.climate.riscaldamento.attributes.temperature |float +0.5 }}"
-
+        temperature: "{{ states.climate.riscaldamento.attributes.current_temperature |float +0.5 }}"
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.manual_heater
+    - delay: '01:00:00'
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.manual_heater
      
 - alias: 'Termo - window open '
   trigger:
@@ -124,21 +133,14 @@
 
 - alias: 'Termo - manual request '
   trigger:
-    platform: event
-    event_type: state_changed
-    # optional
-    event_data:
-      entity_id: switch.sonoff_2
-  condition:
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.state == 'on' }}"
+    - platform: state
+      entity_id: input_boolean.manual_heater
+      to: 'on'
   action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.termo
-        option: manual
-    # - delay: '01:00:00'
-    # - service: input_select.select_option
-    #   data:
-    #     entity_id: input_select.termo
-    #     option: crono
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.riscaldamento
+        temperature: "{{ states.climate.riscaldamento.attributes.current_temperature |float +0.5 }}"
+    - delay: '01:00:00'
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.manual_heater
