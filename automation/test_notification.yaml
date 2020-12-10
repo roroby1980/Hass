@@ -40,7 +40,7 @@
       data_template:
         title: "Risk of blackout"
         message: >
-              'at {{ now().strftime("%H:%M") }} 
+              at {{ now().strftime("%H:%M") }} 
               shelly has stop {{trigger.from_state.attributes.friendly_name}}
               while was {{states.sensor.current_power.state}} W used
               the other device on its:
@@ -58,7 +58,7 @@
               phon
               {% elif states.sensor.shelly_shsw_pm_b98576_current_consumption.state |int > 1000 %}
               General 16A
-              {% endif %}'
+              {% endif %}
     - delay: '00:00:30'
     - service: telegram_bot.send_message
       data_template:
@@ -66,7 +66,7 @@
         message: 'now that  {{trigger.from_state.attributes.friendly_name}} is stop  there is {{states.sensor.current_power.state}} W used'
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
-    - delay: '00:00:30'
+    - delay: '00:02:30'
     - service: automation.turn_on
       entity_id: automation.restart
 
@@ -84,19 +84,21 @@
         - sensor.shelly_shsw_pm_b984a1_current_consumption #Bathroom socket
         - sensor.shelly_shsw_pm_b98576_current_consumption #General 16A 
       below: 1500
-      for:
-        seconds: 120
   condition:
     - condition: state
       entity_id: group.family
       state: 'home'
+    - condition: numeric_state
+      entity_id: sensor.current_power
+      below: 2000
   action:
+    - delay: '00:00:30'
     - service: telegram_bot.send_message
       data_template:
         title: "Risk of blackout end"
         message: >
-              'at {{ now().strftime("%H:%M") }} 
-              the current power is {{states.sensor.current_power.state}} W used'
+              at {{ now().strftime("%H:%M") }} 
+              the current power is {{states.sensor.current_power.state}} W used
     - service: switch.turn_on
       entity_id: 
         - switch.shelly_shsw_pm_b901af #Dishwasher
@@ -106,3 +108,5 @@
         - switch.shelly_shsw_pm_b9841d #Washing Machine
         - switch.shelly_shsw_pm_b984a1 #Bathroom socket
         - switch.shelly_shsw_pm_b98576 #General 16A
+    - service: automation.turn_off
+      entity_id: automation.restart
