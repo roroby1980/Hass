@@ -168,4 +168,4 @@
     - service: telegram_bot.send_message
       data_template:
         title: deumidificate full
-        message: 'deumidificate full
+        message: 'deumidificate full'
