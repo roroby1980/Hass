@@ -139,3 +139,33 @@
     - delay: '01:00:00'
     - service: input_boolean.turn_off
       entity_id: input_boolean.manual_heater
+
+
+- alias: 'Termo - deumidificate on '
+  trigger:
+    - platform: time
+      at: "08:00:00"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.sonoff_10009ce05a
+
+
+- alias: 'Termo - deumidificate off '
+  trigger:
+    - platform: time
+      at: "23:00:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff_10009ce05a
+
+
+- alias: 'Termo - deumidificate full '
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.power_pow1
+      below: 5
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        title: deumidificate full
+        message: 'deumidificate full
