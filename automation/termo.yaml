@@ -164,6 +164,8 @@
     - platform: numeric_state
       entity_id: sensor.power_pow1
       below: 5
+      for:
+        minutes: 3
   action:
     - service: telegram_bot.send_message
       data_template:

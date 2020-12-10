@@ -11,6 +11,7 @@
     - binary_sensor.w_bathroom
     - sensor.yicam
     to: 'on'
+    
   condition:
     condition: state
     entity_id: group.family
