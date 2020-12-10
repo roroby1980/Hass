@@ -41,10 +41,10 @@
       data_template:
         title: "Risk of blackout"
         message: >
-              'at {{ now().strftime("%H:%M") }} 
+              at {{ now().strftime("%H:%M") }} 
               shelly has stop {{trigger.from_state.attributes.friendly_name}}
               while was {{states.sensor.current_power.state}} W used
-              the other device on it's:
+              the other device on its:
               {% if states.sensor.shelly_shsw_pm_b901af_current_consumption.state  > 1000 %}
               Dishwasher
               {% if states.sensor.shelly_shsw_pm_b906cb_current_consumption.state  > 1000 %}
@@ -58,7 +58,8 @@
               {% if states.sensor.shelly_shsw_pm_b984a1_current_consumption.state  > 1000 %}
               phon
               {% if states.sensor.shelly_shsw_pm_b98576_current_consumption.state  > 1000 %}
-              General 16A'
+              General 16A
+              {% endif %}
     - delay: '00:00:30'
     - service: telegram_bot.send_message
       data_template:
