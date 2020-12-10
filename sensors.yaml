@@ -13,7 +13,6 @@
       - 'date_time_iso'
       - 'time_date'
       - 'time_utc'
-      - 'beat'
 
   - platform: mold_indicator
     indoor_temp_sensor: sensor.house_temperature
