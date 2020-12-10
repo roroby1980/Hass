@@ -162,7 +162,7 @@
 - alias: 'Termo - deumidificate full '
   trigger:
     - platform: numeric_state
-      entity_id: sensor.power_pow1
+      entity_id: sensor.pow1_power
       below: 5
       for:
         minutes: 3

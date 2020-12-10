@@ -177,6 +177,13 @@ recorder:
       - automations
     entity_globs:
       - sensor.dark_sky*
+      - sensor.tim*
+      - sensor.tr*
+      - sensor.when*
+      - sensor.where*
+      - sensor.ritardo*
+      - sensor.riscaldamento*
+      - sensor.pow1*
 
 
 history:
@@ -185,3 +192,10 @@ history:
       - automations
     entity_globs:
       - sensor.dark_sky*
+      - sensor.tim*
+      - sensor.tr*
+      - sensor.when*
+      - sensor.where*
+      - sensor.ritardo*
+      - sensor.riscaldamento*
+      - sensor.pow1*

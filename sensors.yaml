@@ -263,12 +263,12 @@
       
   - platform: template
     sensors:
-      voltage_pow1:
+      pow1_voltage:
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'voltage') }}"
-      power_pow1:
+      pow1_power:
         device_class: power
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'power') }}"
-      current_pow1:
+      pow1_current:
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'current') }}"
 
 
