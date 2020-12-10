@@ -76,8 +76,7 @@
   trigger:
     - platform: numeric_state
       entity_id: 
-      below: 
-        - 1500
+      below: 1500
       for:
         seconds: 120
   condition:
