@@ -95,8 +95,8 @@
       data_template:
         title: "Risk of blackout end"
         message: >
-              at {{ now().strftime("%H:%M") }} 
-              the current power is {{states.sensor.current_power.state}} W used
+              'at {{ now().strftime("%H:%M") }} 
+              the current power is {{states.sensor.current_power.state}} W used'
     - service: switch.turn_on
       entity_id: 
         - switch.shelly_shsw_pm_b901af #Dishwasher
