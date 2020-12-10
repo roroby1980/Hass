@@ -8,10 +8,6 @@
       to: home
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id:
-        - binary_sensor.w_livingroom
-      to: 'off' 
   condition:
     - condition: state
       entity_id: group.family
@@ -80,10 +76,9 @@
     platform: state
     entity_id:
       - binary_sensor.w_livingroom
-      - binary_sensor.w_bathroom
     to: 'on'
     for:
-      minutes: 3
+      minutes: 10
   condition:
     condition: state
     entity_id: group.family
@@ -104,12 +99,12 @@
       for:
         minutes: 5
     - platform: time
-      at: "08:45:00"
+      at: "08:30:00"
   condition:
     - condition: time
-      after: '08:30:00'
+      after: '08:15:00'
     - condition: time
-      before: '19:30:00'
+      before: '20:00:00'
     - condition: state
       entity_id: switch.sonoff_2
       state: 'on'
@@ -124,7 +119,7 @@
         - switch.sonoff_2
       to: 'off'
     - platform: time
-      at: "19:45:00"
+      at: "20:15:00"
   action:
     - service: switch.turn_off
       entity_id: switch.tasmota

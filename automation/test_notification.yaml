@@ -40,7 +40,25 @@
     - service: telegram_bot.send_message
       data_template:
         title: "Risk of blackout"
-        message: 'at {{ now().strftime("%H:%M") }} shelly has stop {{trigger.from_state.attributes.friendly_name}} while was {{states.sensor.current_power.state}} W used'
+        message: >
+              'at {{ now().strftime("%H:%M") }} 
+              shelly has stop {{trigger.from_state.attributes.friendly_name}}
+              while was {{states.sensor.current_power.state}} W used
+              the other device on it's:
+              {% if states.sensor.shelly_shsw_pm_b901af_current_consumption.state  > 1000 %}
+              Dishwasher
+              {% if states.sensor.shelly_shsw_pm_b906cb_current_consumption.state  > 1000 %}
+              General 10A
+              {% if states.sensor.shelly_shsw_pm_b911e9_current_consumption.state  > 1000 %}
+              Oven
+              {% if states.sensor.shelly_shsw_pm_b9273a_current_consumption.state  > 1000 %}
+              Boiler (water)
+              {% if states.sensor.shelly_shsw_pm_b9841d_current_consumption.state  > 1000 %}
+              Washing Machine
+              {% if states.sensor.shelly_shsw_pm_b984a1_current_consumption.state  > 1000 %}
+              phon
+              {% if states.sensor.shelly_shsw_pm_b98576_current_consumption.state  > 1000 %}
+              General 16A'
     - delay: '00:00:30'
     - service: telegram_bot.send_message
       data_template:
@@ -48,3 +66,6 @@
         message: 'now that  {{trigger.from_state.attributes.friendly_name}} is stop  there is {{states.sensor.current_power.state}} W used'
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
+    - delay: '00:00:30'
+    - service: automation.turn_on
+      entity_id: automation.restart
