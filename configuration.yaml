@@ -170,3 +170,18 @@ api:
 frontend:
   themes: !include_dir_merge_named themes
 
+
+recorder:
+  exclude:
+    domains:
+      - automations
+    entity_globs:
+      - sensor.dark_sky*
+
+
+history:
+  exclude:
+    domains:
+      - automations
+    entity_globs:
+      - sensor.dark_sky*
