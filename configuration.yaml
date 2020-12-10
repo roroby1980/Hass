@@ -178,6 +178,7 @@ recorder:
     entity_globs:
       - sensor.dark_sky*
       - sensor.tim*
+      - sensor.date*
       - sensor.tr*
       - sensor.when*
       - sensor.where*
@@ -193,6 +194,7 @@ history:
     entity_globs:
       - sensor.dark_sky*
       - sensor.tim*
+      - sensor.date*
       - sensor.tr*
       - sensor.when*
       - sensor.where*
