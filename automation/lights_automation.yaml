@@ -536,6 +536,11 @@
         - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
       to:
         - 'on'
+        - 'off'
+  condition:
+    - condition: state
+      entity_id: bedroom_lights
+      state: 'off'
   action:
     - service: light.turn_on
       data_template:
@@ -571,7 +576,11 @@
         - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
       to:
         - 'on'
+        - 'off'
   condition:
+    - condition: state
+      entity_id: bedroom_lights
+      state: 'off'
     - condition: time
       after: '09:00:00'
     - condition: time
@@ -586,7 +595,12 @@
       entity_id: 
         - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
       to:
+        - 'on'
         - 'off'
+  condition:
+    - condition: state
+      entity_id: bedroom_lights
+      state: 'on'
   action:
     - service: light.turn_off
       data_template:
