@@ -528,42 +528,53 @@
         - light.shelly_shrgbw2_f43a0c_2
 
 
-- alias: 'bedrooms lights '
+
+- alias: 'bedrooms lights on'
   trigger:
     - platform: state
       entity_id: 
-        - light.l_bedroom
+        - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
       to:
         - 'on'
   action:
     - service: light.turn_on
       data_template:
-        entity_id: 
-        - light.shelly_shrgbw2_f43a0c_1
-        - light.shelly_shrgbw2_f43a0c_4
+        entity_id: >
+           {% if  now().hour < 7 %} 
+            - light.shelly_shrgbw2_f43a0c_3
+           {% elif now().hour >= 7 and now().hour < 9 %} 
+            - light.l_bedroom
+            - light.shelly_shrgbw2_f43a0c_1
+           {% elif now().hour >= 9 and now().hour < 18  %}
+            - light.l_bedroom
+            - light.shelly_shrgbw2_f43a0c_1
+            - light.shelly_shrgbw2_f43a0c_4
+            - switch.shelly_shsw_25_98f4abf2cd7c_2
+           {% elif now().hour >= 18 and now().hour < 20  %}
+            - light.l_bedroom
+            - light.shelly_shrgbw2_f43a0c_1
+           {% elif now().hour >= 20  %}
+            - light.shelly_shrgbw2_f43a0c_3
+           {% endif %}
         brightness: >
-           {% if  now().hour < 6 %} 
-              1
-           {% elif now().hour >= 6 and now().hour < 7 %} 
+           {% if  now().hour < 7 %} 
               128
-           {% elif now().hour >= 7 and now().hour < 20  %}
+           {% elif now().hour >= 7 and now().hour < 9 %} 
+              10
+           {% elif now().hour >= 9 and now().hour < 18  %}
               255
-           {% elif now().hour >= 20 and now().hour < 21  %}
+           {% elif now().hour >= 18 and now().hour < 20  %}
+              10
+           {% elif now().hour >= 20  %}
               128
-           {% elif now().hour >= 21 and now().hour < 23  %}
-              30
-           {% elif now().hour >= 23  %}
-              1
            {% endif %}
 
-
-- alias: 'bedrooms lights '
+- alias: 'bedrooms lights off '
   trigger:
     - platform: state
       entity_id: 
-        - light.l_bedroom
+        - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
       to:
-        - 'unavailable'
         - 'off'
   action:
     - service: light.turn_off
@@ -571,3 +582,6 @@
         entity_id: 
         - light.shelly_shrgbw2_f43a0c_1
         - light.shelly_shrgbw2_f43a0c_4
+        - light.l_bedroom
+        - light.shelly_shrgbw2_f43a0c_3
+        - switch.shelly_shsw_25_98f4abf2cd7c_2
