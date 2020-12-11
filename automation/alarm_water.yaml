@@ -10,7 +10,7 @@
     - service: telegram_bot.send_message
       data_template:
         title: "Wet Detected"
-        message: '{{ now().strftime("%H:%M:%S") }} - wet {{trigger.entity_id}} '
+        message: '{{ now().strftime("%H:%M:%S") }} - wet {{trigger.from_state.attributes.friendly_name}} '
 
 
     
