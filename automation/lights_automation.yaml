@@ -579,4 +579,7 @@
         - light.shelly_shrgbw2_f43a0c_4
         - light.l_bedroom
         - light.shelly_shrgbw2_f43a0c_3
+    - service: switch.turn_off
+      data_template:
+        entity_id: 
         - switch.shelly_shsw_25_98f4abf2cd7c_2
