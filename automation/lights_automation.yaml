@@ -539,7 +539,7 @@
         - 'off'
   condition:
     - condition: state
-      entity_id: bedroom_lights
+      entity_id: group.bedroom_lights
       state: 'off'
   action:
     - service: light.turn_on
@@ -579,7 +579,7 @@
         - 'off'
   condition:
     - condition: state
-      entity_id: bedroom_lights
+      entity_id: group.bedroom_lights
       state: 'off'
     - condition: time
       after: '09:00:00'
@@ -599,7 +599,7 @@
         - 'off'
   condition:
     - condition: state
-      entity_id: bedroom_lights
+      entity_id: group.bedroom_lights
       state: 'on'
   action:
     - service: light.turn_off
