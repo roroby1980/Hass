@@ -545,7 +545,7 @@
            {% elif now().hour >= 7 and now().hour < 9 %} 
             light.l_bedroom,light.shelly_shrgbw2_f43a0c_1
            {% elif now().hour >= 9 and now().hour < 18  %}
-            light.l_bedroom,light.shelly_shrgbw2_f43a0c_1,light.shelly_shrgbw2_f43a0c_4,switch.shelly_shsw_25_98f4abf2cd7c_2
+            light.l_bedroom,light.shelly_shrgbw2_f43a0c_1,light.shelly_shrgbw2_f43a0c_4
            {% elif now().hour >= 18 and now().hour < 20  %}
             light.l_bedroom,light.shelly_shrgbw2_f43a0c_1
            {% elif now().hour >= 20  %}
@@ -563,6 +563,22 @@
            {% elif now().hour >= 20  %}
               128
            {% endif %}
+
+- alias: 'bedrooms switch on'
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
+      to:
+        - 'on'
+  condition:
+    - condition: time
+      after: '09:00:00'
+    - condition: time
+      before: '18:00:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.shelly_shsw_25_98f4abf2cd7c_2
 
 - alias: 'bedrooms lights off '
   trigger:
@@ -583,3 +599,7 @@
       data_template:
         entity_id: 
         - switch.shelly_shsw_25_98f4abf2cd7c_2
+
+
+
+    

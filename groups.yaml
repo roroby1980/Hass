@@ -78,3 +78,10 @@ inside_presences:
     - binary_sensor.ma_3
     - binary_sensor.w_livingroom
     - sensor.yicam
+bedroom_lights:
+    entities:
+    - light.shelly_shrgbw2_f43a0c_1
+    - light.shelly_shrgbw2_f43a0c_4
+    - light.l_bedroom
+    - light.shelly_shrgbw2_f43a0c_3
+    - switch.shelly_shsw_25_98f4abf2cd7c_2
