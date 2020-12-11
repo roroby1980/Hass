@@ -541,20 +541,15 @@
       data_template:
         entity_id: >
            {% if  now().hour < 7 %} 
-            - light.shelly_shrgbw2_f43a0c_3
+            light.shelly_shrgbw2_f43a0c_3
            {% elif now().hour >= 7 and now().hour < 9 %} 
-            - light.l_bedroom
-            - light.shelly_shrgbw2_f43a0c_1
+            light.l_bedroom,light.shelly_shrgbw2_f43a0c_1
            {% elif now().hour >= 9 and now().hour < 18  %}
-            - light.l_bedroom
-            - light.shelly_shrgbw2_f43a0c_1
-            - light.shelly_shrgbw2_f43a0c_4
-            - switch.shelly_shsw_25_98f4abf2cd7c_2
+            light.l_bedroom,light.shelly_shrgbw2_f43a0c_1,light.shelly_shrgbw2_f43a0c_4,switch.shelly_shsw_25_98f4abf2cd7c_2
            {% elif now().hour >= 18 and now().hour < 20  %}
-            - light.l_bedroom
-            - light.shelly_shrgbw2_f43a0c_1
+            light.l_bedroom,light.shelly_shrgbw2_f43a0c_1
            {% elif now().hour >= 20  %}
-            - light.shelly_shrgbw2_f43a0c_3
+            light.shelly_shrgbw2_f43a0c_3
            {% endif %}
         brightness: >
            {% if  now().hour < 7 %} 
