@@ -66,7 +66,6 @@
                {% for item in states | selectattr('entity_id', 'in', state_attr('group.dim_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') -%}
                {% if not loop.first %},{% endif %}{{ item.entity_id }}
                {%- endfor %}
-            #{{ states | selectattr('entity_id', 'in', state_attr('group.dim_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') | map(attribute='entity_id')|list }}
         brightness: >
            {% if  now().hour < 7 %} 
               1

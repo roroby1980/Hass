@@ -53,10 +53,6 @@ sockets_off:
     - switch.shelly_shsw_pm_b911e9 #Oven
     - switch.shelly_shsw_pm_b984a1 #Bathroom socket
     - switch.shelly_shsw_pm_b98576 #General 16A
-sockets_conditional_off:
-  entities:
-    - switch.shelly_shsw_pm_b901af #Dishwasher
-    - switch.shelly_shsw_pm_b9841d #Washing Machine
 sonoff_inputs:
   entities:
     - switch.sonoff_1000a53f4b #input bathroom
@@ -72,6 +68,7 @@ dim_lights:
     - light.l_bedroom
     - light.yeelight_emma
     - light.alma_bedroom
+    - light.shelly_shrgbw2_f4337c_3
 inside_presences:
     entities:
     - binary_sensor.m_bathroom
