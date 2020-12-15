@@ -2,7 +2,7 @@
 - alias: 'Termo crono'
   trigger:
     - platform: time_pattern
-      minutes: "/10"
+      minutes: "/60"
     - platform: state
       entity_id: group.family
       to: home
@@ -87,7 +87,7 @@
     - service: climate.set_temperature
       data_template:
         entity_id: climate.riscaldamento
-        temperature: 10
+        temperature: 17
 
 
 - alias: 'Termo - fan on '
