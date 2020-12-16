@@ -2,7 +2,7 @@
 - alias: 'Termo crono'
   trigger:
     - platform: time_pattern
-      minutes: "/60"
+      hours: "/1"
     - platform: state
       entity_id: group.family
       to: home
