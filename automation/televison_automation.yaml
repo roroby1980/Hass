@@ -1,10 +1,9 @@
 - alias: television mode
   trigger:
-    - platform: state
+test    - platform: numeric_state
       entity_id: 
-        - binary_sensor.television
-      to: 
-        - 'on'
+        - pow2_power
+      above: 20
   condition:
     - condition: state
       entity_id: group.family
