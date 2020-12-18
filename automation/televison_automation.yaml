@@ -1,6 +1,6 @@
 - alias: television mode
   trigger:
-test    - platform: numeric_state
+    - platform: numeric_state
       entity_id: 
         - pow2_power
       above: 20
