@@ -11,6 +11,13 @@ sensor: !include sensors.yaml
 zone: !include zone.yaml
 var: !include variables.yaml
 
+binary_sensor:
+  - platform: template
+    sensors:
+      television:
+        value_template: >-
+          {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
+
 discovery:
   ignore:
     - homekit
