@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: 
-        - pow2_power
+        - sensor.pow2_power
       above: 20
   condition:
     - condition: state
