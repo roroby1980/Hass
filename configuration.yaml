@@ -11,12 +11,7 @@ sensor: !include sensors.yaml
 zone: !include zone.yaml
 var: !include variables.yaml
 
-binary_sensor:
-  - platform: template
-    sensors:
-      television:
-        value_template: >-
-          {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
+
 
 discovery:
   ignore:
@@ -129,6 +124,11 @@ binary_sensor:
         sample_duration: 7200
         min_gradient: 0.02
         device_class: moisture
+  - platform: template
+    sensors:
+      television:
+        value_template: >-
+          {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
  # - platform: rpi_gpio
  #   bouncetime: 500
  #   ports:
