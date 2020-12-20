@@ -127,6 +127,7 @@ binary_sensor:
   - platform: template
     sensors:
       television:
+        icon: hass:television
         value_template: >-
           {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
  # - platform: rpi_gpio
