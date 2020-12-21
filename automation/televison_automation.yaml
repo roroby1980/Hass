@@ -25,7 +25,6 @@
         - light.yeelight_l_ceiling
         - light.shelly_shrgbw2_f4337c_1 #Livingroom Led Warm
         - light.shelly_shrgbw2_f4337c_2 #Livingroom Led Natural
-        - light.shelly_shrgbw2_f4337c_3 #Entance service Led
         - light.shelly_shrgbw2_f4337c_4 #Entance main Led
     - service: switch.turn_off
       data_template:
