@@ -21,8 +21,9 @@ camera:
   - platform: xiaomi
     name: Camera
     host: '192.168.1.69'
-    model: 'yi_dome'
+    model: 'yi'
     password: !secret camera_pwd
+    path: /tmp/sd/record
 
 #camera:
 #  - platform: onvif
@@ -137,6 +138,15 @@ binary_sensor:
         icon_template: hass:television
         value_template: >-
           {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
+  - platform: template
+    sensors:
+      front_door:
+        icon_template: mdi:door
+        value_template: >-
+          {{ states('switch.sonoff_1000a539ca') }}
+        device_class: door
+
+
  # - platform: rpi_gpio
  #   bouncetime: 500
  #   ports:
