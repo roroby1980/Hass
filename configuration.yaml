@@ -39,7 +39,7 @@ sonoff:
   reload: always
 
 yeelight:
-c
+
 
 shell_command:
   reboot_camera_living_room: "curl http://192.168.1.69/cgi-bin/reboot.sh"
