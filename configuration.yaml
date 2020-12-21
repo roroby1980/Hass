@@ -17,6 +17,13 @@ discovery:
   ignore:
     - homekit
 
+camera:
+  - platform: xiaomi
+    name: Camera
+    host: '192.168.1.69'
+    model: 'yi_dome'
+    password: !secret camera_pwd
+
 #camera:
 #  - platform: onvif
 #    host: 192.168.1.94
@@ -32,7 +39,7 @@ sonoff:
   reload: always
 
 yeelight:
-
+c
 
 shell_command:
   reboot_camera_living_room: "curl http://192.168.1.69/cgi-bin/reboot.sh"
