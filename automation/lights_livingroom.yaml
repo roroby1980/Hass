@@ -44,6 +44,7 @@
       to: 'on'
   action:
     - service: input_select.select_option
+      data:
         entity_id: input_select.living_room_sceene
         option: 'Daylight'
     - service: switch.turn_off
@@ -62,6 +63,7 @@
       state: 'off'
   action:
     - service: input_select.select_option
+      data:
         entity_id: input_select.living_room_sceene
         option: 'Off'
          
@@ -74,6 +76,7 @@
       to: 'on'
   action:
     - service: input_select.select_option
+      data:
         entity_id: input_select.living_room_sceene
         option: 'Evening'
     - service: switch.turn_off
@@ -92,6 +95,7 @@
       state: 'off'
   action:
     - service: input_select.select_option
+      data:
         entity_id: input_select.living_room_sceene
         option: 'Off'
 
