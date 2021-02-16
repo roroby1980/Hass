@@ -1,6 +1,6 @@
 
 #wall led connection
-- alias: 'LivingLight1 - table LED to on'
+- alias: 'LivingLight - table LED to on'
   trigger:
     - platform: state 
       entity_id:
@@ -17,7 +17,7 @@
       entity_id: 
         - switch.sonoff
         
-- alias: 'LivingLight2 - table LED to off'
+- alias: 'LivingLight - table LED to off'
   trigger:
     - platform: state 
       entity_id:
@@ -36,7 +36,7 @@
     
 
 
-- alias: 'LivingLight3 - Livingroom Daily button on'
+- alias: 'LivingLight - Livingroom Daily button on'
   trigger:
     - platform: state
       entity_id: 
@@ -50,7 +50,7 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_3
         
-- alias: 'LivingLight4 - Livingroom Daily button off'
+- alias: 'LivingLight - Livingroom Daily button off'
   trigger:
     - platform: state
       entity_id: 
@@ -66,7 +66,7 @@
       option: "Off"
          
          
-- alias: 'LivingLight5 - Livingroom Night button on'
+- alias: 'LivingLight - Livingroom Night button on'
   trigger:
     - platform: state
       entity_id: 
@@ -80,7 +80,7 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_2
         
-- alias: 'LivingLight6 - Livingroom Night button off'
+- alias: 'LivingLight - Livingroom Night button off'
   trigger:
     - platform: state
       entity_id: 
@@ -97,7 +97,7 @@
 
          
  
-- alias: 'Light30 - Livingroom Daylight '
+- alias: 'LivingLight - Livingroom Daylight '
   trigger:
     - platform: state
       entity_id: 
@@ -134,7 +134,7 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_3
 
-- alias: 'Light30 - Livingroom Dinner '
+- alias: 'LivingLight - Livingroom Dinner '
   trigger:
     - platform: state
       entity_id: 
@@ -169,7 +169,7 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_3
         
-- alias: 'Light32 - Livingroom Relax '
+- alias: 'LivingLight - Livingroom Relax '
   trigger:
     - platform: state
       entity_id: 
@@ -207,7 +207,7 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_2
          
-- alias: 'Light32 - Livingroom TV '
+- alias: 'LivingLight - Livingroom TV '
   trigger:
     - platform: state
       entity_id: 
@@ -243,7 +243,7 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_2
          
-- alias: 'Light32 - Livingroom Evening '
+- alias: 'LivingLight - Livingroom Evening '
   trigger:
     - platform: state
       entity_id: 
@@ -284,7 +284,7 @@
         - switch.sonoff_10008cbb5e_2
 
 
-- alias: 'Light32 - Livingroom Off '
+- alias: 'LivingLight - Livingroom Off '
   trigger:
     - platform: state
       entity_id: 
