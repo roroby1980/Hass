@@ -3,10 +3,20 @@ alexa_announce_example:
   - service: notify.alexa_media
     data:
       target: media_player.echo_dot_di_roberto
-      message: hi, baby , just want to tell you That i love you
+      message: i love you
       data:
         type: announce
         method: all
+        
+alexa_visual_notification:
+  sequence:
+  - service: notify.alexa_media
+    data:
+      target: media_player.bed
+      title: i love you
+      data:
+        type: announce
+        method: all 
         
 manual_home_mode:
   sequence:

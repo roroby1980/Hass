@@ -15,6 +15,25 @@
     - delay: '00:00:30'
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
+      
+      
+- alias: hassio reload  automation
+  trigger:
+    platform: event
+    event_type:
+      - automation_reloaded
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        title: Automation Reloaded
+        message: >
+          at {{ now().strftime("%H:%M") }}  automation has been reloaded
+    - delay: '00:00:30'
+    - service: automation.turn_on
+      entity_id: automation.avoid_blackout_notification
+      
+      
+
 
 
 - alias: avoid blackout notification
@@ -26,7 +45,7 @@
         - switch.shelly_shsw_pm_b906cb #General 10A
         - switch.shelly_shsw_pm_b911e9 #Oven
         - switch.shelly_shsw_pm_b9273a #Kitchen 1 /fridge
-        - switch.shelly_shsw_pm_b9841d #Washing Machine
+        - switch.shelly_shsw_pm_c4b0f4 #Washing Machine
         - switch.shelly_shsw_pm_b984a1 #Bathroom socket
         - switch.shelly_shsw_pm_b98576 #General 16A
       to: 
@@ -43,7 +62,7 @@
         message: >
               at {{ now().strftime("%H:%M") }} 
               shelly has stop {{trigger.from_state.attributes.friendly_name}}
-              while was {{states.sensor.current_power.state}} W used
+              while was {{states.var.max_power_last3m.state}} W used
               the other device on its:
               {% if states.sensor.shelly_shsw_pm_b901af_current_consumption.state |int > 1000 %}
               Dishwasher
@@ -53,7 +72,7 @@
               Oven
               {% elif states.sensor.shelly_shsw_pm_b9273a_current_consumption.state|int  > 1000 %}
               Boiler (water)
-              {% elif states.sensor.shelly_shsw_pm_b9841d_current_consumption.state|int  > 1000 %}
+              {% elif states.sensor.shelly_shsw_pm_c4b0f4_current_consumption.state|int  > 1000 %}
               Washing Machine
               {% elif states.sensor.shelly_shsw_pm_b984a1_current_consumption.state|int  > 1000 %}
               phon
@@ -81,10 +100,12 @@
         - sensor.shelly_shsw_pm_b906cb_current_consumption #General 10A
         - sensor.shelly_shsw_pm_b911e9_current_consumption #Oven
         - sensor.shelly_shsw_pm_b9273a_current_consumption #Kitchen 1 /fridge
-        - sensor.shelly_shsw_pm_b9841d_current_consumption #Washing Machine
+        - sensor.shelly_shsw_pm_c4b0f4_current_consumption #Washing Machine
         - sensor.shelly_shsw_pm_b984a1_current_consumption #Bathroom socket
-        - sensor.shelly_shsw_pm_b98576_current_consumption #General 16A 
+        - sensor.shelly_shsw_pm_b98576_current_consumption #General 16A
       below: 1500
+      for:
+        minutes: 3
   condition:
     - condition: state
       entity_id: group.family
@@ -93,7 +114,6 @@
       entity_id: sensor.current_power
       below: 1500
   action:
-    - delay: '00:00:30'
     - service: telegram_bot.send_message
       data_template:
         title: "Risk of blackout end"
@@ -106,7 +126,7 @@
         - switch.shelly_shsw_pm_b906cb #General 10A
         - switch.shelly_shsw_pm_b911e9 #Oven
         - switch.shelly_shsw_pm_b9273a #Kitchen 1 /fridge
-        - switch.shelly_shsw_pm_b9841d #Washing Machine
+        - switch.shelly_shsw_pm_c4b0f4 #Washing Machine
         - switch.shelly_shsw_pm_b984a1 #Bathroom socket
         - switch.shelly_shsw_pm_b98576 #General 16A
     - service: automation.turn_off

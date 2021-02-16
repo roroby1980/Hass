@@ -88,7 +88,7 @@
         value_template: '{{ states("sensor.shelly_shsw_pm_b901af_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b906cb_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b911e9_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b91874_current_consumption") |float +
+                            states("sensor.shelly_shsw_pm_c4b0f4_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b9273a_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b9841d_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b984a1_current_consumption") |float +
@@ -173,65 +173,7 @@
        -  sensor.t_bedroom_3
        -  sensor.t_livingroom_2
        
-  - platform: history_stats
-    name: Riscaldamento today
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
-    
-  - platform: history_stats
-    name: Riscaldamento yesterday
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time 
-    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    duration:
-       hours: 24
-       
 
-
-  - platform: history_stats
-    name: Riscaldamento this month
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0).replace(day=1))  }}'
-    end: '{{ now() }}'
-  
-  - platform: history_stats
-    name: Riscaldamento  Ottobre
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=10)) }}'
-    end: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=11)) }}'
-    
-  - platform: history_stats
-    name: Riscaldamento  Novembre
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=11)) }}'
-    end: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=12)) }}'
-    
-  - platform: history_stats
-    name: Riscaldamento  Dicembre
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=12)) }}'
-    end: '{{ as_timestamp( now().replace(day=31).replace(hour=23).replace(minute=59).replace(second=59).replace(month=12)) }}'
-
-  - platform: history_stats
-    name: Riscaldamento  Gennaio
-    entity_id: switch.sonoff_2
-    state: 'on'
-    type: time 
-    start: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=1)) }}'
-    end: '{{ as_timestamp( now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0).replace(month=2)) }}'
-    
   - platform: mqtt
     name: "YICAM"
     state_topic: "yicam/motion"
@@ -280,5 +222,20 @@
       pow2_current:
         value_template: "{{ state_attr('switch.sonoff_10009ce473', 'current') }}"
 
+  - platform: mqtt
+    name: temperatura1 shelly
+    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/0"
+    qos: 0
+    device_class: temperature
 
+  - platform: mqtt
+    name: temperatura2 shelly
+    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/1"
+    qos: 0
+    device_class: temperature
 
+  - platform: mqtt
+    name: temperatura3 shelly
+    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/2"
+    qos: 0
+    device_class: temperature

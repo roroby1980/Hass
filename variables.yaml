@@ -8,3 +8,11 @@ ultimo_aggiornamento_roby_phone:
   restore: true
   icon: mdi:map-marker
   
+avg_house_temperature:
+  restore: true
+  icon: mdi:thermometer
+  unit_of_measurement: "°C"
+  
+max_power_last3m:
+  restore: true
+  unit_of_measurement: "W"

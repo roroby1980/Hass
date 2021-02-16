@@ -2,7 +2,7 @@
 - alias: 'Termo crono'
   trigger:
     - platform: time_pattern
-      hours: "/1"
+      minutes: "/15"
     - platform: state
       entity_id: group.family
       to: home
@@ -32,22 +32,20 @@
       data_template:
         entity_id: climate.riscaldamento
         temperature:  >
-           {% if  now().hour < 6 %} 
-              10
-           {% elif now().hour >= 6 and now().hour < 7 %} 
-              18.8
-           {% elif now().hour >= 7 and now().hour < 9 %} 
-              19 
-           {% elif now().hour >= 9 and now().hour < 11  %}
+           {% if  now().hour < 8 %} 
+              15
+           {% elif now().hour >= 8 and now().hour < 9 %} 
+              18 
+           {% elif now().hour >= 9 and now().hour < 10  %}
               20
-           {% elif now().hour >= 11 and now().hour < 15  %}
+           {% elif now().hour >= 10 and now().hour < 17  %}
               19
-           {% elif now().hour >= 15 and now().hour < 19  %}
+           {% elif now().hour >= 17 and now().hour < 19  %}
               20
-           {% elif now().hour >= 19 and now().hour < 22  %}
+           {% elif now().hour >= 19 and now().hour < 21  %}
               19
-           {% elif now().hour >= 22  %}
-              10
+           {% elif now().hour >= 21  %}
+              15
            {% endif %}
         
 
@@ -143,8 +141,9 @@
 
 - alias: 'Termo - deumidificate on '
   trigger:
-    - platform: time
-      at: "08:00:00"
+    - platform: numeric_state
+      entity_id: sensor.house_humidity
+      above: 60
   action:
     - service: switch.turn_on
       entity_id: switch.sonoff_10009ce05a
@@ -154,11 +153,14 @@
 
 - alias: 'Termo - deumidificate off '
   trigger:
-    - platform: time
-      at: "23:00:00"
+    - platform: numeric_state
+      entity_id: sensor.house_humidity
+      above: 60
   action:
     - service: switch.turn_off
       entity_id: switch.sonoff_10009ce05a
+    - service: automation.turn_off
+      entity_id: automation.termo_deumidificate_full
 
 
 - alias: 'Termo - deumidificate full '
@@ -168,6 +170,10 @@
       below: 5
       for:
         minutes: 10
+#  conditions:
+#      - condition: 
+#        entity_id: sensor.house_humidity
+#        above: 60
   action:
     - service: telegram_bot.send_message
       data_template:

@@ -2,7 +2,7 @@
 default_config:
 
 logger:
-  default: notset
+  default: error
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automation
@@ -11,7 +11,15 @@ sensor: !include sensors.yaml
 zone: !include zone.yaml
 var: !include variables.yaml
 
-
+#panel_iframe:
+#  influxdb:
+#    title: InfluxDB
+#    icon: mdi:chart-areaspline
+#    url: https://roroby.duckdns.org:8888
+#  grafana:
+#    title: Grafana
+#    icon: mdi:chart-timeline
+#    url: https://roroby.duckdns.org:3000
 
 discovery:
   ignore:
@@ -81,14 +89,14 @@ input_select:
       - crono
     initial: crono
 
-# influxdb:
-#   host: localhost
-#   port: 8086
-#   database: homeassistant
-#   username: hassio
-#   password: hassio
-#   max_retries: 3
-#   default_measurement: state
+influxdb:
+  host: localhost
+  port: 8086
+  database: hassio
+  username: hassio
+  password: hassio
+  max_retries: 3
+  default_measurement: state
 
 #Bluethoot
 #device_tracker:
@@ -100,9 +108,6 @@ tts:
 
 system_health:
 
-#shelly_integration
-shelly:
-
 webhook:
 
 #termostato
@@ -110,15 +115,15 @@ climate:
   - platform: generic_thermostat
     name: Riscaldamento
     heater: switch.sonoff_2
-    target_sensor: sensor.house_temperature
+    target_sensor: var.avg_house_temperature
     min_temp: 10
     max_temp: 25
     ac_mode: false
     target_temp: 19.5
-    cold_tolerance: 0.1
+    cold_tolerance: 0.2
     hot_tolerance : 0.1
     min_cycle_duration:
-      seconds: 1200
+      seconds: 1800
     initial_hvac_mode: "off"
     away_temp: 15
 
@@ -138,44 +143,8 @@ binary_sensor:
         icon_template: hass:television
         value_template: >-
           {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
-  - platform: template
-    sensors:
-      front_door:
-        icon_template: mdi:door
-        value_template: >-
-          {{ states('switch.sonoff_1000a539ca') }}
-        device_class: door
 
 
- # - platform: rpi_gpio
- #   bouncetime: 500
- #   ports:
- #     #2: test2 no serigrafia
- #     #3: test3 no serigrafia
- #     4: test4
- #     5: test5     #non collegato
- #     6: test6     #non collegato
- #     #7: test7 no serigrafia
- #     #8: test8 no serigrafia
- #     #9: test9 no serigrafia
- #     #10: test10 no serigrafia
- #     #11: test11 no serigrafia
- #     12: test12
- #     13: test13   #non collegato
- #     #14: test14   no serigrafia
- #     #15: test15 no serigrafia
- #     16: test16
- #     17: test17
- #     18: test18
- #     19: test19   #non collegato
- #     20: test20
- #     21: test21
- #     22: MainBedroomWindow
- #     23: BedroomShield
- #     24: test24
- #     25: test25
- #     26: test26 #non collegato
- #     27: test27
 
 homeassistant:
   packages: !include_dir_named packages
@@ -184,6 +153,8 @@ homeassistant:
       device_class: lock
     switch.sonoff_1000a54613:
       device_class: light
+  allowlist_external_dirs:
+    - /config/camera
 
 
 api:
@@ -210,6 +181,7 @@ recorder:
       - sensor.ritardo*
       - sensor.riscaldamento*
       - sensor.pow1*
+      - sensor.temperatura*_shelly
 
 
 history:
@@ -226,3 +198,4 @@ history:
       - sensor.ritardo*
       - sensor.riscaldamento*
       - sensor.pow1*
+      - sensor.temperatura*_shelly

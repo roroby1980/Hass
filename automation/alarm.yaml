@@ -20,5 +20,9 @@
   - data_template:
       message: 'Detected movment of {{ trigger.from_state.attributes.friendly_name }}'
       title: 'ALARM'
-    service: telegram_bot.send_message
+      data:
+        inline_keyboard:
+          - 'Task 1:/command1, Task 2:/command2'
+          - 'Task 3:/command3, Task 4:/command4'
+    service: notify.telegram
     

@@ -270,6 +270,7 @@
         entity_id: 
          - light.shelly_shrgbw2_f4337c_1
          - light.shelly_shrgbw2_f4337c_2
+         - light.shelly_shrgbw2_011738_1
         brightness_pct: 100
         transition: 30
     - service: switch.turn_off
@@ -295,6 +296,7 @@
          - light.yeelight_l_ceiling
          - light.shelly_shrgbw2_f4337c_1
          - light.shelly_shrgbw2_f4337c_2
+         - light.shelly_shrgbw2_011738_1
          
          
 - alias: 'Light20 - Livingroom night '
@@ -334,6 +336,7 @@
       data_template:
         entity_id: 
          - light.shelly_shrgbw2_f4337c_2
+         - light.shelly_shrgbw2_011738_1
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_10008cbb5e_2
@@ -357,6 +360,7 @@
          - light.yeelight_l_ceiling
          - light.shelly_shrgbw2_f4337c_1
          - light.shelly_shrgbw2_f4337c_2
+         - light.shelly_shrgbw2_011738_1
          
          
    #fan on wall connection
@@ -414,7 +418,7 @@
       event: 1002
   action:
     - service: light.toggle
-      entity_id: light.yeelight_emma # emma bedroom yeeelight
+      entity_id: light.shelly_shrgbw2_011825_4 #emma owl
 
 # - alias: Button Emma long press start 
 #   trigger:
@@ -612,6 +616,162 @@
       data_template:
         entity_id: 
         - switch.shelly_shsw_25_98f4abf2cd7c_2
+
+- alias: 'Light30 - Livingroom Daylight '
+  trigger:
+    - platform: state
+      entity_id: 
+        - input_select.living_room_sceene
+      to: 'Daylight'
+  action:
+    - service: switch.turn_on
+      entity_id: 
+       - switch.sonoff_10008cbb1d_3
+    - service: switch.turn_off
+      entity_id: 
+       - switch.sonoff
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.yeelight_l_corner
+         - light.yeelight_l_table
+         - light.yeelight_l_ceiling
+        brightness: 255
+        kelvin: 2500
+        transition: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_1
+         - light.shelly_shrgbw2_f4337c_2
+         - light.shelly_shrgbw2_011738_1
+        brightness_pct: 100
+        transition: 30
+
+- alias: 'Light30 - Livingroom Dinner '
+  trigger:
+    - platform: state
+      entity_id: 
+        - input_select.living_room_sceene
+      to: 'Dinner'
+  action:
+    - service: switch.turn_on
+      entity_id: 
+       - switch.sonoff_10008cbb1d_3
+       - switch.sonoff
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.yeelight_l_corner
+         - light.yeelight_l_table
+         - light.yeelight_l_ceiling
+        brightness: 255
+        kelvin: 2500
+        transition: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_1
+         - light.shelly_shrgbw2_f4337c_2
+         - light.shelly_shrgbw2_011738_1
+        brightness_pct: 100
+        transition: 30
+        
+- alias: 'Light32 - Livingroom Relax '
+  trigger:
+    - platform: state
+      entity_id: 
+        - input_select.living_room_sceene
+      to: 'Relax'
+  action:
+    - service: switch.turn_off
+      entity_id: 
+       - switch.sonoff_10008cbb1d_3
+       - switch.sonoff
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.yeelight_l_corner
+         - light.yeelight_l_table
+         - light.yeelight_l_ceiling
+        brightness: 1
+        kelvin: 1700
+        transition: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_1
+         - light.shelly_shrgbw2_011738_1
+        brightness_pct: 1
+        transition: 30
+    - service: light.turn_off
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_2
+         
+- alias: 'Light32 - Livingroom TV '
+  trigger:
+    - platform: state
+      entity_id: 
+        - input_select.living_room_sceene
+      to: 'Tv'
+  action:
+    - service: switch.turn_off
+      entity_id: 
+       - switch.sonoff_10008cbb1d_3
+       - switch.sonoff
+    - service: light.turn_off
+      data_template:
+        entity_id: 
+         - light.yeelight_l_corner
+         - light.yeelight_l_table
+         - light.yeelight_l_ceiling
+        transition: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_011738_1
+        brightness_pct: 1
+        transition: 30
+    - service: light.turn_off
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_1
+         - light.shelly_shrgbw2_f4337c_2
+         
+- alias: 'Light32 - Livingroom Evening '
+  trigger:
+    - platform: state
+      entity_id: 
+        - input_select.living_room_sceene
+      to: 'Evening'
+  action:
+    - service: switch.turn_off
+      entity_id: 
+       - switch.sonoff_10008cbb1d_3
+       - switch.sonoff
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.yeelight_l_corner
+         - light.yeelight_l_table
+         - light.yeelight_l_ceiling
+        brightness: 20
+        kelvin: 1700
+        transition: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_1
+         - light.shelly_shrgbw2_011738_1
+        brightness_pct: 50
+        transition: 30
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+         - light.shelly_shrgbw2_f4337c_2
+        brightness_pct: 10
+        transition: 30
 
 
 

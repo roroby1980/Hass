@@ -1,0 +1,31 @@
+- id: '1613162994134'
+  name: New Scene
+  entities:
+    light.shelly_shrgbw2_011738_1:
+      brightness: 2
+      shelly_type: Shelly RGBW2
+      shelly_id: 011738-1
+      ip_address: 192.168.1.114
+      protocols:
+      - CoAP-discovery
+      - CoAP-msg
+      - poll
+      cloud_status: connected
+      current_consumption: 0 W
+      friendly_name: Warm LED2
+      supported_features: 1
+      state: 'on'
+    light.shelly_shrgbw2_f4337c_1:
+      brightness: 2
+      shelly_type: Shelly RGBW2
+      shelly_id: F4337C-1
+      ip_address: 192.168.1.80
+      protocols:
+      - CoAP-discovery
+      - CoAP-msg
+      - poll
+      cloud_status: connected
+      current_consumption: 1 W
+      friendly_name: Warm Led
+      supported_features: 1
+      state: 'on'
