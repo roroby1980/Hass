@@ -129,7 +129,7 @@
     - service: light.turn_on
       entity_id: group.back_home_lights
 
- - alias: 'Light15 - bathroom celing light '
+- alias: 'Light15 - bathroom celing light '
   trigger:
     - platform: state
       entity_id: 
