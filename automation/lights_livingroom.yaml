@@ -44,8 +44,8 @@
       to: 'on'
   action:
     - service: input_select.select_option
-      entity_id: input_select.living_room_sceene
-      option: 'Daylight'
+        entity_id: input_select.living_room_sceene
+        option: 'Daylight'
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_10008cbb5e_3
@@ -62,8 +62,8 @@
       state: 'off'
   action:
     - service: input_select.select_option
-      entity_id: input_select.living_room_sceene
-      option: 'Off'
+        entity_id: input_select.living_room_sceene
+        option: 'Off'
          
          
 - alias: 'LivingLight - Livingroom Night button on'
@@ -74,8 +74,8 @@
       to: 'on'
   action:
     - service: input_select.select_option
-      entity_id: input_select.living_room_sceene
-      option: 'Evening'
+        entity_id: input_select.living_room_sceene
+        option: 'Evening'
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_10008cbb5e_2
@@ -92,8 +92,8 @@
       state: 'off'
   action:
     - service: input_select.select_option
-      entity_id: input_select.living_room_sceene
-      option: 'Off'
+        entity_id: input_select.living_room_sceene
+        option: 'Off'
 
          
  
