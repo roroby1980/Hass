@@ -182,10 +182,9 @@
         entity_id: sensor.pow1_power
         below: 5
       - condition: not
-          conditions:
-          - condition: state
-            entity_id: input_select.living_room_sceene
-            state: 'Tv'
+      - condition: state
+        entity_id: input_select.living_room_sceene
+        state: 'Tv'
   action:
     - service: telegram_bot.send_message
       data_template:
