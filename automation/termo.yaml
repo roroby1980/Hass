@@ -153,7 +153,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.house_humidity
-      above: 60
+      below: 60
   action:
     - service: switch.turn_off
       entity_id: switch.sonoff_10009ce05a
