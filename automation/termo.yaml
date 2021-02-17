@@ -165,17 +165,20 @@
 
 - alias: 'Termo - deumidificate full '
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.pow1_power
-      below: 5
-      for:
-        minutes: 10
-#  conditions:
-#      - condition: 
-#        entity_id: sensor.house_humidity
-#        above: 60
+    - platform: time_pattern
+      minutes: "/15"
+  conditions:
+      - condition: state
+        entity_id: group.family
+        state: 'home'
+      - condition: numeric_state
+        entity_id: sensor.house_humidity
+        above: 60
+      - condition: numeric_state
+        entity_id: sensor.pow1_power
+        below: 5
   action:
     - service: telegram_bot.send_message
       data_template:
         title: deumidificate full
-        message: 'deumidificate full'
+        message: '{{ now().strftime("%H:%M:%S") }} deumidificate full humidity @ {{states.sensor.house_humidity.state}}'
