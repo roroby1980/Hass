@@ -147,8 +147,6 @@
   action:
     - service: switch.turn_on
       entity_id: switch.sonoff_10009ce05a
-    - service: automation.turn_on
-      entity_id: automation.termo_deumidificate_full
 
 
 - alias: 'Termo - deumidificate off '
@@ -159,8 +157,6 @@
   action:
     - service: switch.turn_off
       entity_id: switch.sonoff_10009ce05a
-    - service: automation.turn_off
-      entity_id: automation.termo_deumidificate_full
 
 
 - alias: 'Termo - deumidificate full '
