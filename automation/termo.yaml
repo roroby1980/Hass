@@ -170,7 +170,8 @@
   trigger:
     - platform: time_pattern
       minutes: "/15"
-  conditions:
+  condition:
+    conditions:
       - condition: state
         entity_id: group.family
         state: 'home'
