@@ -380,7 +380,7 @@
   trigger:
     - platform: state
       entity_id: 
-        - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
+        - binary_sensor.shelly_shsw_pm_b906cb_switch
       to:
         - 'on'
         - 'off'
@@ -416,31 +416,13 @@
               128
            {% endif %}
 
-- alias: 'bedrooms switch on'
-  trigger:
-    - platform: state
-      entity_id: 
-        - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
-      to:
-        - 'on'
-        - 'off'
-  condition:
-    - condition: state
-      entity_id: group.bedroom_lights
-      state: 'off'
-    - condition: time
-      after: '09:00:00'
-    - condition: time
-      before: '18:00:00'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.shelly_shsw_25_98f4abf2cd7c_2
+
 
 - alias: 'bedrooms lights off '
   trigger:
     - platform: state
       entity_id: 
-        - binary_sensor.shelly_shsw_25_98f4abf2cd7c_1_switch
+        - binary_sensor.shelly_shsw_pm_b906cb_switch
       to:
         - 'on'
         - 'off'
@@ -456,7 +438,4 @@
         - light.shelly_shrgbw2_f43a0c_4
         - light.l_bedroom
         - light.shelly_shrgbw2_f43a0c_3
-    - service: switch.turn_off
-      data_template:
-        entity_id: 
-        - switch.shelly_shsw_25_98f4abf2cd7c_2
+
