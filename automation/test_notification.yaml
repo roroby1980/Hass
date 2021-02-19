@@ -86,7 +86,6 @@
         message: 'now that  {{trigger.from_state.attributes.friendly_name}} is stop  there is {{states.sensor.current_power.state}} W used'
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
-    - delay: '00:02:30'
     - service: automation.turn_on
       entity_id: automation.restart
 
