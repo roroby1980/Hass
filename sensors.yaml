@@ -236,11 +236,6 @@
     qos: 0
     device_class: temperature
 
-  - platform: mqtt
-    name: temperatura3 shelly
-    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/2"
-    qos: 0
-    device_class: temperature
 
 
   - platform: template
