@@ -41,9 +41,7 @@ manual_away_mode:
     data_template:
       transition: 1
   - service: switch.turn_off
-    entity_id:
-    - switch.sonoff
-    - switch.tasmota
+    entity_id: group.all_switch_lights
   - service: climate.set_preset_mode
     data:
       entity_id: climate.riscaldamento

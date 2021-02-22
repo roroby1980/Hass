@@ -8,12 +8,7 @@
     - service: light.turn_off
       entity_id: group.all_lights
     - service: switch.turn_off
-      entity_id: 
-        - switch.sonoff
-        - switch.tasmota
-        - switch.sonoff_100056b199_1
-        - switch.sonoff_100056b199_2
-        - switch.sonoff_1000a5758e  
+      entity_id: group.all_switch_lights
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
@@ -73,12 +68,7 @@
     - service: light.turn_off
       entity_id: group.all_lights
     - service: switch.turn_off
-      entity_id: 
-        - switch.sonoff
-        - switch.tasmota
-        - switch.sonoff_100056b199_1
-        - switch.sonoff_100056b199_2
-        - switch.sonoff_1000a5758e 
+      entity_id: group.all_switch_lights
     - service: climate.set_temperature
       data:
         entity_id: climate.riscaldamento
