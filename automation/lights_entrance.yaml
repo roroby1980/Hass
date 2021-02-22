@@ -1,0 +1,37 @@
+- alias: 'entrancelight decoration lights on'
+  trigger:
+    - platform: state
+      entity_id: 
+        -   binary_sensor.frontdoor
+      to:
+        - 'on'
+    - platform: state
+      entity_id: 
+        -   binary_sensor.ma_entrance
+      to:
+        - 'on'
+    - platform: state
+      entity_id: 
+        -   light.shelly_shrgbw2_f4337c_4
+      to:
+        - 'on'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+           - light.shelly_shrgbw2_f4337c_3
+        brightness: >
+           {% if  now().hour < 7 %} 
+              50
+           {% elif now().hour >= 7 and now().hour < 20 %} 
+              255
+           {% elif now().hour >= 20  %}
+              50
+           {% endif %}
+    - delay: '00:01:00'
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+           - light.shelly_shrgbw2_f4337c_3
+        brightness: 1
+

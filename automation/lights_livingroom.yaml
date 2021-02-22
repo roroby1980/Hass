@@ -33,8 +33,6 @@
     - service: switch.turn_off
       entity_id: 
         - switch.sonofff
-    
-
 
 - alias: 'LivingLight - Livingroom Daily button on'
   trigger:
