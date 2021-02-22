@@ -22,7 +22,7 @@ all_lights:
     - light.l_dressingroom         #dressingroom ceiling light
     - light.l_bathroom_main         #bathroom ceiling light
     - switch.sonoff            #Livingroom table light
-    - light.l_bedroom          #masterbedroom  light  
+    - light.l_bedroom #bedroom zigbee bulb          #masterbedroom  light  
     - light.sonoff_1000994c1d #not connetted lamp from sonoff fan controller
     - switch.sonoff_100056b199_1 # sonoff touch input 1
     - switch.sonoff_100056b199_2 # sonoff touch input 2
@@ -65,7 +65,7 @@ dim_lights:
     - light.l_kitchen
     - light.l_dressingroom
     - light.l_bathroom_main
-    - light.l_bedroom
+    - light.l_bedroom #bedroom zigbee bulb
     - light.yeelight_emma
     - light.alma_bedroom
     - light.shelly_shrgbw2_f4337c_3
@@ -73,12 +73,12 @@ inside_presences:
     entities:
     - binary_sensor.m_bathroom
     - binary_sensor.ma_3
-    - binary_sensor.w_livingroom
+    - binary_sensor.w_livingroom # bedroom door
     - sensor.yicam
 bedroom_lights:
     entities:
-    - light.shelly_shrgbw2_f43a0c_1
-    - light.shelly_shrgbw2_f43a0c_4
-    - light.l_bedroom
-    - light.shelly_shrgbw2_f43a0c_3
+    - light.shelly_shrgbw2_f43a0c_1 #bedroom Led warm
+    - light.shelly_shrgbw2_f43a0c_4 #bedroom Led natural
+    - light.l_bedroom #bedroom zigbee bulb
+    - light.shelly_shrgbw2_f43a0c_3 #bedroom led small
     - switch.shelly_shsw_25_98f4abf2cd7c_2

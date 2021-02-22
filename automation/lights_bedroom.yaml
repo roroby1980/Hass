@@ -1,0 +1,96 @@
+- alias: 'bedrooms lights on'
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.shelly_shsw_pm_b906cb_switch
+      to:
+        - 'on'
+        - 'off'
+  condition:
+    - condition: state
+      entity_id: group.bedroom_lights
+      state: 'off'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: >
+           {% if  now().hour < 7 %} 
+            light.shelly_shrgbw2_f43a0c_3 
+           {% elif now().hour >= 7 and now().hour < 9 %} 
+            light.l_bedroom ,light.shelly_shrgbw2_f43a0c_1 
+           {% elif now().hour >= 9 and now().hour < 18  %}
+            light.l_bedroom ,light.shelly_shrgbw2_f43a0c_1 ,light.shelly_shrgbw2_f43a0c_4
+           {% elif now().hour >= 18 and now().hour < 20  %}
+            light.l_bedroom ,light.shelly_shrgbw2_f43a0c_1 
+           {% elif now().hour >= 20  %}
+            light.shelly_shrgbw2_f43a0c_3 
+           {% endif %}
+        brightness: >
+           {% if  now().hour < 7 %} 
+              128
+           {% elif now().hour >= 7 and now().hour < 9 %} 
+              10
+           {% elif now().hour >= 9 and now().hour < 18  %}
+              255
+           {% elif now().hour >= 18 and now().hour < 20  %}
+              10
+           {% elif now().hour >= 20  %}
+              128
+           {% endif %}
+
+
+
+- alias: 'bedrooms lights off '
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.shelly_shsw_pm_b906cb_switch
+      to:
+        - 'on'
+        - 'off'
+  condition:
+    - condition: state
+      entity_id: group.bedroom_lights
+      state: 'on'
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: 
+        - light.shelly_shrgbw2_f43a0c_1 #bedroom Led warm
+        - light.shelly_shrgbw2_f43a0c_4 #bedroom Led natural
+        - light.l_bedroom #bedroom zigbee bulb
+        - light.shelly_shrgbw2_f43a0c_3 #bedroom led small
+
+
+- alias: 'bedrooms closing windows /door '
+  trigger:
+    - platform: state
+      entity_id: 
+        - binary_sensor.w_livingroom # bedroom door
+      to:
+        - 'off'
+  condition:
+    - condition: state
+      entity_id: group.bedroom_lights
+      state: 'off'
+    - condition: time
+      after: '08:00:00'
+      before: '22:00:00'
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: 
+        - light.l_bedroom #bedroom zigbee bulb
+        - light.shelly_shrgbw2_f43a0c_3 #bedroom led small
+        brightness: >
+           {% if  now().hour < 7 %} 
+              10
+           {% elif now().hour >= 7 and now().hour < 9 %} 
+              128
+           {% elif now().hour >= 9 and now().hour < 18  %}
+              255
+           {% elif now().hour >= 18 and now().hour < 20  %}
+              128
+           {% elif now().hour >= 20  %}
+              10
+           {% endif %}

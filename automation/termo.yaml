@@ -13,7 +13,7 @@
       entity_id: group.family
       state: 'home'
     - condition: state
-      entity_id: binary_sensor.w_livingroom
+      entity_id:  binary_sensor.input12 # bedroom small window
       state: 'off'
     - condition: state
       entity_id: input_boolean.manual_heater
@@ -73,7 +73,7 @@
   trigger:
     platform: state
     entity_id:
-      - binary_sensor.w_livingroom
+      - binary_sensor.input12 # bedroom small window
     to: 'on'
     for:
       minutes: 10

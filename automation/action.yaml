@@ -7,7 +7,7 @@
       - binary_sensor.ma_one
       - binary_sensor.ma_2
       - binary_sensor.ma_3
-      - binary_sensor.w_livingroom
+      - binary_sensor.w_livingroom # bedroom door
       - binary_sensor.w_bathroom
       - sensor.yicam
     to: 'on'
