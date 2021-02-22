@@ -190,3 +190,28 @@
       data_template:
         title: deumidificate full
         message: '{{ now().strftime("%H:%M:%S") }} deumidificate full humidity @ {{states.sensor.house_humidity.state}}'
+
+
+
+- alias: 'Termo - daily decision  '
+  trigger:
+    - platform: time
+      at: "07:30:00"
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        title: Summary AI
+        message: |
+                  'Today {{ now().strftime("%d %B" ) }} 
+                  will be {{states.sensor.dark_sky_summary_0d.state}}
+                  whit Max temperature of {{states.sensor.dark_sky_daytime_high_temperature_0d.state}} °C
+                  and  Min temperature of {{states.sensor.dark_sky_overnight_low_temperature_0d.state}} °C
+                  Couds coverage {{states.sensor.dark_sky_cloud_coverage_0d.state}} %
+                  rain canche {{states.sensor.dark_sky_precip_probability_0d.state}} %
+                  AI score: {{(states.sensor.dark_sky_daytime_high_temperature_0d.state|float + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int}}'
+
+#sensor.dark_sky_daytime_high_temperature_0d
+#sensor.dark_sky_overnight_low_temperature_0d
+#sensor.dark_sky_cloud_coverage_0d
+#sensor.dark_sky_precip_probability_0d
+#sensor.dark_sky_summary_0d
