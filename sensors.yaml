@@ -260,5 +260,3 @@
         value_template: >
           {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
         icon_template: mdi:weather-sunny
-
-
