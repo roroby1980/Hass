@@ -224,7 +224,6 @@
         value_template: "{{ state_attr('switch.sonoff_10009ce473', 'current') }}"
 
   - platform: mqtt
-    sensors: 
     name: temperatura1_shelly
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/0"
     qos: 0
@@ -251,11 +250,11 @@
         value_template: >
           {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %H:%M:%S',false) }}
         icon_template: mdi:weather-sunset-down
-      daylighttoday:
-        friendly_name: 'Day Length Today'
-        value_template: >
-          {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
-        icon_template: mdi:weather-sunny
+      # daylighttoday:
+      #   friendly_name: 'Day Length Today'
+      #   value_template: >
+      #     {{ (states.sun.sun.attributes.daylight) | timestamp_custom(' %H:%M:%S',false) | replace(" 0", "") }}
+      #   icon_template: mdi:weather-sunny
       dark_outside:
         entity_id:
           - sun.sun
