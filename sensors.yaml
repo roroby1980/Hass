@@ -214,7 +214,6 @@
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'power') }}"
       pow1_current:
         value_template: "{{ state_attr('switch.sonoff_10009ce05a', 'current') }}"
-
     sensors:
       pow2_voltage:
         value_template: "{{ state_attr('switch.sonoff_10009ce473', 'voltage') }}"
@@ -229,12 +228,10 @@
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/0"
     qos: 0
     device_class: temperature
-
     name: temperatura2 shelly
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/1"
     qos: 0
     device_class: temperature
-
     name: temperatura3 shelly
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/2"
     qos: 0
@@ -264,14 +261,12 @@
           - sensor.dark_sky_cloud_coverage
         friendly_name: Dark outside
         value_template: "{{states.sun.sun.attributes.elevation|float < 2 or states.sensor.dark_sky_cloud_coverage.state|float > 50}}"
-
       light_on_east:
         friendly_name: 'Light on east side of house'
         value_template: >
           {% if  (now().hour  <= as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %H',false)|int -2 ) and (states.sun.sun.attributes.elevation | int > 10) and (states.sensor.dark_sky_cloud_coverage.state | int < 50) %}true
           {% else %}false
           {% endif %}
-
       light_on_west:
         friendly_name: 'Light on west side of house'
         value_template: >
