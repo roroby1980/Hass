@@ -268,14 +268,14 @@
       light_on_east:
         friendly_name: 'Light on east side of house'
         value_template: >
-          {% if  (now().hour  <= as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %H',false)|int -2 ) and (states.sun.sun.attributes.elevation | int > 10) and (states.sensor.dark_sky_cloud_coverage.state | int < 50)) %}true
+          {% if  (now().hour  <= as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %H',false)|int -2 ) and (states.sun.sun.attributes.elevation | int > 10) and (states.sensor.dark_sky_cloud_coverage.state | int < 50) %}true
           {% else %}false
           {% endif %}
 
       light_on_west:
         friendly_name: 'Light on west side of house'
         value_template: >
-          {% if  (now().hour  >= 12  ) and (states.sun.sun.attributes.elevation | int > 10) and (states.sensor.dark_sky_cloud_coverage.state | int < 50)) %}true
+          {% if  (now().hour  >= 12  ) and (states.sun.sun.attributes.elevation | int > 10) and (states.sensor.dark_sky_cloud_coverage.state | int < 50) %}true
           {% else %}false
           {% endif %}
       
