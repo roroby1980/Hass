@@ -224,15 +224,16 @@
         value_template: "{{ state_attr('switch.sonoff_10009ce473', 'current') }}"
 
   - platform: mqtt
-    name: temperatura1 shelly
+    sensors: 
+    name: temperatura1_shelly
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/0"
     qos: 0
     device_class: temperature
-    name: temperatura2 shelly
+    name: temperatura2_shelly
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/1"
     qos: 0
     device_class: temperature
-    name: temperatura3 shelly
+    name: temperatura3_shelly
     state_topic: "shellies/shelly1-40F520054E61/ext_temperature/2"
     qos: 0
     device_class: temperature
