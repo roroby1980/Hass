@@ -47,7 +47,7 @@
         entity_id: input_select.thermo_profile
         option: '{{states.var.today_thermo_profile.state}}'
 
-- alias: 'Termo - AI  '
+- alias: 'Thermo - AI  '
   trigger:
     - platform: time
       at: "05:00:00"
@@ -198,23 +198,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-#------------
-
-
-
-
-- alias: 'Termo - manual request  wall'
+- alias: 'Thermo - manual request  wall'
   trigger:
     platform: state
     entity_id: binary_sensor.sonoff_switch1_2
@@ -229,7 +213,7 @@
         entity_id: input_select.thermo_profile
         option: 'Manual1h'
      
-- alias: 'Termo - window open '
+- alias: 'Thermo - window open '
   trigger:
     platform: state
     entity_id:
@@ -244,7 +228,7 @@
         option: 'Off'
 
 
-- alias: 'Termo - fan on '
+- alias: 'Thermo - fan on '
   trigger:
     - platform: state
       entity_id:
@@ -266,7 +250,7 @@
     - service: switch.turn_on
       entity_id: switch.tasmota
 
-- alias: 'Termo - fan off '
+- alias: 'Thermo - fan off '
   trigger:
     - platform: state
       entity_id:
@@ -281,7 +265,7 @@
 
 
 
-- alias: 'Termo - deumidificate on '
+- alias: 'Thermo - deumidificate on '
   trigger:
     - platform: numeric_state
       entity_id: sensor.mold_indicator
@@ -298,7 +282,7 @@
 
 
 
-- alias: 'Termo - deumidificate off '
+- alias: 'Thermo - deumidificate off '
   trigger:
     - platform: numeric_state
       entity_id: sensor.mold_indicator
@@ -308,7 +292,7 @@
       entity_id: switch.sonoff_10009ce05a
 
 
-- alias: 'Termo - deumidificate full '
+- alias: 'Thermo - deumidificate full '
   trigger:
     - platform: time_pattern
       minutes: "/15"
