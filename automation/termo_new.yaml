@@ -48,9 +48,9 @@
       at: "05:00:00"
   action:
     - service: var.set
-    data:
-      entity_id: var.today_thermo_profile
-      value_template: >
+      data:
+        entity_id: var.today_thermo_profile
+        value_template: >
            {% if 8 < (states.sensor.dark_sky_daytime_high_temperature_0d.state|float + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int %} 
               ColdWinter
            {% elif 15 < (states.sensor.dark_sky_daytime_high_temperature_0d.state|float + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int %} 
