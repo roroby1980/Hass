@@ -16,3 +16,7 @@ avg_house_temperature:
 max_power_last3m:
   restore: true
   unit_of_measurement: "W"
+
+today_thermo_profile:
+  restore: true
+  

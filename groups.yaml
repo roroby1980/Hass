@@ -28,7 +28,7 @@ all_lights:
     - light.shelly_shrgbw2_f4337c_3 #Entance service Led
     - light.shelly_shrgbw2_f4337c_4 #Entance main Led
 #shelly living 
-    - light.shelly_shrgbw2_011738_1 # closet warm led2
+    - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
     - light.shelly_shrgbw2_011738_2 #free
     - light.shelly_shrgbw2_011738_3 #free
     - light.shelly_shrgbw2_011738_4 #free
@@ -49,15 +49,15 @@ all_lights:
 all_switch:
   entities:
   #mqtt
-    - switch.sonoff             #Livingroom table light       
+    - switch.sonoff  #Livingroom table light       
   # sonoff touch right
     - switch.sonoff_100056b199_1 # speakers
     - switch.sonoff_100056b199_2 # table
     - switch.sonoff_100056b199_3 # celinig yeelight
   # sonoff touch right
     - switch.sonoff_10008cbb1d_1 # fan
-    - switch.sonoff_10008cbb1d_2 # sceene daily
-    - switch.sonoff_10008cbb1d_3 # scene night
+    - switch.sonoff_10008cbb1d_2  # sceene daily
+    - switch.sonoff_10008cbb1d_3  # scene night
   # sonoff mini
     - switch.sonoff_1000a54613 # kitchen LED
     - switch.sonoff_1000a495ae # balcony south light
@@ -66,14 +66,14 @@ all_switch:
 all_switch_lights:
   entities:
   #mqtt
-    - switch.sonoff             #Livingroom table light       
+    - switch.sonoff # Livingroom table light       
   # sonoff touch right
     - switch.sonoff_100056b199_1 # speakers
-    #- switch.sonoff_100056b199_2 # table
-    - switch.sonoff_100056b199_3 # celinig yeelight
+    #- switch.sonoff_100056b199_2 # sonoff_to_mqtt_led
+    - switch.sonoff_100056b199_3 # sonoff_to_yeelight
   # sonoff touch right
     - switch.sonoff_10008cbb1d_1 # fan
-   # - switch.sonoff_10008cbb1d_2 # sceene daily
+   # - switch.sonoff_10008cbb1d_2  # sceene daily
    # - switch.sonoff_10008cbb1d_3 # scene night
   # sonoff mini
     - switch.sonoff_1000a54613 # kitchen LED

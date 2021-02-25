@@ -1,217 +1,220 @@
      
-- alias: 'Termo crono'
-  trigger:
-    - platform: time_pattern
-      minutes: "/15"
-    - platform: state
-      entity_id: group.family
-      to: home
-    - platform: homeassistant
-      event: start
-  condition:
-    - condition: state
-      entity_id: group.family
-      state: 'home'
-    - condition: state
-      entity_id:  binary_sensor.input12 # bedroom small window
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.manual_heater
-      state: 'off'     
-  action:
-    - service:  climate.set_hvac_mode
-      data_template:
-        entity_id: climate.riscaldamento
-        hvac_mode: >
-          {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
-            heat
-          {% else %} 
-            off
-          {% endif %}
-    - service: climate.set_temperature
-      data_template:
-        entity_id: climate.riscaldamento
-        temperature:  >
-           {% if  now().hour < 8 %} 
-              15
-           {% elif now().hour >= 8 and now().hour < 9 %} 
-              18 
-           {% elif now().hour >= 9 and now().hour < 10  %}
-              20
-           {% elif now().hour >= 10 and now().hour < 17  %}
-              19
-           {% elif now().hour >= 17 and now().hour < 19  %}
-              20
-           {% elif now().hour >= 19 and now().hour < 21  %}
-              19
-           {% elif now().hour >= 21  %}
-              15
-           {% endif %}
+# - alias: 'Termo crono'
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/15"
+#     - platform: state
+#       entity_id: group.family
+#       to: home
+#     - platform: homeassistant
+#       event: start
+#   condition:
+#     - condition: state
+#       entity_id: group.family
+#       state: 'home'
+#     - condition: state
+#       entity_id:  binary_sensor.input12 # bedroom small window
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.manual_heater
+#       state: 'off'     
+#   action:
+#     - service:  climate.set_hvac_mode
+#       data_template:
+#         entity_id: climate.riscaldamento
+#         hvac_mode: >
+#           {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
+#             heat
+#           {% else %} 
+#             off
+#           {% endif %}
+#     - service: climate.set_temperature
+#       data_template:
+#         entity_id: climate.riscaldamento
+#         temperature:  >
+#            {% if  now().hour < 8 %} 
+#               15
+#            {% elif now().hour >= 8 and now().hour < 9 %} 
+#               18 
+#            {% elif now().hour >= 9 and now().hour < 10  %}
+#               20
+#            {% elif now().hour >= 10 and now().hour < 17  %}
+#               19
+#            {% elif now().hour >= 17 and now().hour < 19  %}
+#               20
+#            {% elif now().hour >= 19 and now().hour < 21  %}
+#               19
+#            {% elif now().hour >= 21  %}
+#               15
+#            {% endif %}
         
 
-- alias: 'Termo - manual request  wall'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.sonoff_switch1_2
-    to: 'on'
-  condition:
-    condition: state
-    entity_id: group.family
-    state: 'home'
-  action:
-    - service: climate.set_temperature
-      data_template:
-        entity_id: climate.riscaldamento
-        temperature: "{{ states.climate.riscaldamento.attributes.current_temperature |float +0.5 }}"
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.manual_heater
-    - delay: '01:00:00'
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.manual_heater
+# - alias: 'Termo - manual request  wall'
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.sonoff_switch1_2
+#     to: 'on'
+#   condition:
+#     condition: state
+#     entity_id: group.family
+#     state: 'home'
+#   action:
+#     - service: climate.set_temperature
+#       data_template:
+#         entity_id: climate.riscaldamento
+#         temperature: "{{ states.climate.riscaldamento.attributes.current_temperature |float +0.5 }}"
+#     - service: input_boolean.turn_on
+#       entity_id: input_boolean.manual_heater
+#     - delay: '01:00:00'
+#     - service: input_boolean.turn_off
+#       entity_id: input_boolean.manual_heater
      
-- alias: 'Termo - window open '
-  trigger:
-    platform: state
-    entity_id:
-      - binary_sensor.input12 # bedroom small window
-    to: 'on'
-    for:
-      minutes: 10
-  condition:
-    condition: state
-    entity_id: group.family
-    state: 'home'
-  action:
-    - service: climate.set_temperature
-      data_template:
-        entity_id: climate.riscaldamento
-        temperature: 17
+# - alias: 'Termo - window open '
+#   trigger:
+#     platform: state
+#     entity_id:
+#       - binary_sensor.input12 # bedroom small window
+#     to: 'on'
+#     for:
+#       minutes: 10
+#   condition:
+#     condition: state
+#     entity_id: group.family
+#     state: 'home'
+#   action:
+#     - service: climate.set_temperature
+#       data_template:
+#         entity_id: climate.riscaldamento
+#         temperature: 17
 
 
-- alias: 'Termo - fan on '
-  trigger:
-    - platform: state
-      entity_id:
-        - switch.sonoff_2
-      to: 'on'
-      for:
-        minutes: 5
-    - platform: time
-      at: "08:30:00"
-  condition:
-    - condition: time
-      after: '08:15:00'
-    - condition: time
-      before: '20:00:00'
-    - condition: state
-      entity_id: switch.sonoff_2
-      state: 'on'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.tasmota
+# - alias: 'Termo - fan on '
+#   trigger:
+#     - platform: state
+#       entity_id:
+#         - switch.sonoff_2
+#       to: 'on'
+#       for:
+#         minutes: 5
+#     - platform: time
+#       at: "08:30:00"
+#   condition:
+#     - condition: time
+#       after: '08:15:00'
+#     - condition: time
+#       before: '20:00:00'
+#     - condition: state
+#       entity_id: switch.sonoff_2
+#       state: 'on'
+#   action:
+#     - service: switch.turn_on
+#       entity_id: switch.tasmota
 
-- alias: 'Termo - fan off '
-  trigger:
-    - platform: state
-      entity_id:
-        - switch.sonoff_2
-      to: 'off'
-    - platform: time
-      at: "20:15:00"
-  action:
-    - service: switch.turn_off
-      entity_id: switch.tasmota
-
-
-
-- alias: 'Termo - manual request '
-  trigger:
-    - platform: state
-      entity_id: input_boolean.manual_heater
-      to: 'on'
-  action:
-    - service: climate.set_temperature
-      data_template:
-        entity_id: climate.riscaldamento
-        temperature: "{{ states.climate.riscaldamento.attributes.current_temperature |float +0.5 }}"
-    - delay: '01:00:00'
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.manual_heater
-
-
-- alias: 'Termo - deumidificate on '
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.house_humidity
-      above: 60
-  condition:
-    condition: not
-    conditions:
-      - condition: state
-        entity_id: input_select.living_room_sceene
-        state: 'Tv'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.sonoff_10009ce05a
+# - alias: 'Termo - fan off '
+#   trigger:
+#     - platform: state
+#       entity_id:
+#         - switch.sonoff_2
+#       to: 'off'
+#     - platform: time
+#       at: "20:15:00"
+#   action:
+#     - service: switch.turn_off
+#       entity_id: switch.tasmota
 
 
 
-- alias: 'Termo - deumidificate off '
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.house_humidity
-      below: 60
-  action:
-    - service: switch.turn_off
-      entity_id: switch.sonoff_10009ce05a
+# - alias: 'Termo - manual request '
+#   trigger:
+#     - platform: state
+#       entity_id: input_boolean.manual_heater
+#       to: 'on'
+#   action:
+#     - service: climate.set_temperature
+#       data_template:
+#         entity_id: climate.riscaldamento
+#         temperature: "{{ states.climate.riscaldamento.attributes.current_temperature |float +0.5 }}"
+#     - delay: '01:00:00'
+#     - service: input_boolean.turn_off
+#       entity_id: input_boolean.manual_heater
 
 
-- alias: 'Termo - deumidificate full '
-  trigger:
-    - platform: time_pattern
-      minutes: "/15"
-  condition:
-    conditions:
-      - condition: state
-        entity_id: group.family
-        state: 'home'
-      - condition: numeric_state
-        entity_id: sensor.house_humidity
-        above: 60
-      - condition: numeric_state
-        entity_id: sensor.pow1_power
-        below: 5
-      - condition: not
-      - condition: state
-        entity_id: input_select.living_room_sceene
-        state: 'Tv'
-  action:
-    - service: telegram_bot.send_message
-      data_template:
-        title: deumidificate full
-        message: '{{ now().strftime("%H:%M:%S") }} deumidificate full humidity @ {{states.sensor.house_humidity.state}}'
+# - alias: 'Termo - deumidificate on '
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.house_humidity
+#       above: 60
+#   condition:
+#     condition: not
+#     conditions:
+#       - condition: state
+#         entity_id: input_select.living_room_sceene
+#         state: 'Tv'
+#   action:
+#     - service: switch.turn_on
+#       entity_id: switch.sonoff_10009ce05a
 
 
 
-- alias: 'Termo - daily decision  '
-  trigger:
-    - platform: time
-      at: "07:30:00"
-  action:
-    - service: telegram_bot.send_message
-      data_template:
-        title: Summary AI
-        message: |
-                  'Today {{ now().strftime("%d %B" ) }} 
-                  will be {{states.sensor.dark_sky_summary_0d.state}}
-                  whit Max temperature of {{states.sensor.dark_sky_daytime_high_temperature_0d.state}} °C
-                  and  Min temperature of {{states.sensor.dark_sky_overnight_low_temperature_0d.state}} °C
-                  Couds coverage {{states.sensor.dark_sky_cloud_coverage_0d.state}} %
-                  rain canche {{states.sensor.dark_sky_precip_probability_0d.state}} %
-                  AI score: {{(states.sensor.dark_sky_daytime_high_temperature_0d.state|float + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int}}'
+# - alias: 'Termo - deumidificate off '
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.house_humidity
+#       below: 60
+#   action:
+#     - service: switch.turn_off
+#       entity_id: switch.sonoff_10009ce05a
 
-#sensor.dark_sky_daytime_high_temperature_0d
-#sensor.dark_sky_overnight_low_temperature_0d
-#sensor.dark_sky_cloud_coverage_0d
-#sensor.dark_sky_precip_probability_0d
-#sensor.dark_sky_summary_0d
+
+# - alias: 'Termo - deumidificate full '
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/15"
+#   condition:
+#     conditions:
+#       - condition: state
+#         entity_id: group.family
+#         state: 'home'
+#       - condition: numeric_state
+#         entity_id: sensor.house_humidity
+#         above: 60
+#       - condition: numeric_state
+#         entity_id: sensor.pow1_power
+#         below: 5
+#       - condition: not
+#       - condition: state
+#         entity_id: input_select.living_room_sceene
+#         state: 'Tv'
+#   action:
+#     - service: telegram_bot.send_message
+#       data_template:
+#         title: deumidificate full
+#         message: '{{ now().strftime("%H:%M:%S") }} deumidificate full humidity @ {{states.sensor.house_humidity.state}}'
+
+
+
+# - alias: 'Termo - daily decision  '
+#   trigger:
+#     - platform: time
+#       at: "07:30:00"
+#   action:
+#     - service: telegram_bot.send_message
+#       data_template:
+#         title: Summary AI
+#         message: |
+#                   Today {{ now().strftime("%d %B" ) }} 
+#                   will be {{states.sensor.dark_sky_summary_0d.state}}
+#                   whit Max temperature of {{states.sensor.dark_sky_daytime_high_temperature_0d.state}} °C
+#                   and  Min temperature of {{states.sensor.dark_sky_overnight_low_temperature_0d.state}} °C
+#                   Couds coverage {{states.sensor.dark_sky_cloud_coverage_0d.state}} %
+#                   rain canche {{states.sensor.dark_sky_precip_probability_0d.state}} %
+#                   AI score: {{(states.sensor.dark_sky_daytime_high_temperature_0d.state|float 
+#                   + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  
+#                   - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 
+#                   - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int}}
+
+# #sensor.dark_sky_daytime_high_temperature_0d
+# #sensor.dark_sky_overnight_low_temperature_0d
+# #sensor.dark_sky_cloud_coverage_0d
+# #sensor.dark_sky_precip_probability_0d
+# #sensor.dark_sky_summary_0d
