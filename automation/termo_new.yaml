@@ -30,7 +30,7 @@
                   Couds coverage {{states.sensor.dark_sky_cloud_coverage_0d.state}} %
                   rain canche {{states.sensor.dark_sky_precip_probability_0d.state}} %
                   AI score: {{(states.sensor.dark_sky_daytime_high_temperature_0d.state|float + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int}}'
-                  heater today will be in {{states.today_thermo_profile.state}} mode
+                  heater today will be in {{states.var.today_thermo_profile.state}} mode
 
 - alias: 'Termo - after restart  '
   trigger:
@@ -40,7 +40,7 @@
     - service: input_select.select_option
       data_template:
         entity_id: input_select.thermo_profile
-        option: '{{states.today_thermo_profile.state}}'
+        option: '{{states.var.today_thermo_profile.state}}'
 
 - alias: 'Termo - AI  '
   trigger:
