@@ -3,16 +3,11 @@
     - platform: homeassistant
       event: start
   action:
+  - delay: '00:00:30'
     - service: telegram_bot.send_message
       data_template:
         title: Hassio Restarted
-        message: >
-          {% if  now().strftime("%m") |int < 4 or now().strftime("%m") |int > 10 %} 
-            'winter season heater are: heat'
-          {% else %} 
-            'summer season heater: off'
-          {% endif %}
-    - delay: '00:00:30'
+        message: heater status {{states.today_thermo_profile.state}}
     - service: automation.turn_on
       entity_id: automation.avoid_blackout_notification
       
