@@ -12,7 +12,9 @@
     service: telegram_bot.send_message
     data_template:
       title: Thermostat {{trigger.to_state.state}}
-      message: '{{ now().strftime("%H:%M") }} Thermostat {{trigger.to_state.state}} temperature {{states.sensor.house_temperature.state}} Profile : {{states.input_select.thermo_profile.state}}'
+      message: '{{ now().strftime("%H:%M") }} Thermostat {{trigger.to_state.state}} 
+                temperature {{states.sensor.house_temperature.state}} 
+                Profile : {{states.input_select.thermo_profile.state}}'
 
 - alias: 'Termo -  decision sumamry '
   trigger:
@@ -23,13 +25,16 @@
       data_template:
         title: Summary AI
         message: |
-                  'Today {{ now().strftime("%d %B" ) }} 
+                  Today {{ now().strftime("%d %B" ) }} 
                   will be {{states.sensor.dark_sky_summary_0d.state}}
                   whit Max temperature of {{states.sensor.dark_sky_daytime_high_temperature_0d.state}} °C
                   and  Min temperature of {{states.sensor.dark_sky_overnight_low_temperature_0d.state}} °C
                   Couds coverage {{states.sensor.dark_sky_cloud_coverage_0d.state}} %
                   rain canche {{states.sensor.dark_sky_precip_probability_0d.state}} %
-                  AI score: {{(states.sensor.dark_sky_daytime_high_temperature_0d.state|float + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int}}'
+                  AI score: {{(states.sensor.dark_sky_daytime_high_temperature_0d.state|float 
+                  + states.sensor.dark_sky_overnight_low_temperature_0d.state |float  
+                  - states.sensor.dark_sky_cloud_coverage_0d.state|int /50 
+                  - states.sensor.dark_sky_precip_probability_0d.state| int /33 )|int}}
                   heater today will be in {{states.var.today_thermo_profile.state}} mode
 
 - alias: 'Termo - after restart  '
@@ -61,7 +66,7 @@
     - service: input_select.select_option
       data_template:
         entity_id: input_select.thermo_profile
-        option: '{{states.today_thermo_profile.state}}'
+        option: '{{states.var.today_thermo_profile.state}}'
 
 
 - alias: 'Thermo Off'
