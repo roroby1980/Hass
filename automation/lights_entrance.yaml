@@ -35,3 +35,43 @@
            - light.shelly_shrgbw2_f4337c_3
         brightness_pct: 10
 
+- alias: 'entrancelight decoration auto brigthness'
+  trigger:
+    - platform: state
+        entity_id: 
+        - binary_sensor.input14 # livingroom door
+        - sensor.dark_outside 
+        - sensor.light_on_west
+        - binary_sensor.television
+        - sun.sun
+    - platform: time
+      at: "21:30:00"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: 
+           - light.shelly_shrgbw2_f4337c_3
+        brightness_pct: >
+           {% if (states.binary_sensor.input14.state == 'on') 
+                  and (states.sensor.dark_outside.state == 'False') 
+                  and (states.sensor.light_on_west.state == 'false') %} 
+              80  ##day no sun
+           {% elif (states.binary_sensor.input14.state == 'on') 
+                    and (states.sensor.dark_outside.state == 'False') 
+                    and (states.sensor.light_on_west.state == 'true') %} 
+              100  ## day sun in
+           {% elif  (states.binary_sensor.input14.state == 'off') 
+                     and (states.sun.sun.state == 'above_horizon') %} 
+              75  ##day door closed
+            {% elif  (states.sensor.dark_outside.state == 'True') 
+                     and (states.sensor.light_on_west.state == 'false')
+                     and (states.binary_sensor.television.state == 'Off') 
+                     and (states.sun.sun.state == 'below_horizon') %} 
+              20  ##evening
+           {% elif  (states.binary_sensor.television.state == 'On') 
+                    and (states.sun.sun.state == 'below_horizon') %} 
+              1  #tv 
+            {% elif  now().hour >= 21  %} 
+              1    night    
+           {% endif %}
+
