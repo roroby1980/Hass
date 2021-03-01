@@ -7,8 +7,12 @@
         - sensor.light_on_west
         - binary_sensor.television
         - sun.sun
+        - group.family
     - platform: time
       at: "21:30:00"
+  - condition: state
+      entity_id: group.family
+      state: 'home'
   action:
     - service: light.turn_on
       data_template:
