@@ -217,15 +217,38 @@
   trigger:
     platform: state
     entity_id:
-      - binary_sensor.input12 # bedroom small window
+      - group.house_windows
     to: 'on'
     for:
       minutes: 10
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
   action:
     - service: input_select.select_option
       data_template:
         entity_id: input_select.thermo_profile
         option: 'Off'
+
+- alias: 'Thermo - window closed '
+  trigger:
+    platform: state
+    entity_id:
+      - group.house_windows
+    to: 'off'
+    for:
+      minutes: 2
+  condition:
+    condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.thermo_profile
+        option: '{{states.today_thermo_profile.state}}'
+        
 
 
 - alias: 'Thermo - fan on '

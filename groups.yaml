@@ -124,3 +124,10 @@ bedroom_lights:
     - light.shelly_shrgbw2_f43a0c_4 #bedroom Led natural
     - light.l_bedroom #bedroom zigbee bulb
     - light.shelly_shrgbw2_f43a0c_3 #bedroom led small
+house_windows:
+    - binary_sensor.input12 # bedroom small window
+    - binary_sensor.w_bathroom # window bathroom
+house_door:
+    - binary_sensor.input4 #Emmadoor
+    - binary_sensor.w_livingroom #main bedroom door
+    - binary_sensor.input13 #kitchen door
