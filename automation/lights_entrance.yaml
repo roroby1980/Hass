@@ -34,23 +34,23 @@
            {% if (states.binary_sensor.input14.state == 'on') 
                   and (states.sensor.dark_outside.state == 'False') 
                   and (states.sensor.light_on_west.state == 'false') %} 
-              80  ##day no sun
+              80  
            {% elif (states.binary_sensor.input14.state == 'on') 
                     and (states.sensor.dark_outside.state == 'False') 
                     and (states.sensor.light_on_west.state == 'true') %} 
-              100  ## day sun in
+              100  
            {% elif  (states.binary_sensor.input14.state == 'off') 
                      and (states.sun.sun.state == 'above_horizon') %} 
-              75  ##day door closed
-            {% elif  (states.sensor.dark_outside.state == 'True') 
+              75  
+           {% elif  (states.sensor.dark_outside.state == 'True') 
                      and (states.sensor.light_on_west.state == 'false')
                      and (states.binary_sensor.television.state == 'Off') 
                      and (states.sun.sun.state == 'below_horizon') %} 
-              20  ##evening
+              20  
            {% elif  (states.binary_sensor.television.state == 'On') 
                     and (states.sun.sun.state == 'below_horizon') %} 
-              1  #tv 
-            {% elif  now().hour >= 21  %} 
-              1    night    
+              1  
+           {% elif  now().hour >= 21  %} 
+              1        
            {% endif %}
 
