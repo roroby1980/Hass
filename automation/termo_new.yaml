@@ -79,7 +79,7 @@
     - service:  climate.set_hvac_mode
       data_template:
         entity_id: climate.riscaldamento
-        hvac_mode: off
+        hvac_mode: 'off'
          
 - alias: 'Thermo Cold Winter'
   trigger:
