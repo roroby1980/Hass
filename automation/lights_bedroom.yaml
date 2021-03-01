@@ -100,10 +100,15 @@
            {% endif %}
 
 - alias: 'bedrooms nightlight on'
- - platform: state
-        entity_id: 
+  trigger:
+    - platform: state
+      entity_id: 
         - sensor.dark_outside 
-        - sun.sun
+    - platform: state
+      entity_id: 
+        -  sun.sun
+    - platform: state
+      entity_id: 
         - group.family
   condition:
     - condition: state
@@ -122,11 +127,16 @@
         brightness: 1
 
 - alias: 'bedrooms nightlight off'
- - platform: state
-        entity_id: 
-        - sensor.dark_outside 
-        - sun.sun
+  trigger:
+    - platform: state
+      entity_id: 
         - binary_sensor.w_livingroom #bedroom door
+    - platform: state
+      entity_id: 
+        -  sun.sun
+    - platform: state
+      entity_id: 
+        - group.family
   condition:
     - condition: state
       entity_id: sensor.dark_outside 
