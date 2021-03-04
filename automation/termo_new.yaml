@@ -159,7 +159,7 @@
     - service: input_select.select_option
       data_template:
         entity_id: input_select.thermo_profile
-        option: '{{states.today_thermo_profile.state}}'
+        option: '{{states.var.today_thermo_profile.state}}'
 
 
 - alias: 'Thermo Manual 3h'
@@ -181,7 +181,7 @@
     - service: input_select.select_option
       data_template:
         entity_id: input_select.thermo_profile
-        option: '{{states.today_thermo_profile.state}}'
+        option: '{{states.var.today_thermo_profile.state}}'
 
 
 - alias: 'Thermo Away'
@@ -247,7 +247,7 @@
     - service: input_select.select_option
       data_template:
         entity_id: input_select.thermo_profile
-        option: '{{states.today_thermo_profile.state}}'
+        option: '{{states.var.today_thermo_profile.state}}'
         
 
 
