@@ -13,9 +13,9 @@ alexa_visual_notification:
   - service: notify.alexa_media
     data:
       target: media_player.bed
-      title: i love you
+      message: i love you
       data:
-        type: announce
+        type: visual
         method: all 
         
 manual_home_mode:
