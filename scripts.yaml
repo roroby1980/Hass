@@ -10,13 +10,21 @@ alexa_announce_example:
         
 alexa_visual_notification:
   sequence:
+  - service: media_player.volume_set
+      data: 
+        entity_id: media_player.bed
+        volume_level: 0
   - service: notify.alexa_media
     data:
       target: media_player.bed
       message: i love you
       data:
-        type: visual
+        type: announce
         method: all 
+  - service: media_player.volume_set
+      data: 
+        entity_id: media_player.bed
+        volume_level: 0.2
         
 manual_home_mode:
   sequence:
