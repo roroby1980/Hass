@@ -87,6 +87,15 @@
       entity_id: 
         - input_select.thermo_profile
       to: 'ColdWinter'
+    - platform: time_pattern
+      minutes: /30
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: state
+      entity_id: input_select.thermo_profile
+      state: 'ColdWinter'
   action:
     - service:  climate.set_hvac_mode
       data_template:
@@ -119,6 +128,15 @@
       entity_id: 
         - input_select.thermo_profile
       to: 'MiddleSeason'
+    - platform: time_pattern
+      minutes: /30
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: state
+      entity_id: input_select.thermo_profile
+      state: 'MiddleSeason'
   action:
     - service:  climate.set_hvac_mode
       data_template:

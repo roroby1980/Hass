@@ -7,17 +7,20 @@ alexa_announce_example:
       data:
         type: announce
         method: all
-        
 alexa_visual_notification:
   sequence:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.01
+    entity_id: media_player.bed
   - service: notify.alexa_media
     data:
       target: media_player.bed
-      message: i love you
+      message: door open
       data:
         type: announce
-        method: all 
-        
+        method: all
+  mode: single
 manual_home_mode:
   sequence:
   - service: light.turn_on
@@ -33,7 +36,6 @@ manual_home_mode:
     data_template:
       title: Manual Home Mode
       message: Home mode set manually @ {{ now().strftime("%H:%M:%S") }}
-
 manual_away_mode:
   sequence:
   - service: light.turn_off
@@ -50,7 +52,6 @@ manual_away_mode:
     data_template:
       title: Manual Away Mode
       message: Away mode set manually @ {{ now().strftime("%H:%M:%S") }}
-
 reboot_camera:
   alias: new_reboot_camera
   sequence:
