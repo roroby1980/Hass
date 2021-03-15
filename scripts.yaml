@@ -60,15 +60,15 @@ reboot_camera:
   mode: single
 update_phones:
   sequence:
-    - service: notify.mobile_app_tamar_s_iphone
-      data:
-        message: "request_location_update"
+  - service: notify.mobile_app_tamar_s_iphone
+    data:
+      message: "request_location_update"
   - service: telegram_bot.send_message
-      data_template:
-        title: try to update phone information 
-        message: 'last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
+    data_template:
+      title: try to update phone information 
+       message: 'last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
   - delay: '00:01:00'
   - service: telegram_bot.send_message
-      data_template:
-        title: result of update phone information 
-        message: 'last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
+    data_template:
+      title: result of update phone information 
+      message: 'last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} try to update @ {{ now().strftime("%H:%M:%S") }}'
