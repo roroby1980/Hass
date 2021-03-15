@@ -63,7 +63,10 @@ update_phones:
   - service: telegram_bot.send_message
     data_template:
       title: try to update phone information 
-      message: '{{ now().strftime("%H:%M:%S") }} last update Roby phone at: {{ as_timestamp(states.sensor.iphone_di_roberto_geocoded_location.last_updated) |timestamp_local }} last update Tami phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} '
+      message: |
+                {{ now().strftime("%H:%M:%S") }} 
+                 last update Roby phone at: {{ as_timestamp(states.sensor.iphone_di_roberto_geocoded_location.last_updated) |timestamp_local }} 
+                 last update Tami phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} 
   - service: notify.mobile_app_tamar_s_iphone
     data:
       message: "request_location_update"
@@ -74,4 +77,7 @@ update_phones:
   - service: telegram_bot.send_message
     data_template:
       title: result of update phone information 
-      message: '{{ now().strftime("%H:%M:%S") }} last update Roby phone at: {{ as_timestamp(states.sensor.iphone_di_roberto_geocoded_location.last_updated) |timestamp_local }} last update Tami phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} '
+      message: |
+                {{ now().strftime("%H:%M:%S") }} 
+                 last update Roby phone at: {{ as_timestamp(states.sensor.iphone_di_roberto_geocoded_location.last_updated) |timestamp_local }} 
+                 last update Tami phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} 
