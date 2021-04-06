@@ -93,7 +93,7 @@
                             states("sensor.shelly_shsw_pm_b9273a_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b9841d_current_consumption") |float +
                             states("sensor.shelly_shsw_pm_b984a1_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b98576_current_consumption") |float 
+                            states("sensor.shelly_shsw_pm_84cca8aca64a_current_consumption") |float 
                           }}'
    
 
