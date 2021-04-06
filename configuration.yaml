@@ -25,6 +25,8 @@ discovery:
   ignore:
     - homekit
 
+ble_monitor:
+
 camera:
   - platform: xiaomi
     name: Camera
