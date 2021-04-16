@@ -117,7 +117,6 @@
         entity_id: 
          - light.yeelight_l_corner
          - light.yeelight_l_table
-         - light.yeelight_l_ceiling
         brightness: 255
         kelvin: 2500
         transition: 10
@@ -152,7 +151,6 @@
         entity_id: 
          - light.yeelight_l_corner
          - light.yeelight_l_table
-         - light.yeelight_l_ceiling
         brightness: 255
         kelvin: 2500
         transition: 10
@@ -187,7 +185,6 @@
         entity_id: 
          - light.yeelight_l_corner
          - light.yeelight_l_table
-         - light.yeelight_l_ceiling
         brightness: 1
         kelvin: 1700
         transition: 10
@@ -225,7 +222,6 @@
         entity_id: 
          - light.yeelight_l_corner
          - light.yeelight_l_table
-         - light.yeelight_l_ceiling
         transition: 10
     - service: light.turn_on
       data_template:
@@ -262,7 +258,6 @@
         entity_id: 
          - light.yeelight_l_corner
          - light.yeelight_l_table
-         - light.yeelight_l_ceiling
         brightness: 20
         kelvin: 1700
         transition: 10
@@ -303,7 +298,6 @@
         entity_id: 
          - light.yeelight_l_corner
          - light.yeelight_l_table
-         - light.yeelight_l_ceiling
          - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
          - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
          - light.shelly_shrgbw2_f4337c_2 #livingroom natural led

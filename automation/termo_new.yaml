@@ -306,57 +306,57 @@
 
 
 
-- alias: 'Thermo - deumidificate on '
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.mold_indicator
-      above: 90
-  condition:
-    condition: not
-    conditions:
-      - condition: state
-        entity_id: input_select.living_room_sceene
-        state: 'Tv'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.sonoff_10009ce05a
+# - alias: 'Thermo - deumidificate on '
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.mold_indicator
+#       above: 90
+#   condition:
+#     condition: not
+#     conditions:
+#       - condition: state
+#         entity_id: input_select.living_room_sceene
+#         state: 'Tv'
+#   action:
+#     - service: switch.turn_on
+#       entity_id: switch.sonoff_10009ce05a
 
 
 
-- alias: 'Thermo - deumidificate off '
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.mold_indicator
-      below: 90
-  action:
-    - service: switch.turn_off
-      entity_id: switch.sonoff_10009ce05a
+# - alias: 'Thermo - deumidificate off '
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.mold_indicator
+#       below: 90
+#   action:
+#     - service: switch.turn_off
+#       entity_id: switch.sonoff_10009ce05a
 
 
-- alias: 'Thermo - deumidificate full '
-  trigger:
-    - platform: time_pattern
-      minutes: "/15"
-  condition:
-    conditions:
-      - condition: state
-        entity_id: group.family
-        state: 'home'
-      - condition: numeric_state
-        entity_id: sensor.mold_indicator
-        above: 90
-      - condition: numeric_state
-        entity_id: sensor.pow1_power
-        below: 5
-      - condition: not
-      - condition: state
-        entity_id: input_select.living_room_sceene
-        state: 'Tv'
-  action:
-    - service: telegram_bot.send_message
-      data_template:
-        title: deumidificate full
-        message: '{{ now().strftime("%H:%M:%S") }} deumidificate full humidity @ {{states.sensor.house_humidity.state}} - mold indicator @ {{states.sensor.mold_indicator.state}} %'
+# - alias: 'Thermo - deumidificate full '
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/15"
+#   condition:
+#     conditions:
+#       - condition: state
+#         entity_id: group.family
+#         state: 'home'
+#       - condition: numeric_state
+#         entity_id: sensor.mold_indicator
+#         above: 90
+#       - condition: numeric_state
+#         entity_id: sensor.pow1_power
+#         below: 5
+#       - condition: not
+#       - condition: state
+#         entity_id: input_select.living_room_sceene
+#         state: 'Tv'
+#   action:
+#     - service: telegram_bot.send_message
+#       data_template:
+#         title: deumidificate full
+#         message: '{{ now().strftime("%H:%M:%S") }} deumidificate full humidity @ {{states.sensor.house_humidity.state}} - mold indicator @ {{states.sensor.mold_indicator.state}} %'
 
 
 

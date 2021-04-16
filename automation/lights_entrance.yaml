@@ -71,3 +71,7 @@
       entity_id: 
         - light.shelly_shrgbw2_f4337c_4
 
+
+
+#        switch.sonoff_10009ce05a
+
