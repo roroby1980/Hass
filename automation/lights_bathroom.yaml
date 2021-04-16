@@ -1,4 +1,4 @@
- - alias: 'lightbathroom raise-up by motion '
+- alias: 'lightbathroom raise-up by motion '
    trigger:
      - platform: state
        entity_id: binary_sensor.m_bathroom
@@ -22,7 +22,7 @@
        kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 7 %}1700{% else %}2500{% endif %}'
        transition: 4
    
-- alias: 'lightbathroom raise-down with no-motion '
+- alias: 'lightbathroom raise-down with no-motion'
   trigger:
     platform: state
     entity_id: binary_sensor.m_bathroom
