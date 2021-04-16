@@ -1,4 +1,5 @@
-- alias: 'Alarm'
+- id: 'Alarm'
+  alias: 'Alarm'
   trigger:
   - platform: state
     entity_id:

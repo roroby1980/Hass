@@ -1,4 +1,5 @@
-- alias: 'action test'
+- id: 'action test'
+  alias: 'action test'
   trigger:
     platform: state
     entity_id:

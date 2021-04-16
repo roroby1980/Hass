@@ -1,6 +1,7 @@
 #Light Temperature by sunlight
 
-- alias: ' Light3 - automation color/brightness on dim lights '
+- id: ' Light3 - automation color/brightness on dim lights '
+  alias: ' Light3 - automation color/brightness on dim lights '
   trigger:
     - platform: state
       entity_id: group.family
@@ -35,7 +36,8 @@
         kelvin: '{% if now().hour >= 17 %}1700{% elif now().hour <= 8 %}1700{% else %}2500{% endif %}'
         transition: 120
 
-- alias: 'Light4 - automation brightness triggered by swicth on'
+- id: 'Light4 - automation brightness triggered by swicth on'
+  alias: 'Light4 - automation brightness triggered by swicth on'
   trigger:
     - platform: state
       entity_id: 
@@ -68,7 +70,8 @@
            {% endif %}
         transition: 3
 
-- alias: ' Light5 - automation light back home '
+- id: ' Light5 - automation light back home '
+  alias: ' Light5 - automation light back home '
   trigger:
     - platform: state
       entity_id: group.family
@@ -81,7 +84,8 @@
     - service: light.turn_on
       entity_id: group.back_home_lights
 
-- alias: 'Light17 - balcony south '
+- id: 'Light17 - balcony south '
+  alias: 'Light17 - balcony south '
   trigger:
     - platform: state
       entity_id: 
@@ -96,7 +100,8 @@
       data_template:
         entity_id: switch.sonoff_1000a495ae
 
-- alias: 'Light18 - balcony south '
+- id: 'Light18 - balcony south '
+  alias: 'Light18 - balcony south '
   trigger:
     - platform: state
       entity_id: 
@@ -114,7 +119,8 @@
        
          
    #fan on wall connection
-- alias: 'Light22 - fan on wall '
+- id: 'Light22 - fan on wall '
+  alias: 'Light22 - fan on wall '
   trigger:
     - platform: state 
       entity_id:
@@ -126,7 +132,8 @@
         - fan.sonoff_1000994c1d
 
         
-- alias: 'Light23 - fan on wall '
+- id: 'Light23 - fan on wall '
+  alias: 'Light23 - fan on wall '
   trigger:
     - platform: state 
       entity_id:
@@ -137,7 +144,8 @@
       entity_id: 
         - fan.sonoff_1000994c1d
     
-- alias: 'Light24 - fan on wall '
+- id: 'Light24 - fan on wall '
+  alias: 'Light24 - fan on wall '
   trigger:
     - platform: state 
       entity_id:
@@ -148,7 +156,8 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_1
         
-- alias: 'Light25 - fan on wall '
+- id: 'Light25 - fan on wall '
+  alias: 'Light25 - fan on wall '
   trigger:
     - platform: state 
       entity_id:
@@ -159,7 +168,8 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_1
 
-- alias: Button Emma single press 
+- id: Button Emma single press 
+  alias: Button Emma single press 
   trigger:
     platform: event
     event_type: deconz_event
@@ -212,7 +222,8 @@
 #       entity_id: light.yeelight_emma # emma bedroom yeeelight
 #       mode: rgb
 
-- alias: Button Emma double press 
+- id: Button Emma double press 
+  alias: Button Emma double press 
   trigger:
     platform: event
     event_type: deconz_event

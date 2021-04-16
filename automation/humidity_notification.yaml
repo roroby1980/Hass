@@ -1,4 +1,5 @@
-- alias: humidity notification ok - close windows
+- id: humidity notification ok - close windows
+  alias: humidity notification ok - close windows
   trigger:
     - platform: template
       value_template: >
@@ -18,14 +19,12 @@
       title: "close bathroom window"
       message: '{{ now().strftime("%H:%M:%S")}} - can close bathroom windows humidity now at {{states("sensor.t_bathroom_2")}} %  ;  temperature  {{states("sensor.t_bathroom")}} °C'
 
-- alias: humidity notification bad - open windows
+- id: humidity notification bad - open windows
+  alias: humidity notification bad - open windows
   trigger:
     - platform: template
       value_template: > 
-                      {{ states("sensor.t_outside_2") 
-                        |int - states("sensor.t_bathroom_2") 
-                        |int < 0 
-                        and ( states("sensor.t_bathroom_2") |int >60 ) }}"
+                      {{ states("sensor.t_bathroom_2") |int >60 ) }}"
       for:
         minutes: 5
   condition:

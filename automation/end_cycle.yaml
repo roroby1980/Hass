@@ -1,4 +1,5 @@
-- alias: notify washing machine
+- id: notify washing machine
+  alias: notify washing machine
   initial_state: False  # spenta quando Home Assistant si avvia
   trigger:
     - platform: numeric_state
@@ -18,7 +19,8 @@
     - service: automation.turn_off
       entity_id: automation.notify_washing_machine
 
-- alias: Attiva Notifica lavatrice
+- id: Attiva Notifica lavatrice
+  alias: Attiva Notifica lavatrice
   trigger:
     - platform: numeric_state
       entity_id: sensor.shelly_shsw_pm_c4b0f4_current_consumption
@@ -31,7 +33,8 @@
     - service: automation.turn_on
       entity_id: automation.notify_washing_machine
 
-- alias: notify dishwasher 
+- id: notify dishwasher 
+  alias: notify dishwasher 
   initial_state: False  # spenta quando Home Assistant si avvia
   trigger:
     - platform: numeric_state
@@ -51,7 +54,8 @@
     - service: automation.turn_off
       entity_id: automation.notify_dishwasher
       
-- alias: check running dishwasher
+- id: check running dishwasher
+  alias: check running dishwasher
   trigger:
     - platform: numeric_state
       entity_id: sensor.shelly_shsw_pm_b901af_current_consumption
@@ -60,7 +64,8 @@
     - service: automation.turn_on
       entity_id: automation.notify_dishwasher
 
-- alias: notify Oven 
+- id: notify Oven 
+  alias: notify Oven 
   initial_state: False  # spenta quando Home Assistant si avvia
   trigger:
     - platform: numeric_state
@@ -80,7 +85,8 @@
     - service: automation.turn_off
       entity_id: automation.notify_oven
 
-- alias: check running Oven
+- id: check running Oven
+  alias: check running Oven
   trigger:
     - platform: numeric_state
       entity_id: sensor.shelly_shsw_pm_b911e9_current_consumption

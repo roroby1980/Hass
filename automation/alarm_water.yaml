@@ -1,4 +1,5 @@
-- alias: 'Alarm water'
+- id: 'Alarm water'
+  alias: 'Alarm water'
   trigger:
   - platform: state
     entity_id:

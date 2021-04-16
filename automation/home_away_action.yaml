@@ -14,7 +14,8 @@
         entity_id: climate.riscaldamento
         temperature: 15
 
-- alias: Try update phone position
+- id: Try update phone position
+  alias: Try update phone position
   trigger:
     platform: state
     entity_id: group.inside_presences
