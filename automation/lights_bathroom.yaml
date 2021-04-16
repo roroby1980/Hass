@@ -1,26 +1,26 @@
 - alias: 'lightbathroom raise-up by motion '
-   trigger:
-     - platform: state
-       entity_id: binary_sensor.m_bathroom
-       to: 'on'
-   action:
-     service: light.turn_on
-     entity_id: light.yeelight_l_ceiling
-     data_template:
-       brightness: >
-            {% if  now().hour < 6 %} 
-               70
-            {% elif now().hour >= 6 and now().hour < 7 %} 
-               128
-            {% elif now().hour >= 7 and now().hour < 20  %}
-               255
-            {% elif now().hour >= 20 and now().hour < 22  %}
-               128
-            {% elif now().hour >= 22  %}
-               70
-            {% endif %}
-       kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 7 %}1700{% else %}2500{% endif %}'
-       transition: 4
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.m_bathroom
+      to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.yeelight_l_ceiling
+    data_template:
+      brightness: >
+           {% if  now().hour < 6 %} 
+              70
+           {% elif now().hour >= 6 and now().hour < 7 %} 
+              128
+           {% elif now().hour >= 7 and now().hour < 20  %}
+              255
+           {% elif now().hour >= 20 and now().hour < 22  %}
+              128
+           {% elif now().hour >= 22  %}
+              70
+           {% endif %}
+      kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 7 %}1700{% else %}2500{% endif %}'
+      transition: 4
    
 - alias: 'lightbathroom raise-down with no-motion'
   trigger:
