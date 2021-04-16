@@ -141,6 +141,8 @@ binary_sensor:
         icon_template: hass:television
         value_template: >-
           {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
+  - platform: uptimerobot
+    api_key: ur1272408-f39b635415eaefca3240a9f1
 
 
 
