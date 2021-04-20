@@ -16,7 +16,7 @@
       state: below_horizon
     - condition: state
       entity_id: binary_sensor.w_livingroom #bedroom door
-      state: off
+      state: 'off'
   action:
     - service: light.turn_on
       data_template:
@@ -41,7 +41,7 @@
       state: above_horizon
     - condition: state
       entity_id: binary_sensor.w_livingroom #bedroom door
-      state: on
+      state: 'on'
   action:
     - service: light.turn_off
 

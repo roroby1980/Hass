@@ -22,8 +22,7 @@
       at: "21:30:00"
   condition:
     - condition: state
-      entity_id:
-          - group.family
+      entity_id: group.family
       state: 'home'
   action:
     - service: light.turn_on
