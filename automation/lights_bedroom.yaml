@@ -2,11 +2,13 @@
   alias: 'lightbedrooms nightlight on'
   trigger:
     - platform: state
-      entity_id: 
-        -  sun.sun
+      entity_id: sun.sun
     - platform: state
       entity_id: 
         - binary_sensor.w_livingroom #bedroom door
+      to:
+        - 'on'
+        - 'off'
   condition:
     - condition: state
       entity_id: group.family
@@ -27,11 +29,12 @@
   alias: 'lightbedrooms nightlight off'
   trigger:
     - platform: state
-      entity_id: 
-        - binary_sensor.w_livingroom #bedroom door
+      entity_id: binary_sensor.w_livingroom #bedroom door
+      to:
+        - 'on'
+        - 'off'
     - platform: state
-      entity_id: 
-        -  sun.sun
+      entity_id: sun.sun
     - platform: state
       entity_id: 
         - group.family

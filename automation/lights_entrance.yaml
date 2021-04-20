@@ -1,23 +1,17 @@
 - alias: 'Entrancelight - decoration auto brigthness'
   trigger:
     - platform: state
-      entity_id: 
-          - binary_sensor.input14 # livingroom door
+      entity_id: binary_sensor.input14 # livingroom door
     - platform: state
-      entity_id:
-        -   sensor.dark_outside 
+      entity_id: sensor.dark_outside 
     - platform: state
-      entity_id:
-          - sensor.light_on_west
+      entity_id: sensor.light_on_west
     - platform: state
-      entity_id:
-          - binary_sensor.television
+      entity_id: binary_sensor.television
     - platform: state
-      entity_id:
-          - sun.sun
+      entity_id: sun.sun
     - platform: state
-      entity_id:
-          - group.family
+      entity_id: group.family
     - platform: time
       at: "21:30:00"
   condition:
@@ -60,8 +54,7 @@
 - alias: 'Entrancelight - main '
   trigger:
     - platform: state 
-      entity_id:
-        - switch.sonoff_1000a4166e
+      entity_id: switch.sonoff_1000a4166e
       to: 
         - 'off'
         - 'on'

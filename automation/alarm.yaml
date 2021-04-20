@@ -21,9 +21,9 @@
     - binary_sensor.input12 # second bath small window
     to: 'on'
   condition:
-    condition: state
-    entity_id: group.family
-    state: 'not_home'
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
   action:
   - data_template:
       message: 'Detected movment of {{ trigger.from_state.attributes.friendly_name }}'
