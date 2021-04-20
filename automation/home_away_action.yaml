@@ -63,8 +63,7 @@
     - service: telegram_bot.send_message
       data_template:
         title: Away Mode while no phone info
-        message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }}
-         Away mode set in 5 min from now : {{ now().strftime("%H:%M:%S") }}'
+        message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }}  Away mode set in 5 min from now : {{ now().strftime("%H:%M:%S") }}'
     - delay: '00:05:00'
     - service: light.turn_off
       entity_id: group.all_lights
@@ -77,5 +76,4 @@
     - service: telegram_bot.send_message
       data_template:
         title: Away Mode setted
-        message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }}
-         Away mode setted now : {{ now().strftime("%H:%M:%S") }}'
+        message: 'No motion detected in house, last update phone at: {{ as_timestamp(states.sensor.tamar_s_iphone_geocoded_location_2.last_updated) |timestamp_local }} Away mode setted now : {{ now().strftime("%H:%M:%S") }}'
