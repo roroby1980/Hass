@@ -1,4 +1,5 @@
-- alias: 'lightbedrooms nightlight on'
+- id: 'lightbedrooms nightlight on'
+  alias: 'lightbedrooms nightlight on'
   trigger:
     - platform: state
       entity_id: 
@@ -22,7 +23,8 @@
         entity_id: light.shelly_shrgbw2_f43a0c_2
         brightness: 1
 
-- alias: 'lightbedrooms nightlight off'
+- id: 'lightbedrooms nightlight off'
+  alias: 'lightbedrooms nightlight off'
   trigger:
     - platform: state
       entity_id: 
@@ -43,8 +45,8 @@
   action:
     - service: light.turn_off
 
-
-- alias: 'lightbedrooms lights on'
+- id: 'lightbedrooms lights on'
+  alias: 'lightbedrooms lights on'
   trigger:
     - platform: state
       entity_id: 
@@ -85,8 +87,8 @@
            {% endif %}
 
 
-
-- alias: 'lightbedrooms lights off '
+- id: 'lightbedrooms lights off '
+  alias: 'lightbedrooms lights off '
   trigger:
     - platform: state
       entity_id: 
@@ -107,8 +109,8 @@
         - light.l_bedroom #bedroom zigbee bulb
         - light.shelly_shrgbw2_f43a0c_3 #bedroom led small
 
-
-- alias: 'lightbedrooms closing windows /door '
+- id: 'lightbedrooms closing windows /door '
+  alias: 'lightbedrooms closing windows /door '
   trigger:
     - platform: state
       entity_id: 
