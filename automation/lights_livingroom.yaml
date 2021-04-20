@@ -3,8 +3,7 @@
 - alias: 'LivingLight - table LED to on'
   trigger:
     - platform: state 
-      entity_id:
-        - switch.sonoff_10008cbb1d_2 #sonoff_to_mqtt_led
+      entity_id: switch.sonoff_10008cbb1d_2 #sonoff_to_mqtt_led
       to:
         - 'on'
         - 'off'
@@ -20,8 +19,7 @@
 - alias: 'LivingLight - table LED to off'
   trigger:
     - platform: state 
-      entity_id:
-        - switch.sonoff_10008cbb1d_2 #sonoff_to_mqtt_led
+      entity_id: switch.sonoff_10008cbb1d_2 #sonoff_to_mqtt_led
       to:
         - 'on'
         - 'off'
@@ -305,5 +303,3 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_2 # sonoff touch2 sceene day
         - switch.sonoff_10008cbb5e_3 # sonoff touch2 sceene night
-
-    
