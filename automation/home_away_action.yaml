@@ -30,7 +30,7 @@
       before: '22:00:00'
     - condition: state
       entity_id: group.family
-      state: home 
+      state: 'home'
   action:
     - service: notify.mobile_app_tamar_s_iphone
       data:
@@ -56,7 +56,7 @@
       before: '22:00:00'
     - condition: state
       entity_id: group.family
-      state: home 
+      state: 'home' 
     - condition: template
       value_template: "{{ not is_state('person.roby', 'home') }}"
   action:
