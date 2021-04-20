@@ -2,23 +2,20 @@
   trigger:
     - platform: state
       entity_id: 
-        - sensor.dark_outside 
-    - platform: state
-      entity_id: 
         -  sun.sun
     - platform: state
       entity_id: 
-        - group.family
+        - binary_sensor.w_livingroom #bedroom door
   condition:
     - condition: state
       entity_id: group.family
       state: 'home'
     - condition: state
-      entity_id: sensor.dark_outside 
-      state: True
-    - condition: state
       entity_id: sun.sun 
       state: below_horizon
+    - condition: state
+      entity_id: binary_sensor.w_livingroom #bedroom door
+      state: off
   action:
     - service: light.turn_on
       data_template:
@@ -37,9 +34,6 @@
       entity_id: 
         - group.family
   condition:
-    - condition: state
-      entity_id: sensor.dark_outside 
-      state: False
     - condition: state
       entity_id: sun.sun
       state: above_horizon
