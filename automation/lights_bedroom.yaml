@@ -123,6 +123,7 @@
       state: 'off'
     - condition: time
       after: '08:00:00'
+    - condition: time
       before: '22:00:00'
   action:
     - service: light.turn_on

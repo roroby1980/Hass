@@ -26,9 +26,9 @@
       entity_id: sensor.shelly_shsw_pm_c4b0f4_current_consumption
       above: '50'
   condition:
-    condition: state
-    entity_id: automation.notify_washing_machine
-    state: 'off'
+    - condition: state
+      entity_id: automation.notify_washing_machine
+      state: 'off'
   action:
     - service: automation.turn_on
       entity_id: automation.notify_washing_machine
