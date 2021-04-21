@@ -10,7 +10,7 @@
         entity_id: light.yeelight_l_ceiling
         brightness: >
            {% if  now().hour < 6 %} 
-              70
+              1
            {% elif now().hour >= 6 and now().hour < 7 %} 
               128
            {% elif now().hour >= 7 and now().hour < 20  %}
@@ -18,7 +18,7 @@
            {% elif now().hour >= 20 and now().hour < 22  %}
               128
            {% elif now().hour >= 22  %}
-              70
+              1
            {% endif %}
         kelvin: '{% if now().hour >= 19 %}1700{% elif now().hour <= 7 %}1700{% else %}2500{% endif %}'
         transition: 4

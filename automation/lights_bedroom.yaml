@@ -3,6 +3,8 @@
   trigger:
     - platform: state
       entity_id: sun.sun
+      to:
+        - 'below_horizon'
     - platform: state
       entity_id: 
         - binary_sensor.w_livingroom #bedroom door
@@ -35,6 +37,8 @@
         - 'off'
     - platform: state
       entity_id: sun.sun
+      to:
+        - 'above_horizon'
     - platform: state
       entity_id: 
         - group.family
