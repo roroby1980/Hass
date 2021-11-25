@@ -7,6 +7,18 @@ alexa_announce_example:
       data:
         type: announce
         method: all
+        
+alexa_announce_heater:
+  sequence:
+  - service: notify.alexa_media
+    data:
+      target: media_player.echo_dot_di_roberto,media_player.bed
+      message: heater are on, as you request
+      data:
+        type: announce
+        method: all
+        
+        
 alexa_visual_notification:
   sequence:
   - service: media_player.volume_set
@@ -19,8 +31,9 @@ alexa_visual_notification:
       message: door open
       data:
         type: announce
-        method: all
-  mode: single
+        method: visual
+        
+
 manual_home_mode:
   sequence:
   - service: light.turn_on

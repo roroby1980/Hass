@@ -11,7 +11,7 @@
         minutes: 5
   condition:
     - condition: state
-      entity_id: binary_sensor.w_bathroom
+      entity_id: binary_sensor.d_bathroom
       state: 'on' 
   action:
     service: telegram_bot.send_message
@@ -29,7 +29,7 @@
         minutes: 5
   condition:
     - condition: state
-      entity_id: binary_sensor.w_bathroom
+      entity_id: binary_sensor.d_bathroom
       state: 'off' 
   action:
     service: telegram_bot.send_message

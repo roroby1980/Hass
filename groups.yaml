@@ -7,7 +7,6 @@ family:
 back_home_lights:
   entities:
     - light.shelly_shrgbw2_f4337c_3 #Entance service Led
-    - light.l_kitchen
 all_lights:
   entities:
   # color yeelight
@@ -19,8 +18,8 @@ all_lights:
     - light.yeelight_l_ceiling
 #zigbee bulb
     - light.l_kitchen          #kitchen up lamp
-    - light.l_dressingroom         #Alma ceiling light
-    - light.l_bathroom_main         #bathroom ceiling light
+    - light.l_alma_bedroom         #Alma ceiling light
+    - light.l_bathroom         #bathroom ceiling light
     - light.l_bedroom #bedroom zigbee bulb   
 #shelly entrance /living
     - light.shelly_shrgbw2_f4337c_1 #Livingroom Led Warm
@@ -49,7 +48,7 @@ all_lights:
 all_switch:
   entities:
   #mqtt
-    - switch.sonoff  #Livingroom table light       
+    - switch.livingroom_table_light #Livingroom table light       
   # sonoff touch right
     - switch.sonoff_100056b199_1 # speakers
     - switch.sonoff_100056b199_2 # table
@@ -66,7 +65,7 @@ all_switch:
 all_switch_lights:
   entities:
   #mqtt
-    - switch.sonoff # Livingroom table light       
+    - switch.livingroom_table_light # Livingroom table light       
   # sonoff touch right
     - switch.sonoff_100056b199_1 # speakers
     #- switch.sonoff_100056b199_2 # sonoff_to_mqtt_led
@@ -106,8 +105,8 @@ dim_lights:
     - light.yeelight_l_table
     - light.yeelight_l_ceiling
     - light.l_kitchen
-    - light.l_dressingroom
-    - light.l_bathroom_main
+    - light.l_alma_bedroom
+    - light.l_bathroom
     - light.l_bedroom #bedroom zigbee bulb
     - light.yeelight_emma
     - light.alma_bedroom
@@ -116,7 +115,7 @@ inside_presences:
     entities:
     - binary_sensor.m_bathroom
     - binary_sensor.ma_3
-    - binary_sensor.w_livingroom # bedroom door
+    - binary_sensor.d_bedroom # bedroom door
     - sensor.yicam
 bedroom_lights:
     entities:
@@ -126,8 +125,8 @@ bedroom_lights:
     - light.shelly_shrgbw2_f43a0c_3 #bedroom led small
 house_windows:
     - binary_sensor.input12 # bedroom small window
-    - binary_sensor.w_bathroom # window bathroom
+    - binary_sensor.d_bathroom # window bathroom
 house_door:
     - binary_sensor.input4 #Emmadoor
-    - binary_sensor.w_livingroom #main bedroom door
+    - binary_sensor.d_bedroom #main bedroom door
     - binary_sensor.input13 #kitchen door

@@ -17,6 +17,7 @@
       - 'date_time_iso'
       - 'time_date'
       - 'time_utc'
+      - 'beat'
 
   - platform: mold_indicator
     indoor_temp_sensor: sensor.house_temperature
@@ -30,59 +31,37 @@
     unit_of_measurement: 'MB'
     scan_interval: 1200
     value_template: '{{ value | int - 1 }}'
-
- 
-  - platform: rest
-    name: tr630
-    json_attributes:
-      - ritardo
-      - stazioneUltimoRilevamento
-      - compOraUltimoRilevamento
-    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/612"
-    value_template: 'Treno 6:30'
-    scan_interval: 315360000 
     
-  - platform: rest
-    name: tr700
-    json_attributes:
-      - ritardo
-      - stazioneUltimoRilevamento
-      - compOraUltimoRilevamento
-      #- fermate[fermate.lenght-1].stazione
-    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00074/1614"
-    value_template: 'Treno 7:00'
-    scan_interval: 315360000 
+  - platform: command_line
+    name: Serbatoio Toy
+    command: "ssh -i /config/ssh_keys/roroby.pem -o 'StrictHostKeyChecking=no' roroby@40.114.54.136 python3 tojota/get_fuel.py"
+    unit_of_measurement: "%"
+    scan_interval: 120
+    
+  - platform: command_line
+    name: lat Toy
+    command: "ssh -i /config/ssh_keys/roroby.pem -o 'StrictHostKeyChecking=no' roroby@40.114.54.136 python3 tojota/get_lat.py"
+    scan_interval: 60
 
-  - platform: rest
-    name: tr730
-    json_attributes:
-      - ritardo
-      - stazioneUltimoRilevamento
-      - compOraUltimoRilevamento
-    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/618"
-    value_template: 'Treno 7:30'
-    scan_interval: 315360000 
+  - platform: command_line
+    name: lon Toy
+    command: "ssh -i /config/ssh_keys/roroby.pem -o 'StrictHostKeyChecking=no' roroby@40.114.54.136 python3 tojota/get_lon.py"
+    scan_interval: 60
 
-  - platform: rest
-    name: tr735
-    json_attributes:
-      - ritardo
-      - stazioneUltimoRilevamento
-      - compOraUltimoRilevamento
-    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00085/2718"
-    value_template: 'Treno 7:35'
-    scan_interval: 315360000   
+  - platform: command_line
+    name: odo Toy
+    command: "ssh -i /config/ssh_keys/roroby.pem -o 'StrictHostKeyChecking=no' roroby@40.114.54.136 python3 tojota/get_odo.py"
+    unit_of_measurement: "Km"
+    scan_interval: 300
 
-  - platform: rest
-    name: tr800
+  - platform: command_line
+    name: status Toy
+    command: "ssh -i /config/ssh_keys/roroby.pem -o 'StrictHostKeyChecking=no' roroby@40.114.54.136 python tojota/get_status.py"
+    scan_interval: 60
+    value_template: "{{ value_json.status }}"
     json_attributes:
-      - ritardo
-      - stazioneUltimoRilevamento
-      - compOraUltimoRilevamento
-    resource: "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/N00079/1622"
-    value_template: 'Treno 8:00'
-    scan_interval: 315360000 
-
+       - last_changed
+       - descr
 
   - platform: template
     sensors:
@@ -100,56 +79,6 @@
                           }}'
    
 
-    
-  - platform: template
-    sensors:
-      ritardo_800:
-        friendly_name: 'Ritardo 8:00'
-        value_template: '{{ states.sensor.tr800.attributes["ritardo"] }}'
-      where_800:
-        friendly_name: 'Stazione 8:00'
-        value_template: '{{ states.sensor.tr800.attributes["stazioneUltimoRilevamento"] }}'
-      when_800:
-        friendly_name: 'Last update Time 8:00'
-        value_template: '{{ states.sensor.tr800.attributes["compOraUltimoRilevamento"] }}'
-      ritardo_730:
-        friendly_name: 'Ritardo 7:30'
-        value_template: '{{ states.sensor.tr730.attributes["ritardo"] }}'
-      where_730:
-        friendly_name: 'Stazione 7:30'
-        value_template: '{{ states.sensor.tr730.attributes["stazioneUltimoRilevamento"] }}'
-      when_730:
-        friendly_name: 'Last update Time 7:30'
-        value_template: '{{ states.sensor.tr730.attributes["compOraUltimoRilevamento"] }}'
-      ritardo_700:
-        friendly_name: 'Ritardo 7:00'
-        value_template: '{{ states.sensor.tr700.attributes["ritardo"] }}'
-      where_700:
-        friendly_name: 'Stazione 7:00'
-        value_template: '{{ states.sensor.tr700.attributes["stazioneUltimoRilevamento"] }}'
-      when_700:
-        friendly_name: 'Last update Time 7:00'
-        value_template: '{{ states.sensor.tr700.attributes["compOraUltimoRilevamento"] }}'
-      ritardo_630:
-        friendly_name: 'Ritardo 6:30'
-        value_template: '{{ states.sensor.tr630.attributes["ritardo"] }}'
-      where_630:
-        friendly_name: 'Stazione 6:30'
-        value_template: '{{ states.sensor.tr630.attributes["stazioneUltimoRilevamento"] }}'
-      when_630:
-        friendly_name: 'Last update Time 6:30'
-        value_template: '{{ states.sensor.tr630.attributes["compOraUltimoRilevamento"] }}'
-      ritardo_735:
-        friendly_name: 'Ritardo 7:35'
-        value_template: '{{ states.sensor.tr735.attributes["ritardo"] }}'
-      where_735:
-        friendly_name: 'Stazione 7:35'
-        value_template: '{{ states.sensor.tr735.attributes["stazioneUltimoRilevamento"] }}'
-      when_735:
-        friendly_name: 'Last update Time 7:35'
-        value_template: '{{ states.sensor.tr735.attributes["compOraUltimoRilevamento"] }}'
-        
-        
  # Termometro Processore Raspberry
   - platform: command_line
     name: CPU Temperature
@@ -165,8 +94,10 @@
     name: house temperature
     type: mean
     entity_ids:
-       -  sensor.t_bathroom
-       -  sensor.t_bedroom
+       -  sensor.t_extra
+       -  sensor.t_emma_bedroom
+       -  sensor.t_alma_bedroom
+       -  sensor.t_main_bedroom_3
        -  sensor.t_livingroom
 
   - platform: min_max
@@ -174,7 +105,11 @@
     type: mean
     entity_ids:
        -  sensor.t_bathroom_2
-       -  sensor.t_bedroom_3
+       -  sensor.t_main_bedroom
+       -  sensor.t_alma_bedroom_2
+       -  sensor.t_emma_bedroom_2
+       -  sensor.t_kitchen_2
+       -  sensor.t_extra_2
        -  sensor.t_livingroom_2
        
 
@@ -228,21 +163,21 @@
       pow2_current:
         value_template: "{{ state_attr('switch.sonoff_10009ce473', 'current') }}"
 
-  - platform: mqtt
-    name: temperatura1_shelly
-    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/0"
-    qos: 0
-    device_class: temperature
-  - platform: mqtt
-    name: temperatura2_shelly
-    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/1"
-    qos: 0
-    device_class: temperature
-  - platform: mqtt    
-    name: temperatura3_shelly
-    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/2"
-    qos: 0
-    device_class: temperature
+#  - platform: mqtt
+#    name: temperatura1_shelly
+#    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/0"
+#    qos: 0
+#    device_class: temperature
+#  - platform: mqtt
+#    name: temperatura2_shelly
+#    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/1"
+#    qos: 0
+#    device_class: temperature
+#  - platform: mqtt    
+#    name: temperatura3_shelly
+#    state_topic: "shellies/shelly1-40F520054E61/ext_temperature/2"
+#    qos: 0
+#    device_class: temperature
 
 
   - platform: template
@@ -250,12 +185,21 @@
       sunrisetoday:
         friendly_name: 'Sunrise'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom(' %H:%M:%S',false)  }}
+          {{ as_timestamp(states.sun.sun.attributes.next_rising)|timestamp_local | timestamp_custom(' %H:%M:%S',false)  }}
         icon_template: mdi:weather-sunset-up
       sunsettoday:
         friendly_name: 'Sunset'
         value_template: >
-          {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom(' %H:%M:%S',false) }}
+          {{ as_timestamp(states.sun.sun.attributes.next_setting)|timestamp_local | timestamp_custom(' %H:%M:%S',false) }}
+      sunrisetoday_timestamp:
+        friendly_name: 'Sunrise'
+        value_template: >
+          {{ as_timestamp(states.sun.sun.attributes.next_rising)|timestamp_local   }}
+        icon_template: mdi:weather-sunset-up
+      sunsettoday_timestamp:
+        friendly_name: 'Sunset'
+        value_template: >
+          {{ as_timestamp(states.sun.sun.attributes.next_setting)|timestamp_local  }}
         icon_template: mdi:weather-sunset-down
       # daylighttoday:
       #   friendly_name: 'Day Length Today'

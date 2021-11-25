@@ -1,0 +1,30 @@
+- alias: get_toyota_position
+  trigger:
+  - platform: state
+    entity_id:
+      - sensor.lat_toy
+      - sensor.lon_toy
+  - platform: homeassistant
+    event: start
+  action:
+  - service: device_tracker.see
+    data_template:
+      dev_id: toy_location
+      gps:
+        - "{{ states('sensor.lat_toy') }}"
+        - "{{ states('sensor.lon_toy') }}"
+            
+            
+            
+            
+- alias: notification on movment of the car
+  trigger:
+    - platform: state
+      entity_id: sensor.status_toy
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      title: Toyota {{trigger.to_state.state}}
+      message: |
+                {{ now().strftime("%H:%M") }} Toyota {{state_attr('sensor.status_toy', 'descr')}} 
+                from {{states.device_tracker.toy_location.state}} 

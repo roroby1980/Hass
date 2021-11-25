@@ -8,8 +8,8 @@
       - binary_sensor.ma_one
       - binary_sensor.ma_2
       - binary_sensor.ma_3
-      - binary_sensor.w_livingroom # bedroom door
-      - binary_sensor.w_bathroom
+      - binary_sensor.d_bedroom # bedroom door
+      - binary_sensor.d_bathroom
       - sensor.yicam
     to: 'on'
   action:

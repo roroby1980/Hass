@@ -7,7 +7,7 @@
         - 'below_horizon'
     - platform: state
       entity_id: 
-        - binary_sensor.w_livingroom #bedroom door
+        - binary_sensor.d_bedroom #bedroom door
       to:
         - 'on'
         - 'off'
@@ -19,19 +19,18 @@
       entity_id: sun.sun 
       state: 'below_horizon'
     - condition: state
-      entity_id: binary_sensor.w_livingroom #bedroom door
+      entity_id: binary_sensor.d_bedroom #bedroom door
       state: 'off'
   action:
     - service: light.turn_on
       data_template:
         entity_id: light.shelly_shrgbw2_f43a0c_2
-        brightness: 3
 
 - id: 'lightbedrooms nightlight off'
   alias: 'lightbedrooms nightlight off'
   trigger:
     - platform: state
-      entity_id: binary_sensor.w_livingroom #bedroom door
+      entity_id: binary_sensor.d_bedroom #bedroom door
       to:
         - 'on'
         - 'off'
@@ -47,7 +46,7 @@
       entity_id: sun.sun
       state: 'above_horizon'
     - condition: state
-      entity_id: binary_sensor.w_livingroom #bedroom door
+      entity_id: binary_sensor.d_bedroom #bedroom door
       state: 'on'
   action:
     - service: light.turn_off
@@ -86,11 +85,11 @@
            {% if  now().hour < 7 %} 
               128
            {% elif now().hour >= 7 and now().hour < 9 %} 
-              10
+              50
            {% elif now().hour >= 9 and now().hour < 18  %}
               255
            {% elif now().hour >= 18 and now().hour < 20  %}
-              10
+              80
            {% elif now().hour >= 20  %}
               128
            {% endif %}
@@ -123,7 +122,7 @@
   trigger:
     - platform: state
       entity_id: 
-        - binary_sensor.w_livingroom # bedroom door
+        - binary_sensor.d_bedroom # bedroom door
       to:
         - 'off'
   condition:

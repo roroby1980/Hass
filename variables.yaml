@@ -20,3 +20,5 @@ max_power_last3m:
 today_thermo_profile:
   restore: true
   
+today_trains:
+  restore: true

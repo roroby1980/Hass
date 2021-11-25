@@ -42,7 +42,7 @@
     - platform: state
       entity_id: 
         - light.l_cucina_2
-        - light.l_dressingroom
+        - light.l_alma_bedroom
         - light.l_bedroom #bedroom zigbee bulb
         - light.shelly_shdm_1_d1818c
       to: 'on'
@@ -235,6 +235,27 @@
       entity_id: light.shelly_shdm_1_d1818c # emma bedroom main
 
 
-
-
+- id: Button Emma triple press 
+  alias: Button Emma triple press 
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_emma
+      event: 1005
+  action:
+    - service: light.toggle
+      entity_id: light.yeelight_emma
+      
+- id: Button Emma four press 
+  alias: Button Emma four press 
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_emma
+      event: 1006
+  action:
+    - service: light.toggle
+      entity_id: light.shelly_shrgbw2_011825_1
 

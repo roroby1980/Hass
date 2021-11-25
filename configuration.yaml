@@ -1,6 +1,8 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+my:
+
 logger:
   default: error
 
@@ -11,21 +13,9 @@ sensor: !include sensors.yaml
 zone: !include zone.yaml
 var: !include variables.yaml
 
-#panel_iframe:
-#  influxdb:
-#    title: InfluxDB
-#    icon: mdi:chart-areaspline
-#    url: https://roroby.duckdns.org:8888
-#  grafana:
-#    title: Grafana
-#    icon: mdi:chart-timeline
-#    url: https://roroby.duckdns.org:3000
-
 discovery:
   ignore:
     - homekit
-
-ble_monitor:
 
 camera:
   - platform: xiaomi
@@ -35,15 +25,6 @@ camera:
     password: !secret camera_pwd
     path: /tmp/sd/record
 
-#camera:
-#  - platform: onvif
-#    host: 192.168.1.94
-#    port: 554
-#    username: admin
-#    profile: 2
-#    password: !secret camera_yoosee
-
-#sonoffLAN
 sonoff:
   username: !secret sonoff_mail
   password: !secret sonoff_pwd
@@ -51,15 +32,19 @@ sonoff:
 
 yeelight:
 
+deconz:
+  host: '192.168.1.84'
+  port: 8443
 
 shell_command:
   reboot_camera_living_room: "curl http://192.168.1.69/cgi-bin/reboot.sh"
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-#  base_url: !secret url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  use_x_forwarded_for: true
+  trusted_proxies: 
+    - 192.168.1.84
+    - 172.18.0.0/16
 
 
 # Example configuration.yaml entry for the Telegram Bot
@@ -87,18 +72,15 @@ input_select:
     icon: mdi:guy-fawkes-mask
 
 
-influxdb:
-  host: localhost
-  port: 8086
-  database: hassio
-  username: hassio
-  password: hassio
-  max_retries: 3
-  default_measurement: state
+#influxdb:
+#  host: localhost
+#  port: 8086
+#  database: hassio
+#  username: hassio
+#  password: hassio
+#  max_retries: 3
+#  default_measurement: state
 
-#Bluethoot
-#device_tracker:
-#  - platform: bluetooth_tracker
 
 # Text to speech
 tts:
