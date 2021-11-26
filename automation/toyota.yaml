@@ -22,11 +22,11 @@
     - platform: state
       entity_id: sensor.status_toy
   action:
-    - wait_template: "{{state_attr('sensor.status_toy', 'last_changed')}}"
+    - wait_template: "{{ state_attr('sensor.status_toy', 'last_changed') }}"
       timeout: "00:01:30"
     - service: telegram_bot.send_message
       data_template:
-        title: Toyota {{trigger.to_state.state}}
+        title: Toyota
         message: |
-                {{state_attr('sensor.status_toy', 'last_changed')}} Toyota {{state_attr('sensor.status_toy', 'descr')}} 
-                {{states.sensor.toy_street.state}} 
+                {{ state_attr('sensor.status_toy', 'last_changed') }} Toyota {{ state_attr('sensor.status_toy', 'descr }} 
+                {{ states.sensor.toy_street.state }} 

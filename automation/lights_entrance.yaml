@@ -44,7 +44,7 @@
                      and (states.binary_sensor.television.state == 'Off') 
                      and (states.sun.sun.state == 'below_horizon') %} 
                   20  
-                 {% elif  (states.binary_sensor.television.state == 'On') 
+                 {% elif  (states.binary_sensor.television.state == 'on') 
                     and (states.sun.sun.state == 'below_horizon') %} 
                   1  
                  {% elif  now().hour >= 21  %} 

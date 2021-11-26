@@ -111,6 +111,11 @@ dim_lights:
     - light.yeelight_emma
     - light.alma_bedroom
     - light.shelly_shrgbw2_f4337c_3 #Entance service Led
+color_lights:
+  entities:
+    - light.yeelight_l_corner
+    - light.yeelight_l_table
+    - light.yeelight_emma
 inside_presences:
     entities:
     - binary_sensor.m_bathroom

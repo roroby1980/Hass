@@ -9,14 +9,16 @@
     - platform: time_pattern
       minutes: /10
   condition:
-    condition: state
-    entity_id: group.family
-    state: 'home'
+    - condition: state
+      entity_id: group.family
+      state: 'home'
+    - condition: template
+      value_template: "{{ states.light | selectattr('entity_id', 'in', state_attr('group.color_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') |list |count > 0 }} "
   action:
     - service: light.turn_on
       data_template:
         entity_id: >
-               {% for item in states | selectattr('entity_id', 'in', state_attr('group.dim_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') -%}
+               {% for item in states | selectattr('entity_id', 'in', state_attr('group.color_lights', 'entity_id')) | selectattr('state', 'equalto', 'on') -%}
                {% if not loop.first %},{% endif %}{{ item.entity_id }}
                {%- endfor %}
         brightness: >
@@ -41,7 +43,7 @@
   trigger:
     - platform: state
       entity_id: 
-        - light.l_cucina_2
+        - light.l_kitchen
         - light.l_alma_bedroom
         - light.l_bedroom #bedroom zigbee bulb
         - light.shelly_shdm_1_d1818c
