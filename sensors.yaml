@@ -4,7 +4,10 @@
   #Cesano 7:35 --> 2718 --> N00085
   #cesano 8:00 --> 1622
   
-
+  - platform: google_geocode
+    origin: device_tracker.toy_location
+    name: toy_street
+    api_key: !secret geo_api
       
   - platform: season
 
