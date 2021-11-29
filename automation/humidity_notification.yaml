@@ -24,7 +24,7 @@
   trigger:
     - platform: template
       value_template: > 
-                      {{ states("sensor.t_bathroom_2") |int >60 ) }}"
+                      {{ states("sensor.t_bathroom_2") |int >60  }}
       for:
         minutes: 5
   condition:
