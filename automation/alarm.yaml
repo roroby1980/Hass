@@ -3,12 +3,10 @@
   trigger:
   - platform: state
     entity_id:
-    #- binary_sensor.m_balcony_south
     - binary_sensor.m_bathroom
     - binary_sensor.m_livingroom
-    #- binary_sensor.ma_balcony_west
     - binary_sensor.m_entrance
-    - binary_sensor.d_bedroom # bedroom door
+    - binary_sensor.d_bedroom
     - binary_sensor.d_bathroom
     - sensor.yicam
     - binary_sensor.frontdoor
@@ -17,7 +15,6 @@
     - binary_sensor.input14 # livingroom door
     - binary_sensor.in33 # second bath door
     - binary_sensor.in25 # bathroom windows
-    #- binary_sensor.in26 # livingroom windows
     - binary_sensor.input12 # second bath small window
     from: 'off'
     to: 'on'

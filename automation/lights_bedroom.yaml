@@ -7,7 +7,7 @@
         - 'below_horizon'
     - platform: state
       entity_id: 
-        - binary_sensor.d_bedroom #bedroom door
+        - binary_sensor.d_bedroom 
       to:
         - 'on'
         - 'off'
@@ -19,7 +19,7 @@
       entity_id: sun.sun 
       state: 'below_horizon'
     - condition: state
-      entity_id: binary_sensor.d_bedroom #bedroom door
+      entity_id: binary_sensor.d_bedroom 
       state: 'off'
   action:
     - service: light.turn_on
@@ -30,7 +30,7 @@
   alias: 'lightbedrooms nightlight off'
   trigger:
     - platform: state
-      entity_id: binary_sensor.d_bedroom #bedroom door
+      entity_id: binary_sensor.d_bedroom 
       to:
         - 'on'
         - 'off'
@@ -46,7 +46,7 @@
       entity_id: sun.sun
       state: 'above_horizon'
     - condition: state
-      entity_id: binary_sensor.d_bedroom #bedroom door
+      entity_id: binary_sensor.d_bedroom 
       state: 'on'
   action:
     - service: light.turn_off
@@ -58,7 +58,7 @@
   trigger:
     - platform: state
       entity_id: 
-        - binary_sensor.shelly_shsw_pm_b906cb_switch # switch Gena 10A - to control bedroom
+        - binary_sensor.shelly_shsw_pm_b906cb_switch # switch General 10A - to control bedroom
       to:
         - 'on'
         - 'off'
@@ -100,7 +100,7 @@
   trigger:
     - platform: state
       entity_id: 
-        - binary_sensor.shelly_shsw_pm_b906cb_switch # switch Gena 10A - to control bedroom
+        - binary_sensor.shelly_shsw_pm_b906cb_switch # switch General 10A - to control bedroom
       to:
         - 'on'
         - 'off'
