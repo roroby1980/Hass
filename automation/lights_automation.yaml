@@ -176,7 +176,7 @@
     platform: event
     event_type: deconz_event
     event_data:
-      id: switch_emma
+      id: smart_switch
       event: 1002
   action:
     - service: light.toggle
@@ -187,7 +187,7 @@
 #     platform: event
 #     event_type: deconz_event
 #     event_data:
-#       id: switch_emma
+#       id: smart_switch
 #       event: 1001
 #   action:
 #     - service: yeelight.start_flow
@@ -217,7 +217,7 @@
 #     platform: event
 #     event_type: deconz_event
 #     event_data:
-#       id: switch_emma
+#       id: smart_switch
 #       event: 1003
 #   action:
 #     - service: yeelight.set_mode
@@ -230,7 +230,7 @@
     platform: event
     event_type: deconz_event
     event_data:
-      id: switch_emma
+      id: smart_switch
       event: 1004
   action:
     - service: light.toggle
@@ -243,7 +243,7 @@
     platform: event
     event_type: deconz_event
     event_data:
-      id: switch_emma
+      id: smart_switch
       event: 1005
   action:
     - service: light.toggle
@@ -255,7 +255,7 @@
     platform: event
     event_type: deconz_event
     event_data:
-      id: switch_emma
+      id: smart_switch
       event: 1006
   action:
     - service: light.toggle

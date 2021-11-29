@@ -22,8 +22,9 @@
     - platform: state
       entity_id: sensor.status_toy
   action:
-    - wait_template: "{{ state_attr('sensor.status_toy', 'last_changed') }}"
-      timeout: "00:01:30"
+    #- wait_template: "{{ state_attr('sensor.status_toy', 'last_changed') }}"
+    #  timeout: "00:01:30"
+    - delay: "00:00:30"
     - service: telegram_bot.send_message
       data_template:
         title: Toyota
