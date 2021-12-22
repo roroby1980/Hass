@@ -116,6 +116,7 @@
          - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
          - light.shelly_shrgbw2_f4337c_2 #livingroom natural led
          - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
+         - light.shelly_shrgbw2_f4337c_3 #decoration entrance
       data_template:
         transition: 30
         brightness_pct: 100
@@ -151,6 +152,7 @@
          - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
          - light.shelly_shrgbw2_f4337c_2 #livingroom natural led
          - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
+         - light.shelly_shrgbw2_f4337c_3 #decoration entrance
         brightness_pct: 100
     - service: light.turn_on
       data_template:
@@ -183,6 +185,7 @@
         entity_id: 
          - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
          - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
+         - light.shelly_shrgbw2_f4337c_3 #decoration entrance
         brightness_pct: 1
     - service: light.turn_on
       data_template:
@@ -231,6 +234,7 @@
         entity_id: 
          - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
          - light.shelly_shrgbw2_f4337c_2 #livingroom natural led
+         - light.shelly_shrgbw2_f4337c_3 #decoration entrance
     - service: switch.turn_on
       entity_id: 
         - switch.sonoff_10008cbb5e_3 # sonoff touch2 sceene night
@@ -262,6 +266,7 @@
         entity_id: 
          - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
          - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
+         - light.shelly_shrgbw2_f4337c_3 #decoration entrance
         brightness_pct: 50
     - service: light.turn_on
       data_template:
@@ -294,6 +299,7 @@
         - light.shelly_shrgbw2_f4337c_1 #livingroom warm led
         - light.shelly_shrgbw2_011738_1 #livingroom closet warm led2
         - light.shelly_shrgbw2_f4337c_2 #livingroom natural led
+        - light.shelly_shrgbw2_f4337c_3 #decoration entrance
     - service: switch.turn_off
       entity_id: 
         - switch.sonoff_10008cbb5e_2 # sonoff touch2 sceene day

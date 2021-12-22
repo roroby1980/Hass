@@ -9,10 +9,10 @@
       entity_id: group.all_lights
     - service: switch.turn_off
       entity_id: group.all_switch_lights
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.riscaldamento
-        temperature: 15
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.thermo_profile
+        option: 'Away'
 
 - id: Try update phone position
   alias: Try update phone position

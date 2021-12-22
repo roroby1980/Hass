@@ -123,8 +123,9 @@ binary_sensor:
         icon_template: hass:television
         value_template: >-
           {{ state_attr('switch.sonoff_10009ce473', 'power')|int > 20 }}
-  - platform: uptimerobot
-    api_key: ur1272408-f39b635415eaefca3240a9f1
+
+#- platform: uptimerobot
+#    api_key: !secret uptimerobot
 
 
 
@@ -148,36 +149,67 @@ api:
 frontend:
   themes: !include_dir_merge_named themes
 
+proximity:
+  casa:
+    zone: home
+    devices:
+      - device_tracker.iphone_di_roberto
+      - device_tracker.tamar_s_iphone_2
+    tolerance: 200
+    unit_of_measurement: km 
+
 
 recorder:
-  exclude:
+  purge_keep_days: 3
+  include:
     domains:
-      - automations
+      - script
+      - light
+      - switch
+      - var
+      - binary_sensor
     entity_globs:
-      - sensor.dark_sky*
-      - sensor.tim*
-      - sensor.date*
-      - sensor.tr*
-      - sensor.when*
-      - sensor.where*
-      - sensor.ritardo*
-      - sensor.riscaldamento*
-      - sensor.pow1*
-      - sensor.temperatura*_shelly
+      - sensor.t_*
+    entities:
+      - switch.thermostat
+      - sensor.power_filtered
+      - sensor.serbatoio_toy
+      - sensor.odo_toy
+      - proximity.casa
 
 
 history:
-  exclude:
+  include:
     domains:
-      - automations
+      - script
+      - light
+      - switch
+      - var
+      - binary_sensor
     entity_globs:
-      - sensor.dark_sky*
-      - sensor.tim*
-      - sensor.date*
-      - sensor.tr*
-      - sensor.when*
-      - sensor.where*
-      - sensor.ritardo*
-      - sensor.riscaldamento*
-      - sensor.pow1*
-      - sensor.temperatura*_shelly
+      - sensor.t_*
+    entities:
+      - switch.thermostat
+      - sensor.power_filtered
+      - sensor.serbatoio_toy
+      - sensor.odo_toy
+      - proximity.casa
+
+
+logbook:
+  include:
+    domains:
+      - script
+      - light
+      - switch
+      - var
+      - binary_sensor
+    entity_globs:
+      - sensor.t_*
+    entities:
+      - switch.thermostat
+      - sensor.power_filtered
+      - sensor.serbatoio_toy
+      - sensor.odo_toy
+      - proximity.casa
+

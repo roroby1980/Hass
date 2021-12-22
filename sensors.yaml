@@ -1,9 +1,3 @@
-  #Cesano 6:30 --> 612
-  #Cesano 7:00 --> 1614 --> N00074
-  #Cesano 7:30 --> 618
-  #Cesano 7:35 --> 2718 --> N00085
-  #cesano 8:00 --> 1622
-  
   - platform: google_geocode
     origin: device_tracker.toy_location
     name: toy_street
@@ -65,29 +59,14 @@
     json_attributes:
        - last_changed
        - descr
-
-  - platform: template
-    sensors:
-      current_power:
-        friendly_name: "Power light total"
-        unit_of_measurement: 'W'
-        value_template: '{{ states("sensor.shelly_shsw_pm_b901af_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b906cb_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b911e9_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_c4b0f4_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b9273a_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b9841d_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_b984a1_current_consumption") |float +
-                            states("sensor.shelly_shsw_pm_84cca8aca64a_current_consumption") |float 
-                          }}'
-   
+ 
 
  # Termometro Processore Raspberry
   - platform: command_line
     name: CPU Temperature
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
-    scan_interval: 120
+    scan_interval: 600
     value_template: '{{ value | multiply(0.001) }}'
 
 
@@ -107,11 +86,9 @@
     name: house humidity
     type: mean
     entity_ids:
-       -  sensor.t_bathroom_2
        -  sensor.t_main_bedroom
        -  sensor.t_alma_bedroom_2
        -  sensor.t_emma_bedroom_2
-       -  sensor.t_kitchen_2
        -  sensor.t_extra_2
        -  sensor.t_livingroom_2
        
@@ -227,4 +204,16 @@
           {% if  (now().hour  >= 12  ) and (states.sun.sun.attributes.elevation | int > 10) and (states.sensor.dark_sky_cloud_coverage.state | int < 50) %}true
           {% else %}false
           {% endif %}
-      
+
+  - platform: filter
+    name: "power filtered"
+    entity_id: sensor.shelly_shem_c45bbe796e82_1_current_consumption
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 60
+      - filter: time_simple_moving_average
+        window_size: 00:10
+        precision: 0
