@@ -304,3 +304,55 @@
       entity_id: 
         - switch.sonoff_10008cbb5e_2 # sonoff touch2 sceene day
         - switch.sonoff_10008cbb5e_3 # sonoff touch2 sceene night
+
+
+- id: Button increase scene 
+  alias: Button increase scene  
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: opple_switch_2_gang
+      event: 2002
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.living_room_sceene
+        option: >
+           {% if  input_select.living_room_sceene == "Off" %} 
+             "Relax" 
+           {% elif input_select.living_room_sceene == "Tv" %} 
+             "Evening" 
+           {% elif input_select.living_room_sceene == "Relax" %} 
+             "Evening" 
+           {% elif input_select.living_room_sceene == "Relax" %} 
+             "Evening"  
+           {% elif input_select.living_room_sceene == "Evening" %} 
+             "Daylight"  
+           {% endif %}
+
+
+- id: Button decrease scene 
+  alias: Button decrease scene  
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: opple_switch_2_gang
+      event: 1002
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.living_room_sceene
+        option: >
+           {% if  input_select.living_room_sceene == "Dinner" %} 
+             "Evening" 
+           {% elif  input_select.living_room_sceene == "Daylight" %} 
+             "Evening" 
+           {% elif input_select.living_room_sceene == "Evening" %} 
+             "Relax"  
+           {% elif input_select.living_room_sceene == "Relax" %} 
+             "Off"  
+           {% elif input_select.living_room_sceene == "Tv" %} 
+             "Off"  
+           {% endif %}

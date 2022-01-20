@@ -136,6 +136,82 @@ homeassistant:
       device_class: lock
     switch.sonoff_1000a54613:
       device_class: light
+    sensor.shelly_shdm_1_d1818c_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shem_c45bbe796e82_1_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shem_c45bbe796e82_2_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011738_1_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011738_2_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011738_3_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011738_4_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011825_1_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011825_2_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011825_3_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_011825_4_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f4337c_1_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f4337c_2_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f4337c_3_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f4337c_4_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f43a0c_1_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f43a0c_2_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f43a0c_3_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shrgbw2_f43a0c_4_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shsw_pm_84cca8aca64a_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shsw_pm_b901af_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shsw_pm_b906cb_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shsw_pm_b911e9_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shsw_pm_b984a1_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+    sensor.shelly_shsw_pm_c4b0f4_total_consumption:
+      device_class: energy
+      state_class: total_increasing
+
   allowlist_external_dirs:
     - /config/camera
 
@@ -176,6 +252,33 @@ recorder:
       - sensor.serbatoio_toy
       - sensor.odo_toy
       - proximity.casa
+      - sensor.shelly_shdm_1_d1818c_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_1_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_2_total_consumption
+      - sensor.shelly_shrgbw2_011738_1_total_consumption
+      - sensor.shelly_shrgbw2_011738_2_total_consumption
+      - sensor.shelly_shrgbw2_011738_3_total_consumption
+      - sensor.shelly_shrgbw2_011738_4_total_consumption
+      - sensor.shelly_shrgbw2_011825_1_total_consumption
+      - sensor.shelly_shrgbw2_011825_2_total_consumption
+      - sensor.shelly_shrgbw2_011825_3_total_consumption
+      - sensor.shelly_shrgbw2_011825_4_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_1_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_2_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_3_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_4_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_1_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_2_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_3_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_4_total_consumption
+      - sensor.shelly_shsw_pm_84cca8aca64a_total_consumption
+      - sensor.shelly_shsw_pm_b901af_total_consumption
+      - sensor.shelly_shsw_pm_b906cb_total_consumption
+      - sensor.shelly_shsw_pm_b911e9_total_consumption
+      - sensor.shelly_shsw_pm_b984a1_total_consumption
+      - sensor.shelly_shsw_pm_c4b0f4_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_1_total_consumption_cost
+
 
 
 history:
@@ -194,6 +297,32 @@ history:
       - sensor.serbatoio_toy
       - sensor.odo_toy
       - proximity.casa
+      - sensor.shelly_shdm_1_d1818c_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_1_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_2_total_consumption
+      - sensor.shelly_shrgbw2_011738_1_total_consumption
+      - sensor.shelly_shrgbw2_011738_2_total_consumption
+      - sensor.shelly_shrgbw2_011738_3_total_consumption
+      - sensor.shelly_shrgbw2_011738_4_total_consumption
+      - sensor.shelly_shrgbw2_011825_1_total_consumption
+      - sensor.shelly_shrgbw2_011825_2_total_consumption
+      - sensor.shelly_shrgbw2_011825_3_total_consumption
+      - sensor.shelly_shrgbw2_011825_4_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_1_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_2_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_3_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_4_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_1_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_2_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_3_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_4_total_consumption
+      - sensor.shelly_shsw_pm_84cca8aca64a_total_consumption
+      - sensor.shelly_shsw_pm_b901af_total_consumption
+      - sensor.shelly_shsw_pm_b906cb_total_consumption
+      - sensor.shelly_shsw_pm_b911e9_total_consumption
+      - sensor.shelly_shsw_pm_b984a1_total_consumption
+      - sensor.shelly_shsw_pm_c4b0f4_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_1_total_consumption_cost
 
 
 logbook:
@@ -212,4 +341,29 @@ logbook:
       - sensor.serbatoio_toy
       - sensor.odo_toy
       - proximity.casa
-
+      - sensor.shelly_shdm_1_d1818c_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_1_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_2_total_consumption
+      - sensor.shelly_shrgbw2_011738_1_total_consumption
+      - sensor.shelly_shrgbw2_011738_2_total_consumption
+      - sensor.shelly_shrgbw2_011738_3_total_consumption
+      - sensor.shelly_shrgbw2_011738_4_total_consumption
+      - sensor.shelly_shrgbw2_011825_1_total_consumption
+      - sensor.shelly_shrgbw2_011825_2_total_consumption
+      - sensor.shelly_shrgbw2_011825_3_total_consumption
+      - sensor.shelly_shrgbw2_011825_4_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_1_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_2_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_3_total_consumption
+      - sensor.shelly_shrgbw2_f4337c_4_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_1_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_2_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_3_total_consumption
+      - sensor.shelly_shrgbw2_f43a0c_4_total_consumption
+      - sensor.shelly_shsw_pm_84cca8aca64a_total_consumption
+      - sensor.shelly_shsw_pm_b901af_total_consumption
+      - sensor.shelly_shsw_pm_b906cb_total_consumption
+      - sensor.shelly_shsw_pm_b911e9_total_consumption
+      - sensor.shelly_shsw_pm_b984a1_total_consumption
+      - sensor.shelly_shsw_pm_c4b0f4_total_consumption
+      - sensor.shelly_shem_c45bbe796e82_1_total_consumption_cost
